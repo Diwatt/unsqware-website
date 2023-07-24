@@ -1,5 +1,5 @@
 import { gsap, ScrollTrigger } from "gsap/all";
-console.clear();
+// https://codepen.io/shshaw/pen/vYKBPbv/9e810322d70c306de2d18237d0cb2d78
 /* The encoding is super important here to enable frame-by-frame scrubbing. */
 
 // ffmpeg -i ~/Downloads/Toshiba\ video/original.mov -movflags faststart -vcodec libx264 -crf 23 -g 1 -pix_fmt yuv420p output.mp4
