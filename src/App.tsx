@@ -1,24 +1,21 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { Navbar } from './Navbar';
-import './App.scss';
+import { Router } from './Router';
 
+import './App.scss';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
       <section className="section">
         <div className="container">
-            <h1 className="title">
-              Hello World
-            </h1>
-            <p className="subtitle">
-              My first website with <strong>Bulma</strong>!
-            </p>
+          <Router />
         </div>
     </section>
-  </>
+  </BrowserRouter>
   )
 }
 
-export default App
+export default App;
