@@ -4,22 +4,22 @@ import type { ReactElement } from "react";
 
 import i18n from "../src/i18n";
 
-// Sans ça, Testing Library ne se démonte pas entre les tests (pas de
-// afterEach global quand vitest globals est désactivé).
+// Without this, Testing Library does not unmount between tests (no
+// global afterEach when vitest globals is disabled).
 afterEach(() => {
   cleanup();
   localStorage.removeItem("unsqware-lang");
   vi.unstubAllGlobals();
 });
 
-// Les composants utilisent useTranslation : on fige la langue du rendu
-// (la détection i18n du navigateur serait aléatoire sous jsdom).
+// Components use useTranslation: we pin the render language
+// (browser i18n detection would be random under jsdom).
 export async function renderFr(ui: ReactElement): Promise<RenderResult> {
   await i18n.changeLanguage("fr");
   return render(ui);
 }
 
-// Absent de jsdom ; utilisé par le scrollspy et le logo de la Navbar.
+// Missing from jsdom; used by the scrollspy and the Navbar logo.
 export function stubIntersectionObserver(): void {
   vi.stubGlobal(
     "IntersectionObserver",
@@ -34,8 +34,8 @@ export function stubIntersectionObserver(): void {
   );
 }
 
-// Absent de jsdom également ; la Navbar l'interroge pour désactiver
-// l'animation au scroll sous prefers-reduced-motion.
+// Missing from jsdom as well; the Navbar queries it to disable
+// scroll animation under prefers-reduced-motion.
 export function stubMatchMedia(matches = false): void {
   vi.stubGlobal(
     "matchMedia",

@@ -1,11 +1,11 @@
-// Pré-rendu du site : génère le HTML statique (FR + EN) depuis l'app React elle-même.
-// Chaîné par `pnpm build` :
-//   1. `vite build --ssr scripts/prerender.tsx --outDir .prerender` compile ce fichier
-//   2. `node .prerender/prerender.js` l'exécute en Node (imports node: externalisés par Vite)
-// Sorties :
-//   - dist/index.html    → page FR (https://unsqwa.re/)
-//   - dist/en/index.html → page EN (https://unsqwa.re/en/)
-//   - dist/sitemap.xml   → les deux URL + hreflang + lastmod = date du build
+// Site pre-rendering: generates the static HTML (FR + EN) from the React app itself.
+// Chained by `pnpm build`:
+//   1. `vite build --ssr scripts/prerender.tsx --outDir .prerender` compiles this file
+//   2. `node .prerender/prerender.js` runs it in Node (node: imports externalized by Vite)
+// Outputs:
+//   - dist/index.html    → FR page (https://unsqwa.re/)
+//   - dist/en/index.html → EN page (https://unsqwa.re/en/)
+//   - dist/sitemap.xml   → both URLs + hreflang + lastmod = build date
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -17,7 +17,7 @@ type Lang = "fr" | "en";
 const DOMAIN = "https://unsqwa.re";
 const PLACEHOLDER = "<!--APP_HTML-->";
 
-// Chaînes du <head> du template (FR) et leurs versions EN pour la page /en/.
+// <head> strings of the (FR) template and their EN versions for the /en/ page.
 const FR_HEAD = {
   title: "UNSQWARE — Quartet jazz hybride · Nantes",
   metaDescription:
@@ -35,39 +35,39 @@ const EN_HEAD = {
   ogImageAlt: "The four members of UNSQWARE against a purple-lit wall",
 };
 
-// Remplace `needle` et fait échouer le build s'il est introuvable :
-// évite de déployer une page EN à moitié traduite après une retouche du template.
+// Replaces `needle` and fails the build if it cannot be found:
+// avoids deploying a half-translated EN page after a template edit.
 function replaceStrict(html: string, needle: string, replacement: string, label: string): string {
   if (!html.includes(needle)) {
-    throw new Error(`prerender: introuvable dans le template (${label})`);
+    throw new Error(`prerender: not found in template (${label})`);
   }
   return html.replaceAll(needle, replacement);
 }
 
-// Rendus séquentiels côté appelant : un seul singleton i18n, les rendre en
-// parallèle ferait s'entrecroiser les changeLanguage et mélanger les langues.
+// Renders are sequential at the call site: a single i18n singleton, rendering
+// them in parallel would interleave changeLanguage calls and mix languages.
 async function renderStatic(lang: Lang): Promise<string> {
   await i18n.changeLanguage(lang);
   return renderToStaticMarkup(<App />);
 }
 
 async function main(): Promise<void> {
-  // `pnpm build` s'exécute depuis la racine du projet.
+  // `pnpm build` runs from the project root.
   const dist = path.join(process.cwd(), "dist");
   const today = new Date().toISOString().slice(0, 10);
 
   const template = await readFile(path.join(dist, "index.html"), "utf8");
   if (!template.includes(PLACEHOLDER)) {
-    throw new Error("prerender: placeholder <!--APP_HTML--> absent de dist/index.html");
+    throw new Error("prerender: <!--APP_HTML--> placeholder missing from dist/index.html");
   }
 
   const frHtml = await renderStatic("fr");
   const enHtml = await renderStatic("en");
 
-  // ── Page FR (racine) : le template est déjà en FR ──
+  // ── FR page (root): the template is already in FR ──
   await writeFile(path.join(dist, "index.html"), template.replace(PLACEHOLDER, frHtml));
 
-  // ── Page EN (/en/) : mêmes balises, contenu et métadonnées en anglais ──
+  // ── EN page (/en/): same tags, content and metadata in English ──
   let enPage = template.replace(PLACEHOLDER, enHtml);
   enPage = replaceStrict(enPage, '<html lang="fr">', '<html lang="en">', "lang");
   enPage = replaceStrict(
@@ -102,7 +102,7 @@ async function main(): Promise<void> {
   await mkdir(path.join(dist, "en"), { recursive: true });
   await writeFile(path.join(dist, "en/index.html"), enPage);
 
-  // ── Sitemap : les deux URL, hreflang inclus, lastmod = date du build ──
+  // ── Sitemap: both URLs, hreflang included, lastmod = build date ──
   const alternates = `    <xhtml:link rel="alternate" hreflang="fr" href="${DOMAIN}/"/>
     <xhtml:link rel="alternate" hreflang="en" href="${DOMAIN}/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}/"/>

@@ -1,44 +1,51 @@
 import { useTranslation } from "react-i18next";
-import { ArrowUpRight, LINKS, PlayIcon } from "./shared";
+import { SectionTag, ArrowUpRight, LINKS } from "./shared";
+import { VideoEmbed } from "./VideoEmbed";
 
 const platforms = [
   { href: LINKS.spotify, label: "Spotify" },
-  { href: LINKS.deezer, label: "Deezer" },
   { href: LINKS.soundcloud, label: "SoundCloud" },
   { href: LINKS.youtube, label: "YouTube" },
 ];
 
+const tracks = [
+  { n: "01", title: "Abandon me", length: "05:35" },
+  { n: "02", title: "Find the Meaning", length: "05:45" },
+];
+
+// Music and video in one compact block: the Totem Live Session player, its tracks, then where to listen.
 export function Music() {
   const { t } = useTranslation();
-  const epTitle = t("music.epTitle", { returnObjects: true }) as string[];
 
   return (
     <section id="musique" className="music">
       <div className="music__inner container">
-        <p className="mono-label">{t("music.tag")}</p>
+        <SectionTag label={t("music.tag")} inverted />
 
         <div className="music__row">
-          <div className="music__feature">
-            <img src="/images/totem.jpg" alt={t("music.totemAlt")} loading="lazy" />
-            <div className="music__feature-text">
-              <span className="mono-label">Live session · 2025</span>
-              <h2 className="music__title">Totem</h2>
-              <p>{t("music.totemDesc")}</p>
-              <a href="https://www.youtube.com/watch?v=I4tQ71Z90Hw" className="btn btn--dark" target="_blank" rel="noreferrer">
-                <PlayIcon />
-                {t("music.watch")}
-              </a>
-            </div>
+          <div className="music__video">
+            <VideoEmbed
+              id="I4tQ71Z90Hw"
+              title="Totem Live Session"
+              poster="/images/session-salle.jpg"
+              playLabel={t("music.play")}
+            />
           </div>
 
-          <div className="music__ep">
-            <span className="mono-label">{t("music.epKicker")}</span>
-            <p className="music__ep-title">
-              {epTitle[0]}
-              <br />
-              {epTitle[1]}
-            </p>
-            <p>{t("music.epText")}</p>
+          <div className="music__info">
+            <span className="mono-label">Live session · 2025</span>
+            <h2 className="music__title">Totem Live Session</h2>
+            <p className="music__place">{t("music.totemPlace")}</p>
+            <ol className="tracks">
+              {tracks.map((tr) => (
+                <li key={tr.n}>
+                  <span>
+                    <span className="tracks__n">{tr.n}</span> {tr.title}
+                  </span>
+                  <span className="tracks__len">{tr.length}</span>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
 
@@ -50,6 +57,8 @@ export function Music() {
             </a>
           ))}
         </div>
+
+        <p className="music__ep">{t("hero.ep")}</p>
       </div>
     </section>
   );

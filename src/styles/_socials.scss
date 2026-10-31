@@ -1,0 +1,63 @@
+// ——— Réseaux ———
+.socials__text {
+  max-width: 26em;
+  color: var(--soft);
+}
+
+.socials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+  min-height: 240px;
+  padding: 28px;
+  border: 1.5px solid var(--fg);
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+
+  > span {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 27px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  &__desc {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  &:hover {
+    border-color: var(--accent);
+  }
+
+  &--featured {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--bg);
+
+    &:hover {
+      color: var(--bg);
+      background: var(--fg);
+      border-color: var(--fg);
+    }
+
+    .social__desc {
+      color: var(--bg);
+    }
+  }
+}

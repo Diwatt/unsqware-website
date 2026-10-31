@@ -1,17 +1,16 @@
 import { useTranslation } from "react-i18next";
 import { SectionTag } from "./shared";
-import { influences, members } from "./config-groupe";
+import { influences } from "./data/groupe";
 
 export function About() {
-  const { t, i18n } = useTranslation();
-  const lang = (i18n.resolvedLanguage ?? "fr") as "fr" | "en";
+  const { t } = useTranslation();
 
   return (
     <>
       <section id="groupe" className="section container">
         <div className="about__head">
           <div className="about__title">
-            <SectionTag label={t("band.tag")} shape={0} />
+            <SectionTag label={t("band.tag")} />
             <h2 className="h2">{t("band.title")}</h2>
           </div>
           <div className="about__text">
@@ -19,18 +18,6 @@ export function About() {
             <p>{t("band.p1")}</p>
             <p>{t("band.p2")}</p>
           </div>
-        </div>
-
-        <div className="members">
-          {members.map((m) => (
-            <article key={m.name} className="member">
-              <img src={m.photo} alt={`${t("band.portrait")} ${m.name}`} width={900} height={1200} loading="lazy" />
-              <div>
-                <h3 className="member__name">{m.name}</h3>
-                <p className="member__role">{lang === "fr" ? m.roleFr : m.roleEn}</p>
-              </div>
-            </article>
-          ))}
         </div>
 
         <div className="influences">

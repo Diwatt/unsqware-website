@@ -6,10 +6,10 @@ import { Socials } from "../src/Socials";
 import { LINKS } from "../src/shared";
 
 describe("Socials", () => {
-  it("renvoie vers les quatre réseaux du groupe", async () => {
+  it("links to the band's four social profiles", async () => {
     await renderFr(<Socials />);
 
-    // Le nom accessible d'un lien combine nom du réseau + description
+    // A link's accessible name combines the network name + description
     const expected = [
       [/^Instagram/, LINKS.instagram],
       [/^YouTube/, LINKS.youtube],
@@ -21,7 +21,7 @@ describe("Socials", () => {
     }
   });
 
-  it("met Instagram en avant", async () => {
+  it("features Instagram", async () => {
     await renderFr(<Socials />);
 
     const instagram = screen.getByRole("link", { name: /^Instagram/ });

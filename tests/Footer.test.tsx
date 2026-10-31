@@ -6,7 +6,7 @@ import { Footer } from "../src/Footer";
 import { LINKS } from "../src/shared";
 
 describe("Footer", () => {
-  it("affiche le copyright de l'année en cours et les réseaux", async () => {
+  it("renders the current-year copyright and the social links", async () => {
     await renderFr(<Footer />);
 
     expect(screen.getByText(`© ${new Date().getFullYear()} UNSQWARE — Nantes`)).toBeDefined();

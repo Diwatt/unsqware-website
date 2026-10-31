@@ -1,11 +1,14 @@
 import { describe, expect, it, vi } from "vitest";
 import { screen } from "@testing-library/react";
 
-// Le mock de module s'applique à tout le fichier : ici on simule une
-// config SANS identifiants pour tester le mode démo (dates d'exemple).
-// Les tests qui branchent l'API (avec fetch stubbé) vivent dans Gigs.test.tsx.
+// The module mocks apply to the whole file: they simulate a config
+// WITHOUT credentials to test demo mode (sample dates).
+// The API-backed tests (with stubbed fetch) live in Gigs.test.tsx.
 vi.mock("../src/config-agenda", () => ({
   agenda: { calendarId: "", apiKey: "", tag: "[GIG]" },
+}));
+
+vi.mock("../src/data/dates-demo", () => ({
   demoEvents: [
     {
       id: "demo-1",
@@ -25,8 +28,8 @@ vi.mock("../src/config-agenda", () => ({
 import { renderFr } from "./helpers";
 import { Gigs } from "../src/Gigs";
 
-describe("Gigs (mode démo)", () => {
-  it("affiche les dates d'exemple sans appeler l'API", async () => {
+describe("Gigs (demo mode)", () => {
+  it("renders the sample dates without calling the API", async () => {
     const fetchSpy = vi.fn();
     vi.stubGlobal("fetch", fetchSpy);
 

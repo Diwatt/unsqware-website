@@ -1,0 +1,151 @@
+// ——— Icônes ———
+// SVG externes (public/icons) appliqués en mask et teintés via currentColor :
+// la couleur suit le parent (hover, bouton accent, etc.) comme un SVG inline.
+.icon {
+  display: inline-block;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+
+  &--arrow-right {
+    --icon: url("/icons/arrow-right.svg");
+  }
+
+  &--arrow-up-right {
+    --icon: url("/icons/arrow-up-right.svg");
+    width: 22px;
+    height: 22px;
+  }
+
+  &--play {
+    --icon: url("/icons/play.svg");
+  }
+
+  &--copy {
+    --icon: url("/icons/copy.svg");
+  }
+
+  &--instagram {
+    --icon: url("/icons/instagram.svg");
+  }
+
+  &--youtube {
+    --icon: url("/icons/youtube.svg");
+  }
+
+  &--facebook {
+    --icon: url("/icons/facebook.svg");
+  }
+
+  &--soundcloud {
+    --icon: url("/icons/soundcloud.svg");
+  }
+
+  &--instagram,
+  &--youtube,
+  &--facebook,
+  &--soundcloud {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+// ——— Boutons ———
+// Léger tilt « autocollant » qui se redresse au survol, comme une étiquette qu'on cale droit.
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 26px;
+  font-weight: 600;
+  text-decoration: none;
+  transform: rotate(-1deg) skewX(-2deg);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: rotate(0deg) skewX(0deg);
+  }
+
+  &--accent {
+    background: var(--accent);
+    color: var(--bg);
+    &:hover {
+      color: var(--bg);
+      background: var(--fg);
+    }
+  }
+
+  &--ghost {
+    border: 1.5px solid var(--fg);
+    &:hover {
+      border-color: var(--accent);
+    }
+  }
+
+  &--dark {
+    align-self: flex-start;
+    background: var(--bg);
+    color: var(--fg);
+    padding: 0 24px;
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  &--small {
+    min-height: 44px;
+    padding: 0 20px;
+    font-size: 15px;
+  }
+}
+
+// ——— Étiquette de section : carré déformé en relief qui mord sur le titre ———
+.tag {
+  position: relative;
+  z-index: 2;
+  display: table;
+  margin: 0 0 -14px;
+  transform: rotate(-2deg);
+  transform-origin: left bottom;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  --tag-fill: var(--accent);
+  --tag-ink: var(--bg);
+
+  &--inverted {
+    --tag-fill: var(--bg);
+    --tag-ink: var(--accent);
+  }
+
+  &__depth {
+    position: absolute;
+    inset: 0;
+    background: var(--tag-fill);
+
+    &--far {
+      transform: translate(8px, 7px) skewX(-6deg);
+      opacity: 0.22;
+    }
+
+    &--near {
+      transform: translate(4px, 3.5px) skewX(-3deg);
+      opacity: 0.4;
+    }
+  }
+
+  &__face {
+    position: relative;
+    display: block;
+    padding: 10px 18px 9px;
+    background: var(--tag-fill);
+    color: var(--tag-ink);
+  }
+}

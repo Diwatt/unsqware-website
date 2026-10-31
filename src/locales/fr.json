@@ -2,7 +2,6 @@
   "nav": {
     "band": "Le groupe",
     "music": "Musique",
-    "videos": "Vidéos",
     "live": "Sur scène",
     "socials": "Réseaux",
     "contact": "Nous contacter",
@@ -19,9 +18,8 @@
     "ctaContact": "Faire jouer UNSQWARE",
     "ctaTotem": "Voir la Totem Live Session",
     "follow": "Suivez-nous",
-    "photoAlt": "Les quatre musiciens d'UNSQWARE devant un mur éclairé de violet"
+    "photoAlt": "Les quatre musiciens d'UNSQWARE derrière une baie vitrée, entre reflets et lumière du jour"
   },
-  "marquee": ["Jazz prog", "Jazz hybride", "Nantes", "Totem Live Session", "EP début 2027"],
   "band": {
     "tag": "01 — Le groupe",
     "title": "Un carré qui se déforme",
@@ -34,50 +32,26 @@
   "photos": {
     "guitar": "Fabien Maurin à la guitare, lumière violette",
     "daylight": "Le quartet en concert en plein jour, devant une baie vitrée",
-    "redGuitar": "Gros plan sur une guitare rouge"
+    "redGuitar": "Gros plan sur une guitare rouge",
+    "groupWall": "Les quatre musiciens devant un mur gris, en plein jour"
   },
   "music": {
     "tag": "02 — Musique",
-    "totemAlt": "Le quartet pendant la Totem Live Session",
-    "totemDesc": "Deux titres, Abandon me et Find the Meaning, captés à La Maison du Son, Port-Saint-Père, en septembre 2025.",
-    "watch": "Regarder sur YouTube",
-    "epKicker": "En préparation",
-    "epTitle": ["Premier EP", "début 2027"],
-    "epText": "Les nouvelles compositions, éprouvées sur scène depuis 2025, enregistrées pour un premier EP attendu début 2027."
-  },
-  "videos": {
-    "tag": "03 — Vidéos",
-    "title": "En session",
-    "channel": "Toute la chaîne YouTube ↗",
-    "watch": "Regarder",
     "totemPlace": "Captée à La Maison du Son, Port-Saint-Père — septembre 2025",
-    "studio": "Studio session · 2024",
     "play": "Lire la vidéo"
   },
   "live": {
-    "tag": "04 — Sur scène",
+    "tag": "03 — Sur scène",
     "title": "Prochaines dates",
     "announce": "Les nouvelles dates sont annoncées d'abord sur",
     "and": "et",
     "callTitle": "Votre salle, votre festival ?",
     "callText": "Le quartet cherche de nouvelles scènes pour 2027 et la sortie de l'EP. Écrivez-nous directement.",
     "callCta": "Proposer une date",
-    "timelineTitle": "Parcours 2021 → 2027",
-    "timeline": [
-      { "year": "2021", "text": "Création du groupe par Florian Roy et Charles Demay" },
-      { "year": "2022", "text": "Premier concert du quartet, à Nantes" },
-      { "year": "2023", "text": "Conservatoire de Nantes · Festival d'été ACCOORD · Festival Bar-Bars" },
-      {
-        "year": "2024",
-        "text": "Studio au Batiskaf · OFF du Printemps de Bourges · short-list Talents Jazz des Rendez-vous de l'Erdre"
-      },
-      { "year": "2025", "text": "Totem Live Session, en ligne depuis septembre" },
-      { "year": "2027", "text": "Sortie du premier EP — début 2027" }
-    ],
     "mailSubject": "Concert UNSQWARE"
   },
   "socials": {
-    "tag": "05 — Réseaux",
+    "tag": "04 — Réseaux",
     "title": "Suivez le quartet",
     "text": "Extraits, répétitions, coulisses et dates : c'est sur nos réseaux que tout se passe en premier.",
     "instagram": "@unsqware · extraits, coulisses, dates",
@@ -86,7 +60,7 @@
     "soundcloud": "unsqware-musique · lives, démos"
   },
   "contact": {
-    "tag": "06 — Contact",
+    "tag": "05 — Contact",
     "title": "Écrivez-nous",
     "text": "Concert, festival, presse, collaboration : le groupe répond lui-même à chaque message.",
     "copy": "Copier l'adresse",

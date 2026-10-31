@@ -5,7 +5,6 @@ import { Footer } from "./Footer";
 import { Hero } from "./Hero";
 import { About } from "./About";
 import { Music } from "./Music";
-import { Videos } from "./Videos";
 import { Gigs } from "./Gigs";
 import { Socials } from "./Socials";
 import { Contact } from "./Contact";
@@ -26,7 +25,6 @@ function App() {
         <Hero />
         <About />
         <Music />
-        <Videos />
         <Gigs />
         <Socials />
         <Contact />

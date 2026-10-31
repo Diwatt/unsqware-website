@@ -1,0 +1,144 @@
+// ——— Menu ———
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--header);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 32px;
+    padding-block: 14px;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 28px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    padding: 12px 0;
+    text-decoration: none;
+    // Offset/épaisseur posés ici : le soulignement is-active ne décale rien.
+    text-underline-offset: 6px;
+    text-decoration-thickness: 1.5px;
+
+    &.is-active {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+  }
+
+  &__cta {
+    padding: 12px 18px;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 500;
+    text-decoration: none;
+    transform: rotate(-1deg) skewX(-2deg);
+    transition: transform 0.2s ease;
+
+    &:hover {
+      color: var(--bg);
+      background: var(--fg);
+      transform: rotate(0deg) skewX(0deg);
+    }
+  }
+
+  &__burger {
+    display: none;
+    min-width: 44px;
+    min-height: 44px;
+    background: none;
+    border: 1.5px solid var(--line-2);
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  @media (max-width: 960px) {
+    &__burger {
+      display: block;
+    }
+
+    &__links {
+      display: none;
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-bottom: 12px;
+
+      &.is-open {
+        display: flex;
+      }
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--fg);
+
+  &__mark {
+    overflow: visible;
+  }
+
+  &__main,
+  &__echo {
+    fill: none;
+    stroke: var(--accent);
+  }
+
+  &__main {
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+  }
+
+  &__echo {
+    stroke-width: 1.2;
+    opacity: 0.45;
+  }
+
+  &__word {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+}
+
+.lang {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  border: 1.5px solid var(--fg);
+
+  button {
+    min-width: 44px;
+    min-height: 40px;
+    border: 0;
+    background: transparent;
+    color: var(--fg);
+    cursor: pointer;
+    letter-spacing: inherit;
+
+    &[aria-pressed="true"] {
+      background: var(--accent);
+      color: var(--bg);
+    }
+  }
+}

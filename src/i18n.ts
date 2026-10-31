@@ -17,10 +17,10 @@ i18n
     },
     fallbackLng: "fr",
     supportedLngs: ["fr", "en"],
-    // React échappe déjà le contenu ; "fr-FR" est résolu en "fr" via supportedLngs.
+    // React already escapes content; "fr-FR" resolves to "fr" via supportedLngs.
     interpolation: { escapeValue: false },
-    // Même comportement que l'ancienne implémentation : langue mémorisée, sinon navigateur, sinon français.
-    // "path" : la page /en/ (pré-rendue en anglais) reste en anglais faute de préférence mémorisée.
+    // Same behavior as the previous implementation: stored language, else browser, else French.
+    // "path": the /en/ page (pre-rendered in English) stays English when no preference is stored.
     detection: {
       order: ["localStorage", "path", "navigator"],
       lookupLocalStorage: "unsqware-lang",
@@ -29,7 +29,7 @@ i18n
     react: { useSuspense: false },
   });
 
-// Clés de traduction typées : t("nav.band") est autocomplété, une clé inconnue est une erreur TS.
+// Typed translation keys: t("nav.band") is autocompleted, an unknown key is a TS error.
 declare module "i18next" {
   interface CustomTypeOptions {
     resources: {
