@@ -1,17 +1,17 @@
 // ════════════════════════════════════════════════════════════════════
-//  CONTENU DU GROUPE — modifiable sans connaissances techniques
+//  BAND CONTENT — editable without technical knowledge
 // ════════════════════════════════════════════════════════════════════
-//  Modifiez uniquement le texte entre guillemets " ".
-//  ⚠ Ne supprimez pas les virgules, les accolades { } ni les crochets [ ].
-//  Après modification, relancez le site pour voir les changements.
+//  Only edit the text inside double quotes " ".
+//  ⚠ Do not remove commas, curly braces { } or square brackets [ ].
+//  After editing, restart the site to see the changes.
 
-// ── Les musiciens ──────────────────────────────────────────────────
-//  Ils s'affichent dans l'ordre de la liste (on peut ajouter, retirer
-//  ou réordonner les blocs { ... }).
-//    name   : le nom du musicien
-//    roleFr : ce qu'il joue (version française du site)
-//    roleEn : la version anglaise du rôle
-//    photo  : le fichier photo (dans le dossier public/images/)
+// ── The musicians ──────────────────────────────────────────────────
+//  They display in list order (you can add, remove or reorder
+//  the { ... } blocks).
+//    name   : the musician's name
+//    roleFr : what they play (French version of the site)
+//    roleEn : the English version of the role
+//    photo  : the photo file (in the public/images/ folder)
 export const members = [
   {
     name: "Florian Roy",
@@ -39,9 +39,9 @@ export const members = [
   },
 ];
 
-// ── Les influences ─────────────────────────────────────────────────
-//  Affichées séparées par des « / ». Une entrée par ligne, entre
-//  guillemets, avec une virgule à la fin (sauf après la dernière).
+// ── The influences ─────────────────────────────────────────────────
+//  Displayed separated by "/". One entry per line, in quotes,
+//  with a trailing comma (except after the last one).
 export const influences = [
   "Aaron Parks",
   "MYT",

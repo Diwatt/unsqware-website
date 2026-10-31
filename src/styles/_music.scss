@@ -1,0 +1,112 @@
+// ——— Musique & vidéo ———
+// Un seul bloc compact : le lecteur Totem à gauche, les titres à droite, les plateformes dessous.
+.music {
+  background: var(--accent);
+  color: var(--bg);
+
+  a:hover {
+    color: var(--bg);
+  }
+
+  &__inner {
+    padding-block: 232px 112px;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 32px 56px;
+  }
+
+  &__video {
+    flex: 1.4 1 520px;
+    min-width: 0;
+  }
+
+  &__info {
+    flex: 1 1 320px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(36px, 3.6vw, 52px);
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  &__place {
+    max-width: 28em;
+  }
+
+  // Pied de section : l'EP à venir, en simple mention.
+  &__ep {
+    display: table;
+    margin-top: 48px;
+    padding: 14px 24px 12px;
+    background: var(--bg);
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(26px, 2.6vw, 38px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    // Même esprit que les étiquettes : un bloc de biais, pas un rectangle sage.
+    clip-path: polygon(1% 8%, 100% 0%, 98% 100%, 0% 90%);
+    transform: rotate(-1.5deg);
+  }
+
+  // Sur fond accent, la liste des titres reprend l'encre sombre.
+  .tracks {
+    margin-top: 12px;
+
+    li {
+      border-bottom-color: var(--bg);
+    }
+  }
+
+  .tracks__n,
+  .tracks__len {
+    color: var(--bg);
+  }
+}
+
+// Un espace entre les cases : chaque flèche reste rattachée à sa plateforme.
+.platforms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  column-gap: 32px;
+  margin-top: 56px;
+
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 4px;
+    border-top: 1.5px solid var(--bg);
+    border-bottom: 1.5px solid var(--bg);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 22px;
+    text-transform: uppercase;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: rotate(-1deg);
+    }
+  }
+
+  // Empilées sur mobile : un seul filet entre deux plateformes.
+  @media (max-width: 720px) {
+    a:not(:first-child) {
+      border-top: 0;
+    }
+  }
+}

@@ -8,18 +8,17 @@
 | # | Section (ancre) | Contenu |
 |---|---|---|
 | 1 | **Accueil** (`#accueil`) | photo de groupe + pitch · CTA « Faire jouer UNSQWARE » + « Voir la Totem Live Session » · liens réseaux |
-| 2 | **Le groupe** (`#groupe`) | bio + portraits des 4 musiciens + influences, puis bandeau de photos live |
-| 3 | **Musique** (`#musique`) | **Totem Live Session** en vedette · EP début 2027 · plateformes |
-| 4 | **Vidéos** (`#videos`) | Totem Live Session (grand format) + Evoli / Algebra studio sessions |
-| 5 | **Sur scène** (`#scene`) | dates à venir + appel aux programmateurs + parcours 2021→2027 |
-| 6 | **Réseaux** (`#reseaux`) | Instagram, YouTube, Facebook, SoundCloud |
-| 7 | **Contact** (`#contact`) | email du groupe (contact direct, pas d'agence de booking) |
+| 2 | **Le groupe** (`#groupe`) | bio + influences, puis bandeau de photos live |
+| 3 | **Musique** (`#musique`) | lecteur **Totem Live Session** + ses 2 titres · plateformes d'écoute |
+| 4 | **Sur scène** (`#scene`) | dates à venir (agenda Google) + appel aux programmateurs, photos de concert floutées en fond |
+| 5 | **Réseaux** (`#reseaux`) | Instagram, YouTube, Facebook, SoundCloud |
+| 6 | **Contact** (`#contact`) | email du groupe (contact direct, pas d'agence de booking) + photo de groupe |
 
 Mise en avant : **le contact** et **la Totem Live Session** uniquement (pas Evoli).
 Site bilingue **FR / EN** : les textes sont dans `src/locales/fr.json` et `src/locales/en.json` (via react-i18next, config dans `src/i18n.ts`) ; les musiciens et les influences sont dans `src/config-groupe.ts` (fichiers éditables sans compétences techniques).
 Design : maquette V4 « douce » du canevas Design (https://claude.ai/artifact/W34iPEagkDDxTjpVKTPmJ8).
 
-Fichiers sections : `src/Hero.tsx`, `src/About.tsx`, `src/Music.tsx`, `src/Videos.tsx`, `src/Gigs.tsx`, `src/Socials.tsx`, `src/Contact.tsx` (assemblés dans `src/App.tsx`, menu dans `src/Navbar.tsx`). Photos dans `public/images/` (tirées du Drive du groupe).
+Fichiers sections : `src/Hero.tsx`, `src/About.tsx`, `src/Music.tsx`, `src/Gigs.tsx`, `src/Socials.tsx`, `src/Contact.tsx` (assemblés dans `src/App.tsx`, menu dans `src/Navbar.tsx`). Photos dans `public/images/` (tirées du Drive du groupe).
 
 ---
 

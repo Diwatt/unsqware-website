@@ -5,13 +5,13 @@ import { renderFr, stubFetch, stubIntersectionObserver, stubMatchMedia } from ".
 import App from "../src/App";
 
 describe("App", () => {
-  it("monte toutes les sections dans l'ordre et passe la page en français", async () => {
+  it("mounts every section in order and sets the page to French", async () => {
     stubIntersectionObserver();
     stubMatchMedia();
     stubFetch({ items: [] });
     await renderFr(<App />);
 
-    for (const id of ["accueil", "groupe", "musique", "videos", "scene", "reseaux", "contact"]) {
+    for (const id of ["accueil", "groupe", "musique", "scene", "reseaux", "contact"]) {
       expect(document.getElementById(id)).not.toBeNull();
     }
     expect(screen.getByRole("heading", { name: "Prochaines dates" })).toBeDefined();

@@ -1,11 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
 import { screen } from "@testing-library/react";
 
-// Identifiants factices : la requête vers Google est stubbée dans chaque
-// test, la vraie clé ne vit que dans .env.local (jamais dans le dépôt).
+// Fake credentials: the Google request is stubbed in every test, the real
+// key only lives in .env.local (never in the repository).
 vi.mock("../src/config-agenda", () => ({
   agenda: { calendarId: "test@group.calendar.google.com", apiKey: "TEST_KEY", tag: "[GIG]" },
-  demoEvents: [],
 }));
 
 import { renderFr, stubFetch } from "./helpers";
@@ -33,7 +32,7 @@ const agendaItems = [
 ];
 
 describe("Gigs", () => {
-  it("affiche uniquement les events [GIG] de l'agenda, triés par date", async () => {
+  it("renders only the [GIG] events from the agenda, sorted by date", async () => {
     stubFetch({ items: agendaItems });
     await renderFr(<Gigs />);
 
@@ -43,22 +42,34 @@ describe("Gigs", () => {
     expect(screen.getByText("5 déc.")).toBeDefined();
     expect(screen.getByText("Rennes")).toBeDefined();
     expect(screen.getByText("Nantes")).toBeDefined();
-    // L'event sans tag n'est pas affiché
+    // The untagged event is not rendered
     expect(screen.queryByText("Répète")).toBeNull();
   });
 
-  it("affiche l'heure, les détails et le lien billetterie de la description", async () => {
+  it("renders the time, details and tickets link from the description", async () => {
     stubFetch({ items: agendaItems });
     await renderFr(<Gigs />);
 
-    // Brewklyn a une heure, Chez Maurice est journée entière avec une description
+    // Brewklyn has a time, Chez Maurice is all-day with a description
     expect(await screen.findByText("18:00")).toBeDefined();
     expect(screen.getByText("avec le collectif")).toBeDefined();
     const tickets = await screen.findByRole("link", { name: "Tickets" });
     expect(tickets.getAttribute("href")).toBe("https://example.com/billets");
   });
 
-  it("retombe sur l'annonce si l'agenda est injoignable", async () => {
+  it("puts the concert photos in a decorative background, without a timeline", async () => {
+    stubFetch({ items: [] });
+    await renderFr(<Gigs />);
+
+    const backdrop = document.querySelector(".live__backdrop");
+    expect(backdrop?.getAttribute("aria-hidden")).toBe("true");
+    const sources = [...(backdrop?.querySelectorAll("img") ?? [])].map((img) => img.getAttribute("src"));
+    expect(sources).toEqual(["/images/scene-vue-haut.jpg", "/images/scene-batterie.jpg", "/images/scene-guitare.jpg"]);
+    expect(screen.queryByRole("img")).toBeNull();
+    expect(document.querySelector(".timeline")).toBeNull();
+  });
+
+  it("falls back to the announcement when the agenda is unreachable", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockRejectedValue(new Error("Google Calendar HTTP 403")),

@@ -5,7 +5,7 @@ import { renderFr, stubIntersectionObserver, stubMatchMedia } from "./helpers";
 import { Navbar } from "../src/Navbar";
 
 describe("Navbar", () => {
-  it("propose les ancres de toutes les sections + contact", async () => {
+  it("offers anchors for every section + contact", async () => {
     stubIntersectionObserver();
     stubMatchMedia();
     await renderFr(<Navbar />);
@@ -13,7 +13,6 @@ describe("Navbar", () => {
     const expected = [
       ["Le groupe", "#groupe"],
       ["Musique", "#musique"],
-      ["Vidéos", "#videos"],
       ["Sur scène", "#scene"],
       ["Réseaux", "#reseaux"],
       ["Nous contacter", "#contact"],
@@ -23,7 +22,15 @@ describe("Navbar", () => {
     }
   });
 
-  it("ouvre et ferme le menu mobile", async () => {
+  it("renders the logo link with the logo class for navbar styling", async () => {
+    stubIntersectionObserver();
+    stubMatchMedia();
+    await renderFr(<Navbar />);
+
+    expect(screen.getByRole("link", { name: "UNSQWARE" }).getAttribute("class")).toBe("logo");
+  });
+
+  it("opens and closes the mobile menu", async () => {
     stubIntersectionObserver();
     stubMatchMedia();
     await renderFr(<Navbar />);
@@ -35,7 +42,7 @@ describe("Navbar", () => {
     expect(screen.getByRole("button", { name: "Fermer le menu" }).getAttribute("aria-expanded")).toBe("true");
   });
 
-  it("bascule la langue FR ↔ EN", async () => {
+  it("toggles the language FR ↔ EN", async () => {
     stubIntersectionObserver();
     stubMatchMedia();
     await renderFr(<Navbar />);
@@ -48,7 +55,7 @@ describe("Navbar", () => {
     fireEvent.click(en);
     expect(en.getAttribute("aria-pressed")).toBe("true");
     expect(fr.getAttribute("aria-pressed")).toBe("false");
-    // Le libellé du lien suit la langue active
+    // The link label follows the active language
     expect(screen.getByRole("link", { name: "The band" })).toBeDefined();
   });
 });

@@ -1,53 +1,42 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { agenda, demoEvents } from "./config-agenda";
-import {
-  buildEventsUrl,
-  formatGigDate,
-  formatGigTime,
-  isConfigured,
-  isSamePlace,
-  mapCalendarEvent,
-  sortGigs,
-  type CalendarEvent,
-  type Gig,
-} from "./gigs-agenda";
+import { agenda } from "./config-agenda";
+import { stagePhotos } from "./data/photos";
+import { AgendaLoader } from "./services/AgendaLoader";
+import { CalendarEvent } from "./services/CalendarEvent";
+import { CalendarEventParser } from "./services/CalendarEventParser";
+import type { Gig } from "./services/Gig";
+import { GigFormatter } from "./services/GigFormatter";
+import { GoogleAgendaClient } from "./services/GoogleAgendaClient";
 import { LINKS, SectionTag, mailto } from "./shared";
 
-// Dates à afficher : agenda Google si les identifiants sont renseignés
-// (variables VITE_CALENDAR_*, voir .env.example), sinon dates d'exemple.
-// En cas d'échec (réseau, clé, quota) on reste silencieusement sur une liste
-// vide : la section retombe sur l'annonce Instagram/Facebook, comme avant.
+// Dates to display: Google Calendar if credentials are set
+// (VITE_CALENDAR_* variables, see .env.example), otherwise demo dates.
+// On failure (network, key, quota) we silently end up with an empty
+// list: the section falls back to the Instagram/Facebook announcement, as before.
 function useUpcomingGigs(): Gig[] {
-  const [gigs, setGigs] = useState<Gig[]>([]);
+  // Demo dates are computed at first render (not in an effect): they are
+  // deterministic when credentials are missing, and setting state
+  // synchronously in an effect would cascade renders.
+  const loader = useMemo(
+    () => new AgendaLoader(new GoogleAgendaClient(agenda), new CalendarEventParser(agenda.tag)),
+    [],
+  );
+  const [gigs, setGigs] = useState<Gig[]>(() => loader.initialGigs());
 
   useEffect(() => {
-    const toGigs = (events: CalendarEvent[]) =>
-      sortGigs(
-        events
-          .map((e) => mapCalendarEvent(e, agenda.tag))
-          .filter((g): g is Gig => g !== null),
-      );
-
-    if (!isConfigured(agenda)) {
-      setGigs(toGigs(demoEvents));
-      return;
-    }
-
     let cancelled = false;
-    fetch(buildEventsUrl(agenda, new Date()))
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject(new Error(`Google Calendar HTTP ${res.status}`)),
-      )
-      .then((data: { items?: CalendarEvent[] }) => {
-        if (!cancelled) setGigs(toGigs(data.items ?? []));
+    loader
+      .fetchUpcoming()
+      .then((upcoming) => {
+        if (!cancelled) setGigs(upcoming);
       })
-      .catch((err) => console.warn("[agenda] dates indisponibles", err));
+      .catch((err) => console.warn("[agenda] dates unavailable", err));
 
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [loader]);
 
   return gigs;
 }
@@ -55,26 +44,32 @@ function useUpcomingGigs(): Gig[] {
 export function Gigs() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language?.startsWith("en") ? "en" : "fr";
+  const formatter = new GigFormatter(lang);
   const upcoming = useUpcomingGigs();
-  const timeline = t("live.timeline", { returnObjects: true }) as { year: string; text: string }[];
 
   return (
     <section id="scene" className="live">
+      <div className="live__backdrop" aria-hidden="true">
+        {stagePhotos.map((photo) => (
+          <img key={photo} src={photo} alt="" loading="lazy" />
+        ))}
+      </div>
       <div className="section container">
-        <SectionTag label={t("live.tag")} shape={2} />
+        <SectionTag label={t("live.tag")} />
         <h2 className="h2 live__title">{t("live.title")}</h2>
 
         {upcoming.length > 0 && (
           <ul className="dates">
             {upcoming.map((g) => {
-              const time = g.allDay ? undefined : formatGigTime(g.start, lang);
-              // La salle géocodée (champ lieu) ne s'affiche que si le titre ne la dit pas déjà.
-              const venueLabel = g.name && g.venue && !isSamePlace(g.name, g.venue) ? g.venue : undefined;
+              const time = g.allDay ? undefined : formatter.time(g.start);
+              // The geocoded venue (location field) only shows if the title doesn't already say it.
+              const venueLabel =
+                g.name && g.venue && !CalendarEvent.isSamePlace(g.name, g.venue) ? g.venue : undefined;
               const meta = [time, venueLabel, g.details].filter(Boolean).join(" · ");
               return (
                 <li key={g.id}>
                   <time className="dates__date" dateTime={g.start.toISOString()}>
-                    {formatGigDate(g.start, lang)}
+                    {formatter.date(g.start)}
                   </time>
                   <span className="dates__venue">
                     {g.name ?? g.venue}
@@ -113,16 +108,6 @@ export function Gigs() {
             {t("live.callCta")}
           </a>
         </div>
-
-        <h3 className="mono-label live__timeline-title">{t("live.timelineTitle")}</h3>
-        <ol className="timeline">
-          {timeline.map((e, i) => (
-            <li key={e.year} className={i === timeline.length - 1 ? "is-next" : undefined}>
-              <span className="timeline__year">{e.year}</span>
-              <p>{e.text}</p>
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
   );

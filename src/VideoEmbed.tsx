@@ -9,7 +9,7 @@ type Props = {
   wide?: boolean;
 };
 
-// Affiche la vignette ; le lecteur YouTube (sans cookies) ne se charge qu'au clic.
+// Renders the poster; the (cookie-less) YouTube player only loads on click.
 export function VideoEmbed({ id, title, poster, playLabel, wide }: Props) {
   const [playing, setPlaying] = useState(false);
 

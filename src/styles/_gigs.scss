@@ -1,0 +1,118 @@
+// ——— Sur scène ———
+.live {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--bg-2);
+  border-block: 1px solid var(--line);
+
+  &__title {
+    margin-bottom: 48px;
+  }
+
+  &__announce {
+    color: var(--muted);
+  }
+
+  // Photos de concert floutées en fond : l'ambiance de la scène sans gêner la lecture des dates.
+  &__backdrop {
+    position: absolute;
+    inset: -48px;
+    z-index: -1;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    filter: blur(16px) saturate(0.85);
+    opacity: 0.3;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+
+      img:not(:first-child) {
+        display: none;
+      }
+    }
+  }
+}
+
+.dates {
+  margin-bottom: 24px;
+  border-top: 1px solid var(--line-2);
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 40px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line-2);
+  }
+
+  &__date {
+    flex: 0 0 160px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  &__venue {
+    flex: 1 1 260px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  // Ligne secondaire sous le lieu : heure et détails de l'event Google
+  // (ex. « 20:30 · avec le collectif »).
+  &__meta {
+    display: block;
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  &__city {
+    flex: 0 1 200px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+}
+
+.callout {
+  margin-top: 56px;
+  border: 1.5px solid var(--accent);
+  padding: clamp(24px, 3vw, 40px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+
+  > div {
+    flex: 1 1 420px;
+    min-width: 0;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(28px, 3vw, 42px);
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    margin-top: 10px;
+    color: var(--soft);
+  }
+}

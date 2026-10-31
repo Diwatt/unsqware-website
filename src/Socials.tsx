@@ -14,7 +14,7 @@ export function Socials() {
     <section id="reseaux" className="section container">
       <div className="section__head">
         <div>
-          <SectionTag label={t("socials.tag")} shape={3} />
+          <SectionTag label={t("socials.tag")} />
           <h2 className="h2">{t("socials.title")}</h2>
         </div>
         <p className="socials__text">{t("socials.text")}</p>

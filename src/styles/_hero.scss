@@ -1,0 +1,177 @@
+// ——— Haut de page ———
+.hero {
+  padding-top: 56px;
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  &__ep {
+    color: var(--accent);
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 48px;
+    padding-top: 48px;
+  }
+
+  &__text {
+    flex: 1 1 420px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    // laisse la place au titre géant qui remonte sur la photo
+    padding-bottom: 150px;
+  }
+
+  &__lede {
+    font-size: clamp(22px, 2vw, 28px);
+    line-height: 1.25;
+    font-weight: 500;
+    max-width: 18em;
+    text-wrap: balance;
+  }
+
+  &__sub {
+    color: var(--muted);
+    max-width: 32em;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  &__follow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    span {
+      color: var(--muted);
+    }
+
+    a {
+      display: inline-block;
+      padding: 12px 0;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: rotate(-1deg);
+      }
+    }
+  }
+
+  // La photo franchit le filet du haut, dans un cadre de biais
+  &__photo {
+    flex: 1 1 460px;
+    min-width: 0;
+    position: relative;
+    margin-top: -88px;
+
+    img {
+      position: relative;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 5 / 4;
+      object-fit: cover;
+      object-position: 50% 45%;
+      clip-path: polygon(4% 2%, 100% 0%, 97% 100%, 0% 97%);
+    }
+  }
+
+  &__frame {
+    position: absolute;
+    inset: -18px 22px 30px -18px;
+    border: 1.5px solid var(--accent);
+    transform: rotate(-4deg) skewX(-6deg);
+  }
+
+  &__title {
+    position: relative;
+    margin-top: -0.3em;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(72px, 13vw, 196px);
+    line-height: 0.82;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+
+    span {
+      color: var(--accent);
+    }
+  }
+
+  @media (max-width: 900px) {
+    &__text {
+      padding-bottom: 0;
+    }
+
+    &__photo {
+      margin-top: 24px;
+    }
+
+    &__title {
+      margin-top: -0.2em;
+    }
+  }
+}
+
+// ——— Bandeau défilant ———
+// Les titres défilent avec un carré en séparateur ; six copies dans le
+// DOM pour que la boucle -50% reste seamless sur grands écrans.
+.marquee {
+  margin-top: 56px;
+  overflow: hidden;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 14px 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 21px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &__track {
+    display: inline-flex;
+    gap: 0.5em;
+    animation: marquee 40s linear infinite;
+
+    span {
+      padding-right: 0.5em;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__track {
+      animation: none;
+    }
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

@@ -27,3 +27,4 @@ dist-ssr
 *.mov
 .claude
 .playwright-mcp/
+AGENTS.md
