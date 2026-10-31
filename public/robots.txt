@@ -1,0 +1,5 @@
+# https://unsqwa.re — UNSQWARE, quartet jazz hybride (Nantes)
+User-agent: *
+Allow: /
+
+Sitemap: https://unsqwa.re/sitemap.xml
