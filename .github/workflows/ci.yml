@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    # Les tests formattent des heures (agenda) : on fige le fuseau au niveau
+    # du job pour que ICU/Node le prenne en compte dès le démarrage (les
+    # runners GitHub sont en UTC sinon).
+    env:
+      TZ: Europe/Paris
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Installer Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Dépendances
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Tests (vitest, jsdom)
+        run: pnpm test
+
+      - name: Build (tsc + vite + prerender FR/EN)
+        run: pnpm build

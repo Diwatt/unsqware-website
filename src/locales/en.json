@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "band": "The band",
+    "music": "Music",
+    "videos": "Videos",
+    "live": "Live",
+    "socials": "Socials",
+    "contact": "Contact us",
+    "main": "Main navigation",
+    "language": "Language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "kicker": "Hybrid jazz — Nantes, France — since 2021",
+    "ep": "Debut EP — early 2027",
+    "lede": "Instrumental quartet. Where the roundness of jazz meets the energy of rock and saturated sounds.",
+    "sub": "Composition and improvisation, between Aaron Parks' writing, MYT's textures and Louis Matute's grooves.",
+    "ctaContact": "Book UNSQWARE",
+    "ctaTotem": "Watch the Totem Live Session",
+    "follow": "Follow us",
+    "photoAlt": "The four members of UNSQWARE against a purple-lit wall"
+  },
+  "marquee": ["Prog jazz", "Hybrid jazz", "Nantes", "Totem Live Session", "EP early 2027"],
+  "band": {
+    "tag": "01 — The band",
+    "title": "A square that bends",
+    "intro": "UNSQWARE is an instrumental quartet from Nantes, France, formed in late 2021, with a modern and progressive take on jazz.",
+    "p1": "Founded by Florian Roy (bass, double bass) and Charles Demay (drums), the band was joined by Fabien Maurin (guitar, trained at CIM in Paris) to strengthen its melodic voice, then by Victor Pavel (piano, keys). Drawing on long musical experience, the four create spellbinding atmospheres where composition and improvisation intertwine.",
+    "p2": "First gig in late 2022 in Nantes, then the Conservatoire, Festival d'été ACCOORD, Bar-Bars and the Printemps de Bourges OFF. In 2025, the Totem Live Session turned the band's name into images: a square, or a cube, bending out of shape.",
+    "portrait": "Portrait of",
+    "influences": "Influences"
+  },
+  "photos": {
+    "guitar": "Fabien Maurin on guitar in purple light",
+    "daylight": "The quartet playing a daytime show by a large window",
+    "redGuitar": "Close-up of a red guitar"
+  },
+  "music": {
+    "tag": "02 — Music",
+    "totemAlt": "The quartet during the Totem Live Session",
+    "totemDesc": "Two tracks, Abandon me and Find the Meaning, recorded live at La Maison du Son, Port-Saint-Père, in September 2025.",
+    "watch": "Watch on YouTube",
+    "epKicker": "In the works",
+    "epTitle": ["Debut EP", "early 2027"],
+    "epText": "New compositions, road-tested on stage since 2025, recorded for a debut EP due in early 2027."
+  },
+  "videos": {
+    "tag": "03 — Videos",
+    "title": "In session",
+    "channel": "Full YouTube channel ↗",
+    "watch": "Watch",
+    "totemPlace": "Recorded at La Maison du Son, Port-Saint-Père — September 2025",
+    "studio": "Studio session · 2024",
+    "play": "Play video"
+  },
+  "live": {
+    "tag": "04 — Live",
+    "title": "Upcoming shows",
+    "announce": "New dates are announced first on",
+    "and": "and",
+    "callTitle": "Your venue, your festival?",
+    "callText": "The quartet is looking for new stages for 2027 and the EP release. Write to us directly.",
+    "callCta": "Suggest a date",
+    "timelineTitle": "Timeline 2021 → 2027",
+    "timeline": [
+      { "year": "2021", "text": "Band founded by Florian Roy and Charles Demay" },
+      { "year": "2022", "text": "The quartet's first gig, in Nantes" },
+      { "year": "2023", "text": "Conservatoire de Nantes · Festival d'été ACCOORD · Festival Bar-Bars" },
+      {
+        "year": "2024",
+        "text": "Studio session at Batiskaf · Printemps de Bourges OFF · shortlisted for Talents Jazz at Rendez-vous de l'Erdre"
+      },
+      { "year": "2025", "text": "Totem Live Session, online since September" },
+      { "year": "2027", "text": "Debut EP release — early 2027" }
+    ],
+    "mailSubject": "UNSQWARE show"
+  },
+  "socials": {
+    "tag": "05 — Socials",
+    "title": "Follow the quartet",
+    "text": "Clips, rehearsals, backstage and dates: it all happens on our socials first.",
+    "instagram": "@unsqware · clips, backstage, dates",
+    "youtube": "@unsqware · live sessions, studio",
+    "facebook": "unsqwaremusique · show announcements",
+    "soundcloud": "unsqware-musique · live recordings, demos"
+  },
+  "contact": {
+    "tag": "06 — Contact",
+    "title": "Write to us",
+    "text": "Gigs, festivals, press, collaborations: the band answers every message itself.",
+    "copy": "Copy address",
+    "copied": "Address copied ✓",
+    "promoters": "Promoters",
+    "suggest": "Suggest a date →",
+    "press": "Press & media",
+    "interview": "Request an interview →",
+    "kit": "Press kit [coming soon]",
+    "download": "Download the EPK ↓",
+    "pressSubject": "UNSQWARE press"
+  }
+}

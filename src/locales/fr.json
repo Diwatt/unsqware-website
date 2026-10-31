@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "band": "Le groupe",
+    "music": "Musique",
+    "videos": "Vidéos",
+    "live": "Sur scène",
+    "socials": "Réseaux",
+    "contact": "Nous contacter",
+    "main": "Navigation principale",
+    "language": "Langue",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "hero": {
+    "kicker": "Jazz hybride — Nantes — depuis 2021",
+    "ep": "Premier EP — début 2027",
+    "lede": "Quartet instrumental. Là où la rondeur du jazz rencontre l'énergie du rock et des sons saturés.",
+    "sub": "Composition et improvisation, entre l'écriture d'Aaron Parks, les textures de MYT et les grooves de Louis Matute.",
+    "ctaContact": "Faire jouer UNSQWARE",
+    "ctaTotem": "Voir la Totem Live Session",
+    "follow": "Suivez-nous",
+    "photoAlt": "Les quatre musiciens d'UNSQWARE devant un mur éclairé de violet"
+  },
+  "marquee": ["Jazz prog", "Jazz hybride", "Nantes", "Totem Live Session", "EP début 2027"],
+  "band": {
+    "tag": "01 — Le groupe",
+    "title": "Un carré qui se déforme",
+    "intro": "UNSQWARE est un quartet instrumental nantais formé fin 2021, dont l'univers sonore se démarque par une esthétique jazz moderne et progressive.",
+    "p1": "Créé par Florian Roy (basse, contrebasse) et Charles Demay (batterie), le groupe est rejoint par Fabien Maurin (guitare, formé au CIM de Paris) pour renforcer la présence mélodique, puis par Victor Pavel (piano, claviers). Forts d'une expérience musicale étendue, les quatre créent des atmosphères envoûtantes où composition et improvisation se mêlent.",
+    "p2": "Premier concert fin 2022 à Nantes, puis le Conservatoire, le Festival d'été ACCOORD, Bar-Bars, le OFF du Printemps de Bourges. En 2025, la Totem Live Session prolonge l'idée du nom en image : un carré, ou un cube, qui se déforme.",
+    "portrait": "Portrait de",
+    "influences": "Influences"
+  },
+  "photos": {
+    "guitar": "Fabien Maurin à la guitare, lumière violette",
+    "daylight": "Le quartet en concert en plein jour, devant une baie vitrée",
+    "redGuitar": "Gros plan sur une guitare rouge"
+  },
+  "music": {
+    "tag": "02 — Musique",
+    "totemAlt": "Le quartet pendant la Totem Live Session",
+    "totemDesc": "Deux titres, Abandon me et Find the Meaning, captés à La Maison du Son, Port-Saint-Père, en septembre 2025.",
+    "watch": "Regarder sur YouTube",
+    "epKicker": "En préparation",
+    "epTitle": ["Premier EP", "début 2027"],
+    "epText": "Les nouvelles compositions, éprouvées sur scène depuis 2025, enregistrées pour un premier EP attendu début 2027."
+  },
+  "videos": {
+    "tag": "03 — Vidéos",
+    "title": "En session",
+    "channel": "Toute la chaîne YouTube ↗",
+    "watch": "Regarder",
+    "totemPlace": "Captée à La Maison du Son, Port-Saint-Père — septembre 2025",
+    "studio": "Studio session · 2024",
+    "play": "Lire la vidéo"
+  },
+  "live": {
+    "tag": "04 — Sur scène",
+    "title": "Prochaines dates",
+    "announce": "Les nouvelles dates sont annoncées d'abord sur",
+    "and": "et",
+    "callTitle": "Votre salle, votre festival ?",
+    "callText": "Le quartet cherche de nouvelles scènes pour 2027 et la sortie de l'EP. Écrivez-nous directement.",
+    "callCta": "Proposer une date",
+    "timelineTitle": "Parcours 2021 → 2027",
+    "timeline": [
+      { "year": "2021", "text": "Création du groupe par Florian Roy et Charles Demay" },
+      { "year": "2022", "text": "Premier concert du quartet, à Nantes" },
+      { "year": "2023", "text": "Conservatoire de Nantes · Festival d'été ACCOORD · Festival Bar-Bars" },
+      {
+        "year": "2024",
+        "text": "Studio au Batiskaf · OFF du Printemps de Bourges · short-list Talents Jazz des Rendez-vous de l'Erdre"
+      },
+      { "year": "2025", "text": "Totem Live Session, en ligne depuis septembre" },
+      { "year": "2027", "text": "Sortie du premier EP — début 2027" }
+    ],
+    "mailSubject": "Concert UNSQWARE"
+  },
+  "socials": {
+    "tag": "05 — Réseaux",
+    "title": "Suivez le quartet",
+    "text": "Extraits, répétitions, coulisses et dates : c'est sur nos réseaux que tout se passe en premier.",
+    "instagram": "@unsqware · extraits, coulisses, dates",
+    "youtube": "@unsqware · live sessions, studio",
+    "facebook": "unsqwaremusique · annonces concerts",
+    "soundcloud": "unsqware-musique · lives, démos"
+  },
+  "contact": {
+    "tag": "06 — Contact",
+    "title": "Écrivez-nous",
+    "text": "Concert, festival, presse, collaboration : le groupe répond lui-même à chaque message.",
+    "copy": "Copier l'adresse",
+    "copied": "Adresse copiée ✓",
+    "promoters": "Programmateurs",
+    "suggest": "Proposer une date →",
+    "press": "Presse & médias",
+    "interview": "Demander une interview →",
+    "kit": "Dossier de presse [à venir]",
+    "download": "Télécharger l'EPK ↓",
+    "pressSubject": "Presse UNSQWARE"
+  }
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="UNSQWARE — quartet instrumental nantais, jazz moderne et progressif. Totem Live Session, dates de concerts, réseaux et contact direct du groupe."
+    />
+    <title>UNSQWARE — Quartet jazz hybride · Nantes</title>
+
+    <!-- SEO : URL canonique (les autres domaines — unsqware.com, unsqware.fr — doivent rediriger en 301 vers celui-ci).
+         La page EN (contenu et métadonnées) est générée au build par scripts/prerender.tsx. -->
+    <link rel="canonical" href="https://unsqwa.re/" />
+    <link rel="alternate" hreflang="fr" href="https://unsqwa.re/" />
+    <link rel="alternate" hreflang="en" href="https://unsqwa.re/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://unsqwa.re/" />
+
+    <!-- Partage : Open Graph (Facebook, WhatsApp, LinkedIn, iMessage…) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UNSQWARE" />
+    <meta property="og:url" content="https://unsqwa.re/" />
+    <meta property="og:title" content="UNSQWARE — Quartet jazz hybride · Nantes" />
+    <meta
+      property="og:description"
+      content="Quartet instrumental nantais : jazz moderne et progressif. Totem Live Session, prochaines dates et contact direct du groupe."
+    />
+    <meta property="og:image" content="https://unsqwa.re/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Les quatre musiciens d'UNSQWARE devant un mur éclairé de violet" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Partage : Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="UNSQWARE — Quartet jazz hybride · Nantes" />
+    <meta
+      name="twitter:description"
+      content="Quartet instrumental nantais : jazz moderne et progressif. Totem Live Session, prochaines dates et contact direct du groupe."
+    />
+    <meta name="twitter:image" content="https://unsqwa.re/images/og-image.jpg" />
+
+    <!-- Données structurées : aide Google à relier le nom, les membres et les plateformes du groupe -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "UNSQWARE",
+        "description": "UNSQWARE est un quartet instrumental nantais formé fin 2021 dont l'univers sonore se démarque par une esthétique jazz moderne et progressive. Dans la lignée d'Aaron Parks, MYT ou Louis Matute, la rondeur du jazz y rencontre l'énergie du rock et des sons saturés.",
+        "url": "https://unsqwa.re/",
+        "image": "https://unsqwa.re/images/group.jpg",
+        "genre": ["Jazz hybride", "Jazz moderne", "Jazz progressif"],
+        "foundingDate": "2021",
+        "foundingLocation": { "@type": "Place", "name": "Nantes, France" },
+        "member": [
+          { "@type": "Person", "name": "Florian Roy", "jobTitle": "Basse, contrebasse, compositions" },
+          { "@type": "Person", "name": "Charles Demay", "jobTitle": "Batterie" },
+          { "@type": "Person", "name": "Fabien Maurin", "jobTitle": "Guitare" },
+          { "@type": "Person", "name": "Victor Pavel", "jobTitle": "Piano, claviers" }
+        ],
+        "sameAs": [
+          "https://www.youtube.com/@unsqware",
+          "https://www.instagram.com/unsqware",
+          "https://www.facebook.com/unsqwaremusique",
+          "https://soundcloud.com/unsqware-musique",
+          "https://open.spotify.com/artist/1gAWrCVQilgg6uzjN1CmMw",
+          "https://www.deezer.com/fr/artist/291754311",
+          "https://linktr.ee/unsqware"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "booking",
+          "email": "unsqwaremusique@gmail.com"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Contenu statique injecté au build par scripts/prerender.tsx (FR ici, EN dans /en/).
+         En dev, la page est vide jusqu'au montage React — c'est normal. -->
+    <div id="root"><!--APP_HTML--></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
