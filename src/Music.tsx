@@ -27,7 +27,7 @@ export function Music() {
             <VideoEmbed
               id="I4tQ71Z90Hw"
               title="Totem Live Session"
-              poster="/images/session-salle.jpg"
+              poster="/images/session-salle.webp"
               playLabel={t("music.play")}
             />
           </div>

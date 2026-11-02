@@ -48,7 +48,13 @@ export function Hero() {
 
           <div className="hero__photo">
             <div className="hero__frame" aria-hidden="true" />
-            <img src="/images/groupe-vitre.jpg" alt={t("hero.photoAlt")} width={1800} height={1350} />
+            <img
+              src="/images/groupe-vitre.webp"
+              alt={t("hero.photoAlt")}
+              width={1200}
+              height={900}
+              fetchPriority="high"
+            />
           </div>
         </div>
 

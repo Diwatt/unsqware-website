@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Fallback dev : la version déployée (dist/sitemap.xml) est régénérée au build
-     par scripts/prerender.mjs avec la date du jour. -->
+     par scripts/prerender.tsx avec la date du jour. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://unsqwa.re/</loc>

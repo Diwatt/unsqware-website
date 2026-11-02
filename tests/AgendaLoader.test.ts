@@ -27,7 +27,7 @@ afterEach(() => {
 describe("AgendaLoader.initialGigs", () => {
   it("parses the demo payloads when the credentials are missing", () => {
     const client = new GoogleAgendaClient({ calendarId: "", apiKey: "", tag: "[GIG]" });
-    const gigs = new AgendaLoader(client, parser, demoPayloads).initialGigs();
+    const gigs = new AgendaLoader(client, parser, true, demoPayloads).initialGigs();
 
     expect(gigs).toStrictEqual([
       new Gig({
@@ -45,7 +45,12 @@ describe("AgendaLoader.initialGigs", () => {
 
   it("returns an empty list when the credentials are set (the API fetch takes over)", () => {
     const client = new GoogleAgendaClient({ calendarId: "abc@group.calendar.google.com", apiKey: "KEY", tag: "[GIG]" });
-    expect(new AgendaLoader(client, parser, demoPayloads).initialGigs()).toStrictEqual([]);
+    expect(new AgendaLoader(client, parser, true, demoPayloads).initialGigs()).toStrictEqual([]);
+  });
+
+  it("never returns the demo dates when demo mode is not allowed (production)", () => {
+    const client = new GoogleAgendaClient({ calendarId: "", apiKey: "", tag: "[GIG]" });
+    expect(new AgendaLoader(client, parser, false, demoPayloads).initialGigs()).toStrictEqual([]);
   });
 });
 
@@ -55,7 +60,7 @@ describe("AgendaLoader.fetchUpcoming", () => {
     vi.stubGlobal("fetch", fetchMock);
     const client = new GoogleAgendaClient({ calendarId: "", apiKey: "", tag: "[GIG]" });
 
-    const gigs = await new AgendaLoader(client, parser, demoPayloads).fetchUpcoming();
+    const gigs = await new AgendaLoader(client, parser, true, demoPayloads).fetchUpcoming();
     expect(gigs.map((gig) => gig.id)).toStrictEqual(["demo-1"]);
     expect(fetchMock).not.toHaveBeenCalled();
   });
@@ -75,7 +80,7 @@ describe("AgendaLoader.fetchUpcoming", () => {
     );
     const client = new GoogleAgendaClient({ calendarId: "abc@group.calendar.google.com", apiKey: "KEY", tag: "[GIG]" });
 
-    const gigs = await new AgendaLoader(client, parser, []).fetchUpcoming();
+    const gigs = await new AgendaLoader(client, parser, true, []).fetchUpcoming();
     expect(gigs.map((gig) => gig.id)).toStrictEqual(["a"]);
   });
 
@@ -83,14 +88,16 @@ describe("AgendaLoader.fetchUpcoming", () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 403 }));
     const client = new GoogleAgendaClient({ calendarId: "abc@group.calendar.google.com", apiKey: "KEY", tag: "[GIG]" });
 
-    await expect(new AgendaLoader(client, parser, []).fetchUpcoming()).rejects.toThrow("Google Calendar HTTP 403");
+    await expect(new AgendaLoader(client, parser, true, []).fetchUpcoming()).rejects.toThrow(
+      "Google Calendar HTTP 403",
+    );
   });
 
   it("rejects when a payload item fails the CalendarEvent ingestion", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true, json: async () => ({ items: [{ id: "x" }] }) }));
     const client = new GoogleAgendaClient({ calendarId: "abc@group.calendar.google.com", apiKey: "KEY", tag: "[GIG]" });
 
-    await expect(new AgendaLoader(client, parser, []).fetchUpcoming()).rejects.toThrow(
+    await expect(new AgendaLoader(client, parser, true, []).fetchUpcoming()).rejects.toThrow(
       'CalendarEvent: "summary" is required',
     );
   });

@@ -19,12 +19,12 @@ i18n
     supportedLngs: ["fr", "en"],
     // React already escapes content; "fr-FR" resolves to "fr" via supportedLngs.
     interpolation: { escapeValue: false },
-    // Same behavior as the previous implementation: stored language, else browser, else French.
-    // "path": the /en/ page (pre-rendered in English) stays English when no preference is stored.
+    // The page's <html lang> decides (set by the pre-render: / in French, /en/ in English), so
+    // React can take over the static HTML as is; an explicit FR/EN choice is handled by
+    // LanguagePreference in main.tsx and the Navbar, never cached automatically here.
     detection: {
-      order: ["localStorage", "path", "navigator"],
-      lookupLocalStorage: "unsqware-lang",
-      caches: ["localStorage"],
+      order: ["htmlTag"],
+      caches: [],
     },
     react: { useSuspense: false },
   });

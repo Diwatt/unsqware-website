@@ -6,12 +6,13 @@ import { AgendaLoader } from "./services/AgendaLoader";
 import { CalendarEvent } from "./services/CalendarEvent";
 import { CalendarEventParser } from "./services/CalendarEventParser";
 import type { Gig } from "./services/Gig";
+import { GigEventMarkup } from "./services/GigEventMarkup";
 import { GigFormatter } from "./services/GigFormatter";
 import { GoogleAgendaClient } from "./services/GoogleAgendaClient";
 import { LINKS, SectionTag, mailto } from "./shared";
 
 // Dates to display: Google Calendar if credentials are set
-// (VITE_CALENDAR_* variables, see .env.example), otherwise demo dates.
+// (VITE_CALENDAR_* variables, see .env.example), otherwise demo dates in development only.
 // On failure (network, key, quota) we silently end up with an empty
 // list: the section falls back to the Instagram/Facebook announcement, as before.
 function useUpcomingGigs(): Gig[] {
@@ -19,7 +20,7 @@ function useUpcomingGigs(): Gig[] {
   // deterministic when credentials are missing, and setting state
   // synchronously in an effect would cascade renders.
   const loader = useMemo(
-    () => new AgendaLoader(new GoogleAgendaClient(agenda), new CalendarEventParser(agenda.tag)),
+    () => new AgendaLoader(new GoogleAgendaClient(agenda), new CalendarEventParser(agenda.tag), import.meta.env.DEV),
     [],
   );
   const [gigs, setGigs] = useState<Gig[]>(() => loader.initialGigs());
@@ -46,9 +47,13 @@ export function Gigs() {
   const lang = i18n.language?.startsWith("en") ? "en" : "fr";
   const formatter = new GigFormatter(lang);
   const upcoming = useUpcomingGigs();
+  const eventMarkup = useMemo(() => new GigEventMarkup(), []);
 
   return (
     <section id="scene" className="live">
+      {upcoming.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: eventMarkup.toJsonLd(upcoming) }} />
+      )}
       <div className="live__backdrop" aria-hidden="true">
         {stagePhotos.map((photo) => (
           <img key={photo} src={photo} alt="" loading="lazy" />

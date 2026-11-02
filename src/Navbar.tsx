@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MorphingSquare } from "./components/MorphingSquare";
 import type { Lang } from "./i18n";
+import { LanguagePreference } from "./services/LanguagePreference";
 
 const SECTION_IDS = [
 	"groupe",
@@ -36,21 +37,31 @@ function useScrollSpy(ids: string[]) {
 	return active;
 }
 
+// Real links to the pre-rendered pages (crawlable, shareable); on click the
+// language switches in place, the address follows and the choice is remembered.
 function LangToggle() {
 	const { t, i18n } = useTranslation();
+	const preference = useMemo(() => new LanguagePreference(), []);
 	const lang = (i18n.resolvedLanguage ?? "fr") as Lang;
 	const options: Lang[] = ["fr", "en"];
 	return (
 		<fieldset className="lang" aria-label={t("nav.language")}>
-			{options.map((l) => (
-				<button
-					key={l}
-					type="button"
-					aria-pressed={lang === l}
-					onClick={() => i18n.changeLanguage(l)}
+			{options.map((o) => (
+				<a
+					key={o}
+					href={preference.getPath(o)}
+					hrefLang={o}
+					lang={o}
+					aria-current={lang === o ? "page" : undefined}
+					onClick={(event) => {
+						event.preventDefault();
+						i18n.changeLanguage(o);
+						preference.store(o);
+						window.history.replaceState(null, "", `${preference.getPath(o)}${window.location.hash}`);
+					}}
 				>
-					{l.toUpperCase()}
-				</button>
+					{o.toUpperCase()}
+				</a>
 			))}
 		</fieldset>
 	);

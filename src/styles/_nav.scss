@@ -127,16 +127,18 @@
   padding: 0;
   border: 1.5px solid var(--fg);
 
-  button {
+  // Vrais liens vers / et /en/ (indexables), présentés comme deux boutons accolés.
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-width: 44px;
     min-height: 40px;
-    border: 0;
-    background: transparent;
     color: var(--fg);
-    cursor: pointer;
+    text-decoration: none;
     letter-spacing: inherit;
 
-    &[aria-pressed="true"] {
+    &[aria-current="page"] {
       background: var(--accent);
       color: var(--bg);
     }

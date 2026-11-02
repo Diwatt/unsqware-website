@@ -12,6 +12,7 @@ node_modules
 dist
 dist-ssr
 .prerender
+.indexnow
 *.local
 
 # Editor directories and files

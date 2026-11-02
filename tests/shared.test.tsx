@@ -16,6 +16,15 @@ describe("SectionTag", () => {
     expect(face?.style.clipPath).toMatch(/^polygon\(/);
   });
 
+  it("gives a tag the same warp on every render, so the pre-rendered HTML can be hydrated", async () => {
+    const first = await renderFr(<SectionTag label="03 — Sur scène" />);
+    const shape = (first.container.querySelector(".tag__face") as HTMLElement).style.clipPath;
+    first.unmount();
+
+    const second = await renderFr(<SectionTag label="03 — Sur scène" />);
+    expect((second.container.querySelector(".tag__face") as HTMLElement).style.clipPath).toBe(shape);
+  });
+
   it("inverts the colors when inverted is set", async () => {
     await renderFr(<SectionTag label="06 — Contact" inverted />);
 

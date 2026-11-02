@@ -1,0 +1,30 @@
+name: IndexNow
+
+# Vercel publie un « deployment status » sur GitHub à chaque déploiement :
+# une fois la production en ligne, on prévient Bing & co (IndexNow) que les pages ont changé.
+on: deployment_status
+
+jobs:
+  notify:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code déployé
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha }}
+
+      - name: Installer pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Installer Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Dépendances
+        run: pnpm install --frozen-lockfile
+
+      - name: Envoi IndexNow
+        run: pnpm indexnow

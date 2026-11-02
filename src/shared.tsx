@@ -3,6 +3,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useState } from "react";
 
+import { SeededRandom } from "./services/SeededRandom";
 import { WarpedShape } from "./services/WarpedShape";
 
 export const EMAIL = "unsqwaremusique@gmail.com";
@@ -21,9 +22,12 @@ export const mailto = (subject?: string) =>
 type SectionTagProps = { label: string; inverted?: boolean };
 
 export function SectionTag({ label, inverted }: SectionTagProps) {
-  // One random warp per mounted tag: stable on screen, different on
-  // every page load.
-  const [clipPath] = useState(() => new WarpedShape().getClipPath());
+  // One warp per label, seeded by its text: each tag keeps its own shape, identical in the
+  // pre-rendered HTML and in the browser, so React can take the static page over as is.
+  const [clipPath] = useState(() => {
+    const random = new SeededRandom(label);
+    return new WarpedShape(() => random.next()).getClipPath();
+  });
 
   return (
     <p className={inverted ? "tag tag--inverted" : "tag"}>

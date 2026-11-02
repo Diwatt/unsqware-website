@@ -9,7 +9,7 @@
 
 // ── "Sur scène" section: the blurred concert photos behind the dates ──
 //  Purely decorative, so no description: the first one is the widest.
-export const stagePhotos = ["/images/scene-vue-haut.jpg", "/images/scene-batterie.jpg", "/images/scene-guitare.jpg"];
+export const stagePhotos = ["/images/scene-vue-haut.webp", "/images/scene-batterie.webp", "/images/scene-guitare.webp"];
 
 // ── "Contact" section: the group photo ────────────────────────────
-export const contactPhoto = { photo: "/images/groupe-mur.jpg", alt: "photos.groupWall" } as const;
+export const contactPhoto = { photo: "/images/groupe-mur.webp", alt: "photos.groupWall" } as const;

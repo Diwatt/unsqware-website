@@ -19,7 +19,9 @@ describe("Hero", () => {
     await renderFr(<Hero />);
 
     const photo = screen.getByRole("img", { name: /derrière une baie vitrée/ });
-    expect(photo.getAttribute("src")).toBe("/images/groupe-vitre.jpg");
+    expect(photo.getAttribute("src")).toBe("/images/groupe-vitre.webp");
+    // The hero photo is the largest visible element: it loads first.
+    expect(photo.getAttribute("fetchpriority")).toBe("high");
   });
 
   it("links to the band's social profiles", async () => {

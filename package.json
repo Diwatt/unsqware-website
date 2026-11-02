@@ -12,6 +12,7 @@
     "build": "tsc && vite build && vite build --ssr scripts/prerender.tsx --outDir .prerender && node .prerender/prerender.js",
     "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
+    "indexnow": "vite build --ssr scripts/indexnow.ts --outDir .indexnow && node .indexnow/indexnow.js",
     "preview": "vite preview"
   },
   "dependencies": {

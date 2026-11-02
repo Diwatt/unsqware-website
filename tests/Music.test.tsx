@@ -18,7 +18,7 @@ describe("Music", () => {
 
     expect(screen.getByRole("heading", { level: 2 }).textContent).toBe("Totem Live Session");
     const poster = screen.getByRole("button", { name: "Lire la vidéo : Totem Live Session" });
-    expect(poster.querySelector("img")?.getAttribute("src")).toBe("/images/session-salle.jpg");
+    expect(poster.querySelector("img")?.getAttribute("src")).toBe("/images/session-salle.webp");
   });
 
   it("lists the two session tracks with their duration", async () => {

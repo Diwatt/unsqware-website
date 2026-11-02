@@ -57,6 +57,26 @@ describe("Gigs", () => {
     expect(tickets.getAttribute("href")).toBe("https://example.com/billets");
   });
 
+  it("publishes the gigs as MusicEvent structured data", async () => {
+    stubFetch({ items: agendaItems });
+    await renderFr(<Gigs />);
+    await screen.findByText("Le Brewklyn");
+
+    const script = document.querySelector('script[type="application/ld+json"]');
+    const events = JSON.parse(script?.textContent ?? "[]");
+    expect(events.map((e: { name: string }) => e.name)).toStrictEqual([
+      "UNSQWARE — Le Brewklyn",
+      "UNSQWARE — Chez Maurice",
+    ]);
+  });
+
+  it("publishes no structured data when there is no upcoming gig", async () => {
+    stubFetch({ items: [] });
+    await renderFr(<Gigs />);
+
+    expect(document.querySelector('script[type="application/ld+json"]')).toBeNull();
+  });
+
   it("puts the concert photos in a decorative background, without a timeline", async () => {
     stubFetch({ items: [] });
     await renderFr(<Gigs />);
@@ -64,7 +84,11 @@ describe("Gigs", () => {
     const backdrop = document.querySelector(".live__backdrop");
     expect(backdrop?.getAttribute("aria-hidden")).toBe("true");
     const sources = [...(backdrop?.querySelectorAll("img") ?? [])].map((img) => img.getAttribute("src"));
-    expect(sources).toEqual(["/images/scene-vue-haut.jpg", "/images/scene-batterie.jpg", "/images/scene-guitare.jpg"]);
+    expect(sources).toEqual([
+      "/images/scene-vue-haut.webp",
+      "/images/scene-batterie.webp",
+      "/images/scene-guitare.webp",
+    ]);
     expect(screen.queryByRole("img")).toBeNull();
     expect(document.querySelector(".timeline")).toBeNull();
   });

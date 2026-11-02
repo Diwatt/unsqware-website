@@ -8,7 +8,7 @@
 //   - dist/sitemap.xml   → both URLs + hreflang + lastmod = build date
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { renderToStaticMarkup } from "react-dom/server";
+import { renderToString } from "react-dom/server";
 import App from "../src/App";
 import i18n from "../src/i18n";
 
@@ -24,7 +24,7 @@ const FR_HEAD = {
     "UNSQWARE — quartet instrumental nantais, jazz moderne et progressif. Totem Live Session, dates de concerts, réseaux et contact direct du groupe.",
   ogDescription:
     "Quartet instrumental nantais : jazz moderne et progressif. Totem Live Session, prochaines dates et contact direct du groupe.",
-  ogImageAlt: "Les quatre musiciens d'UNSQWARE devant un mur éclairé de violet",
+  ogImageAlt: "Les quatre musiciens d'UNSQWARE derrière une baie vitrée",
 };
 const EN_HEAD = {
   title: "UNSQWARE — Hybrid jazz quartet · Nantes, France",
@@ -32,7 +32,7 @@ const EN_HEAD = {
     "UNSQWARE — instrumental quartet from Nantes, France, playing modern and progressive jazz. Totem Live Session, upcoming shows and direct contact with the band.",
   ogDescription:
     "Instrumental quartet from Nantes, France: modern, progressive jazz. Totem Live Session, upcoming shows and direct contact with the band.",
-  ogImageAlt: "The four members of UNSQWARE against a purple-lit wall",
+  ogImageAlt: "The four members of UNSQWARE behind a large window",
 };
 
 // Replaces `needle` and fails the build if it cannot be found:
@@ -48,7 +48,8 @@ function replaceStrict(html: string, needle: string, replacement: string, label:
 // them in parallel would interleave changeLanguage calls and mix languages.
 async function renderStatic(lang: Lang): Promise<string> {
   await i18n.changeLanguage(lang);
-  return renderToStaticMarkup(<App />);
+  // renderToString (not renderToStaticMarkup): its text-node markers let the browser hydrate the HTML.
+  return renderToString(<App />);
 }
 
 async function main(): Promise<void> {

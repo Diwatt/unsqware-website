@@ -1,6 +1,9 @@
 {
-    "name": "UNSQWARE",
+    "name": "UNSQWARE — Quartet jazz hybride · Nantes",
     "short_name": "UNSQWARE",
+    "description": "UNSQWARE, quartet instrumental nantais : jazz moderne et progressif.",
+    "start_url": "/",
+    "lang": "fr",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +16,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#17142b",
+    "background_color": "#17142b",
     "display": "standalone"
 }

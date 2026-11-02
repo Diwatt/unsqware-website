@@ -27,9 +27,9 @@ export function About() {
       </section>
 
       <div className="photo-band">
-        <img src="/images/live-guitare.jpg" alt={t("photos.guitar")} loading="lazy" />
-        <img src="/images/live-jour.jpg" alt={t("photos.daylight")} loading="lazy" className="photo-band__wide" />
-        <img src="/images/guitare-rouge.jpg" alt={t("photos.redGuitar")} loading="lazy" />
+        <img src="/images/live-guitare.webp" alt={t("photos.guitar")} loading="lazy" />
+        <img src="/images/live-jour.webp" alt={t("photos.daylight")} loading="lazy" className="photo-band__wide" />
+        <img src="/images/guitare-rouge.webp" alt={t("photos.redGuitar")} loading="lazy" />
       </div>
     </>
   );

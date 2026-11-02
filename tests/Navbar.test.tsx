@@ -47,15 +47,39 @@ describe("Navbar", () => {
     stubMatchMedia();
     await renderFr(<Navbar />);
 
-    const fr = screen.getByRole("button", { name: "FR" });
-    const en = screen.getByRole("button", { name: "EN" });
-    expect(fr.getAttribute("aria-pressed")).toBe("true");
-    expect(en.getAttribute("aria-pressed")).toBe("false");
+    const fr = screen.getByRole("link", { name: "FR" });
+    const en = screen.getByRole("link", { name: "EN" });
+    expect(fr.getAttribute("aria-current")).toBe("page");
+    expect(en.getAttribute("aria-current")).toBeNull();
 
     fireEvent.click(en);
-    expect(en.getAttribute("aria-pressed")).toBe("true");
-    expect(fr.getAttribute("aria-pressed")).toBe("false");
+    expect(en.getAttribute("aria-current")).toBe("page");
+    expect(fr.getAttribute("aria-current")).toBeNull();
     // The link label follows the active language
     expect(screen.getByRole("link", { name: "The band" })).toBeDefined();
+  });
+
+  it("links the language switch to the pre-rendered pages and updates the address", async () => {
+    stubIntersectionObserver();
+    stubMatchMedia();
+    await renderFr(<Navbar />);
+
+    expect(screen.getByRole("link", { name: "FR" }).getAttribute("href")).toBe("/");
+    const en = screen.getByRole("link", { name: "EN" });
+    expect(en.getAttribute("href")).toBe("/en/");
+
+    fireEvent.click(en);
+    expect(window.location.pathname).toBe("/en/");
+    fireEvent.click(screen.getByRole("link", { name: "FR" }));
+    expect(window.location.pathname).toBe("/");
+  });
+
+  it("remembers the visitor's explicit language choice", async () => {
+    stubIntersectionObserver();
+    stubMatchMedia();
+    await renderFr(<Navbar />);
+
+    fireEvent.click(screen.getByRole("link", { name: "EN" }));
+    expect(localStorage.getItem("unsqware-lang")).toBe("en");
   });
 });

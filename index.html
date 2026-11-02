@@ -13,6 +13,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#17142b" />
+    <!-- Vérification Bing Webmaster Tools : ne pas retirer, même après validation. -->
+    <meta name="msvalidate.01" content="DD71F8B53F2158596F23404E500A1D4C" />
     <meta
       name="description"
       content="UNSQWARE — quartet instrumental nantais, jazz moderne et progressif. Totem Live Session, dates de concerts, réseaux et contact direct du groupe."
@@ -38,7 +41,7 @@
     <meta property="og:image" content="https://unsqwa.re/images/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Les quatre musiciens d'UNSQWARE devant un mur éclairé de violet" />
+    <meta property="og:image:alt" content="Les quatre musiciens d'UNSQWARE derrière une baie vitrée" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:locale:alternate" content="en_US" />
 
@@ -51,15 +54,33 @@
     />
     <meta name="twitter:image" content="https://unsqwa.re/images/og-image.jpg" />
 
+    <!-- Données structurées « site web » : le domaine unsqwa.re n'écrit pas le nom en entier,
+         ce bloc indique à Google d'afficher « UNSQWARE » comme nom du site dans les résultats. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://unsqwa.re/#website",
+        "name": "UNSQWARE",
+        "alternateName": ["Unsqware", "UNSQ WARE", "unsqwa.re"],
+        "url": "https://unsqwa.re/",
+        "inLanguage": ["fr", "en"],
+        "publisher": { "@id": "https://unsqwa.re/#band" }
+      }
+    </script>
+
     <!-- Données structurées : aide Google à relier le nom, les membres et les plateformes du groupe -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "MusicGroup",
+        "@id": "https://unsqwa.re/#band",
         "name": "UNSQWARE",
+        "alternateName": ["Unsqware", "UNSQ WARE"],
+        "logo": "https://unsqwa.re/android-chrome-512x512.png",
         "description": "UNSQWARE est un quartet instrumental nantais formé fin 2021 dont l'univers sonore se démarque par une esthétique jazz moderne et progressive. Dans la lignée d'Aaron Parks, MYT ou Louis Matute, la rondeur du jazz y rencontre l'énergie du rock et des sons saturés.",
         "url": "https://unsqwa.re/",
-        "image": "https://unsqwa.re/images/group.jpg",
+        "image": "https://unsqwa.re/images/groupe-vitre.jpg",
         "genre": ["Jazz hybride", "Jazz moderne", "Jazz progressif"],
         "foundingDate": "2021",
         "foundingLocation": { "@type": "Place", "name": "Nantes, France" },

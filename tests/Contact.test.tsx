@@ -25,8 +25,8 @@ describe("Contact", () => {
   it("shows the group photo next to the address", async () => {
     await renderFr(<Contact />);
 
-    const photo = screen.getByRole("img", { name: "Les quatre musiciens devant un mur gris, en plein jour" });
-    expect(photo.getAttribute("src")).toBe("/images/groupe-mur.jpg");
+    const photo = screen.getByRole("img", { name: "Les quatre musiciens d'UNSQWARE devant un mur gris, en plein jour" });
+    expect(photo.getAttribute("src")).toBe("/images/groupe-mur.webp");
   });
 
   it("copies the address on click and confirms for two seconds", async () => {
