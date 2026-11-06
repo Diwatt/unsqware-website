@@ -22,6 +22,28 @@ describe("CalendarEvent (Google ingestion)", () => {
     expect(event.startDateTime).toBeUndefined();
   });
 
+  it("keeps the flattened end time when the event has one", () => {
+    const event = new CalendarEvent({
+      id: "evt-1",
+      summary: "[GIG] Le Brewklyn",
+      start: { dateTime: "2026-11-12T18:00:00+01:00" },
+      end: { dateTime: "2026-11-12T22:00:00+01:00", timeZone: "Europe/Paris" },
+    });
+
+    expect(event.endDateTime).toBe("2026-11-12T22:00:00+01:00");
+  });
+
+  it("ignores an all-day end (date only): it adds nothing to a gig", () => {
+    const event = new CalendarEvent({
+      id: "evt-1",
+      summary: "[GIG] Le Brewklyn",
+      start: { date: "2026-11-12" },
+      end: { date: "2026-11-13" },
+    });
+
+    expect(event.endDateTime).toBeUndefined();
+  });
+
   it("defaults the optional fields to undefined", () => {
     const event = new CalendarEvent({
       id: "evt-1",
@@ -33,6 +55,13 @@ describe("CalendarEvent (Google ingestion)", () => {
     expect(event.description).toBeUndefined();
     expect(event.startDate).toBeUndefined();
     expect(event.startDateTime).toBe("2026-12-05T20:30:00+01:00");
+    expect(event.endDateTime).toBeUndefined();
+  });
+
+  it("throws on an end that is not an object", () => {
+    expect(() => new CalendarEvent({ id: "evt-1", summary: "s", start: { date: "2026-12-05" }, end: "nope" })).toThrow(
+      'CalendarEvent: "end" must be an object',
+    );
   });
 
   it("throws on a payload that is not an object", () => {

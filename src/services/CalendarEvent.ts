@@ -5,6 +5,7 @@ type CalendarEventStart = { date: string | undefined; dateTime: string | undefin
 
 export class CalendarEvent {
   public readonly description: string | undefined;
+  public readonly endDateTime: string | undefined;
   public readonly id: string;
   public readonly location: string | undefined;
   public readonly startDate: string | undefined;
@@ -23,6 +24,7 @@ export class CalendarEvent {
     const start = CalendarEvent.readStart(raw);
     this.startDate = start.date;
     this.startDateTime = start.dateTime;
+    this.endDateTime = CalendarEvent.readEndDateTime(raw);
   }
 
   // "Le Brewklyn" (title) and "BREWKLYN" (geocoded venue) mean the same
@@ -49,6 +51,15 @@ export class CalendarEvent {
     if (typeof value !== "string") throw new Error(`CalendarEvent: "${field}" must be a string`);
 
     return value;
+  }
+
+  // Only the timed end matters for a gig: an all-day end adds no
+  // information, the markup repeats the start date as Google recommends.
+  private static readEndDateTime(raw: Record<string, unknown>): string | undefined {
+    if (raw.end === undefined) return undefined;
+    if (!CalendarEvent.isRecord(raw.end)) throw new Error('CalendarEvent: "end" must be an object');
+
+    return CalendarEvent.optionalString(raw.end, "dateTime");
   }
 
   private static readStart(raw: Record<string, unknown>): CalendarEventStart {

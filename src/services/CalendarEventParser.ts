@@ -14,6 +14,8 @@ export class CalendarEventParser {
     if (!this.isGigEvent(event.summary)) return null;
 
     const start = this.parseStart(event.startDate, event.startDateTime);
+    // A gig with no known end repeats its start (same day, same hour).
+    const end = event.endDateTime ? new Date(event.endDateTime) : start.at;
 
     const description = event.description ?? "";
     const ticketsUrl = this.extractUrl(description);
@@ -24,6 +26,7 @@ export class CalendarEventParser {
     return new Gig({
       id: event.id,
       start: start.at,
+      end,
       allDay: start.allDay,
       name: location ? title : undefined,
       venue: place.venue,

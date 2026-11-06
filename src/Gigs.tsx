@@ -47,7 +47,7 @@ export function Gigs() {
   const lang = i18n.language?.startsWith("en") ? "en" : "fr";
   const formatter = new GigFormatter(lang);
   const upcoming = useUpcomingGigs();
-  const eventMarkup = useMemo(() => new GigEventMarkup(), []);
+  const eventMarkup = useMemo(() => new GigEventMarkup(lang), [lang]);
 
   return (
     <section id="scene" className="live">

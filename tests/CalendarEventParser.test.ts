@@ -11,6 +11,7 @@ const brewklyn = new CalendarEvent({
   summary: "[GIG] Le Brewklyn",
   location: "BREWKLYN, 8 Rue Nicolas Joseph Cugnot, 35000 Rennes, France",
   start: { dateTime: "2026-11-12T18:00:00+01:00" },
+  end: { dateTime: "2026-11-12T22:00:00+01:00" },
 });
 
 const chezMaurice = new CalendarEvent({
@@ -57,6 +58,7 @@ describe("CalendarEventParser.parse (full gigs)", () => {
       new Gig({
         id: "evt-brewklyn",
         start: new Date("2026-11-12T18:00:00+01:00"),
+        end: new Date("2026-11-12T22:00:00+01:00"),
         allDay: false,
         name: "Le Brewklyn",
         venue: "BREWKLYN",
@@ -72,6 +74,7 @@ describe("CalendarEventParser.parse (full gigs)", () => {
       new Gig({
         id: "evt-chez-maurice",
         start: new Date(2026, 11, 5),
+        end: new Date(2026, 11, 5),
         allDay: true,
         name: "Chez Maurice",
         venue: "Chez Maurice",
@@ -80,6 +83,18 @@ describe("CalendarEventParser.parse (full gigs)", () => {
         ticketsUrl: "https://example.com/billets",
       }),
     );
+  });
+
+  it("repeats the start for an all-day gig whose end is the exclusive day after", () => {
+    const gig = parser.parse(
+      new CalendarEvent({
+        id: "x",
+        summary: "[GIG] Chez Maurice",
+        start: { date: "2026-12-05" },
+        end: { date: "2026-12-06" },
+      }),
+    );
+    expect(gig?.end).toStrictEqual(new Date(2026, 11, 5));
   });
 
   it("without a location field, falls back to the \"Venue — City\" title", () => {
@@ -94,6 +109,7 @@ describe("CalendarEventParser.parse (full gigs)", () => {
       new Gig({
         id: "x",
         start: new Date(2027, 0, 15),
+        end: new Date(2027, 0, 15),
         allDay: true,
         name: undefined,
         venue: "Le Ferrailleur",

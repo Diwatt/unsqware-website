@@ -3,6 +3,7 @@ export class Gig {
   public readonly allDay: boolean;
   public readonly city: string;
   public readonly details: string | undefined;
+  public readonly end: Date;
   public readonly id: string;
   public readonly name: string | undefined;
   public readonly start: Date;
@@ -13,6 +14,7 @@ export class Gig {
     allDay: boolean;
     city: string;
     details: string | undefined;
+    end: Date;
     id: string;
     name: string | undefined;
     start: Date;
@@ -22,6 +24,7 @@ export class Gig {
     this.allDay = fields.allDay;
     this.city = fields.city;
     this.details = fields.details;
+    this.end = fields.end;
     this.id = fields.id;
     this.name = fields.name;
     this.start = fields.start;

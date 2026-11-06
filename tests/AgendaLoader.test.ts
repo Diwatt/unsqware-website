@@ -33,6 +33,7 @@ describe("AgendaLoader.initialGigs", () => {
       new Gig({
         id: "demo-1",
         start: new Date(2026, 11, 5),
+        end: new Date(2026, 11, 5),
         allDay: true,
         name: "Le Brewklyn",
         venue: "BREWKLYN",
