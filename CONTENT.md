@@ -1,53 +1,53 @@
 # UNSQWARE — Contenu du site
 
-> Site **one-page scroll** (inspiré de foehn-music.com) : navigation par ancres + scrollspy.
-> Dernière mise à jour : 2026-10-30.
+> Site **one-page scroll** : navigation par ancres + scrollspy, bilingue FR / EN.
+> Depuis novembre 2026, le site est **la version web de l'EPK 2027** : mêmes couleurs, mêmes photos, même contenu, même ton.
+> Dernière mise à jour : 2026-11-23.
 
-## Structure de la page (validée)
+## Structure de la page
 
-| # | Section (ancre) | Contenu |
+| # | Section (ancre) | Contenu (page de l'EPK) |
 |---|---|---|
-| 1 | **Accueil** (`#accueil`) | photo de groupe + pitch · CTA « Faire jouer UNSQWARE » + « Voir la Totem Live Session » · liens réseaux |
-| 2 | **Le groupe** (`#groupe`) | bio + influences, puis bandeau de photos live |
-| 3 | **Musique** (`#musique`) | lecteur **Totem Live Session** + ses 2 titres · plateformes d'écoute |
-| 4 | **Sur scène** (`#scene`) | dates à venir (agenda Google) + appel aux programmateurs, photos de concert floutées en fond |
-| 5 | **Réseaux** (`#reseaux`) | Instagram, YouTube, Facebook, SoundCloud |
-| 6 | **Contact** (`#contact`) | email du groupe (contact direct, pas d'agence de booking) + photo de groupe |
+| — | **Accueil** (`#accueil`) | photo du mur rayé (couverture EPK) · « Jazz hybride — Nantes » · accroche · badge « Premier EP — début 2027 » · CTA « Faire jouer UNSQWARE » + « Voir la Totem Live Session » · liens réseaux |
+| 01 | **Le groupe** (`#groupe`) | « Un carré qui se déforme » · bio longue (3 premiers paragraphes) · photo de groupe légendée (de gauche à droite : Fabien, Victor, Charles, Florian) — EPK p. 2 |
+| 02 | **Studio & live** (`#studio`) | grille de 6 photos studio et live · suite de la bio · phrase de conclusion · encadré des influences — EPK p. 3 |
+| 03 | **Musique** (`#musique`) | lecteur **Totem Live Session** + texte + 2 titres · encadré « Premier EP » · encadré **Evoli** + Spotify / YouTube (pas de SoundCloud ici) — EPK p. 4 |
+| 04 | **Sur scène** (`#scene`) | photo de groupe MDS · dates à venir (agenda Google) · appel aux programmateurs · **Parcours** · **Agenda 2026** — EPK p. 5 |
+| 05 | **Réseaux** (`#reseaux`) | Instagram, YouTube, Facebook, SoundCloud |
+| 06 | **Contact** (`#contact`) | photo devant la fresque bleue · « Faire jouer UNSQWARE » · email (copiable), site, réseaux · formats de set · téléchargement de l'EPK — EPK p. 6 |
 
-Mise en avant : **le contact** et **la Totem Live Session** uniquement (pas Evoli).
-Site bilingue **FR / EN** : les textes sont dans `src/locales/fr.json` et `src/locales/en.json` (via react-i18next, config dans `src/i18n.ts`) ; les musiciens et les influences sont dans `src/config-groupe.ts` (fichiers éditables sans compétences techniques).
-Design : maquette V4 « douce » du canevas Design (https://claude.ai/artifact/W34iPEagkDDxTjpVKTPmJ8).
+Le titre de l'onglet est **« UNSQWARE - Jazz Prog »** (FR et EN).
 
-Fichiers sections : `src/Hero.tsx`, `src/About.tsx`, `src/Music.tsx`, `src/Gigs.tsx`, `src/Socials.tsx`, `src/Contact.tsx` (assemblés dans `src/App.tsx`, menu dans `src/Navbar.tsx`). Photos dans `public/images/` (tirées du Drive du groupe).
+## Où modifier quoi (sans compétences techniques)
 
----
+| Contenu | Fichier |
+|---|---|
+| Tous les textes du site (FR / EN) | `src/locales/fr.json`, `src/locales/en.json` |
+| Musiciens (ordre de la photo) et influences | `src/data/groupe.ts` |
+| Parcours et agenda 2026 | `src/data/parcours.ts` |
+| Choix des photos | `src/data/photos.ts` (fichiers dans `public/images/`) |
+| Dates de concerts à venir | agenda Google (titre commençant par `[GIG]`) |
+| Couleurs | `src/styles/_base.scss` (bloc `:root`) |
 
 ## Identité
 
 - **Nom** : UNSQWARE
-- **Genre** : Jazz Hybride — jazz moderne & progressif, instrumental
+- **Genre** : jazz prog / jazz hybride — jazz moderne, rock et musique progressive, instrumental
 - **Ville** : Nantes, France
-- **Formé** : fin 2021
-- **Signature visuelle** : un carré / cube qui se déforme (présent dans la Totem Live Session)
-- **Pitch court** (réseaux) : « ⚡ JAZZ PROG ⚡ » / « JAZZ HYBRIDE »
+- **Formé** : à Nantes en **2022**
+- **Signature visuelle** : un carré qui se déforme (Totem Live Session, logo « unsqware JAZZ. PROG. »)
+- **Couleurs (EPK 2027)** : fond gris-bleu nuit `#15191c`, texte `#e8e8e6`, ocre `#d69a4c` (accent), bleu canard `#5b8fa3` (accent secondaire)
+- **Polices** : Big Shoulders Display (titres), Instrument Sans (texte), JetBrains Mono (étiquettes)
 
-## Bio officielle
+## Accroche
 
-> UNSQWARE est un quartet instrumental nantais formé fin 2021 dont l'univers sonore se démarque par une esthétique **jazz moderne et progressive**. Forts d'une expérience musicale étendue, les quatre musiciens créent des atmosphères envoûtantes où la rondeur du jazz rencontre l'énergie du rock et des sons saturés. Dans la lignée de **Aaron Parks**, **MYT** ou **Louis Matute**, chaque morceau est une exploration où composition et improvisation se mêlent dans une expérience musicale originale et surprenante.
+> À la croisée du jazz moderne, du rock et de la musique progressive, UNSQWARE façonne un univers instrumental singulier mêlant textures électriques, grooves organiques et envolées improvisées.
 
-### Bio longue / historique
+## Bio
 
-Le quartet se produit pour la première fois fin 2022 à Nantes avant de saisir plusieurs opportunités en 2023 sur la scène nantaise (Conservatoire de Nantes, Festival d'été ACCOORD, Festival Bar-Bars...). En 2024, le groupe a notamment l'occasion de présenter ses compositions sur le **festival OFF du Printemps de Bourges**. Il fait également partie de la short-list pour la scène **Talents Jazz des Rendez-vous de l'Erdre**.
+La bio longue (8 paragraphes, source : Google Doc du groupe, novembre 2026) est intégrée telle quelle dans le site, répartie entre « Le groupe » et « Studio & live ». La version anglaise a été écrite à partir de la bio courte EN. Sources dans `site-update/content/` (`bio-longue-fr.md`, `bios-courtes.md`).
 
-En parallèle, une session d'enregistrement studio est réalisée en février 2024 au Batiskaf à Nantes. Deux morceaux sont enregistrés et disponibles sur toutes les plateformes : **Evoli** et **Algebra**.
-
-En 2025, le groupe se concentre sur le travail de nouvelles compositions et sur la captation d'une live session pour deux d'entre elles (**Totem Live Session**). L'accent est mis sur une dynamique rock et progressive tout en proposant une interaction visuelle au format vidéo faisant écho au nom du groupe : un carré ou cube qui se déforme. Le résultat est disponible sur YouTube depuis septembre 2025.
-
-Par la suite, l'ambition des musiciens est de continuer à éprouver et affiner leurs compositions par le jeu live en visant des salles de renommée et des festivals. En parallèle, l'objectif est d'enregistrer un EP et de le diffuser au **début 2027**.
-
-### Complément EasyZic
-
-Le groupe est créé fin 2021 par Florian Roy (basse/contrebasse) et Charles Demay (batterie) avec la volonté de proposer des compositions originales influencées par Aaron Parks, MYT, Louis Matute, Gogo Penguin, Snarky Puppy... Le groupe est rejoint par Fabien Maurin (guitare jazz, formation au CIM/Paris) pour renforcer la présence mélodique et ouvrir la porte à de nouveaux arrangements.
+Points clés : formé à Nantes en 2022 · session Batiskaf en 2024 (titre **Evoli**) · Totem Live Session en 2025 à La Maison du Son · en 2026, accompagnement par deux structures nantaises, Prun'Radio, Prog Night #1 à La Carrière, une quinzaine de concerts · premier EP de six titres enregistré avec Franck Martin à Rennes (Ezurlie Magic Studio, producteur de Namas), sortie début 2027.
 
 ## Les musiciens
 
@@ -60,93 +60,66 @@ Le groupe est créé fin 2021 par Florian Roy (basse/contrebasse) et Charles Dem
 
 ## Influences
 
-Aaron Parks, MYT, Louis Matute, Gogo Penguin, Snarky Puppy, Nate Smith, Ryo Miyachi, Foehn Trio
+Aaron Parks, The Cinematic Orchestra, Avishai Cohen, Julien Lourau, Gogo Penguin, Snarky Puppy, Nate Smith, Ryo Miyachi, Foehn Trio
 
-## Chronologie (pour la page Concerts)
+## Parcours
 
 | Année | Événement |
 |---|---|
-| 2021 | Création du groupe (Florian Roy & Charles Demay) |
-| Fin 2022 | Premier concert à Nantes |
-| 2023 | Conservatoire de Nantes · Festival d'été ACCOORD · Festival Bar-Bars |
-| Fév. 2024 | Session studio au Batiskaf (Nantes) |
-| 2024 | Festival OFF du Printemps de Bourges · short-list Talents Jazz des Rendez-vous de l'Erdre |
-| Sept. 2025 | Sortie Totem Live Session sur YouTube |
-| Début 2027 | Sortie de l'EP (à venir) |
+| 2022 | Création du groupe à Nantes |
+| 2023 | Conservatoire de Nantes · Le Caboulot · Festival d'été ACCOORD · Le Poum Poum T'chak · Festival Bar-Bars |
+| 2024 | Session studio au Batiskaf (Nantes) · Festival OFF du Printemps de Bourges · Short-list Talents Jazz des Rendez-vous de l'Erdre |
+| 2025 | Totem Live Session, La Maison du Son (Port-Saint-Père) |
+| 2026 | Une quinzaine de dates dans la métropole nantaise et les environs · Enregistrement de l'EP avec Franck Martin |
+| Début 2027 | Premier EP |
 
-## Discographie
+L'agenda 2026 complet (12 dates) est dans `src/data/parcours.ts`.
 
-### Single mis en avant
-- **Evoli** — enregistré au Batiskaf (fév. 2024), écoute via la page artiste Spotify
-  ( Algebra reste visible en studio session vidéo, non mis en avant sur demande de Florian )
+## Musique
 
-### Totem Live Session (sept. 2025, captée à La Maison du Son, Port-Saint-Père)
-- Abandon me (05:51)
-- Find the Meaning (11:26)
-
-### Autres titres connus
-- Personne (live, SoundCloud 2023 + vidéo YouTube)
-- Keep Running (vidéo YouTube — à confirmer)
-- Totem
-
-## Vidéos YouTube (embeds existants dans le code)
-
-| Titre | ID YouTube |
-|---|---|
-| Totem Live Session | `I4tQ71Z90Hw` |
-| Evoli (Studio session) | `fnWz1XvpyhY` |
-| Algebra (Studio session) | `_bv-08V_kk4` |
-| Personne | `IdZXIpnT_S8` |
-| Keep Running (?) | `LILiicvfQ08` |
+- **Totem Live Session** (2025, La Maison du Son, Port-Saint-Père) : Abandon me (05:35), Find the Meaning (05:45) — YouTube `I4tQ71Z90Hw`
+- **Evoli** (studio Batiskaf, 2024) : disponible sur toutes les plateformes
+- **Premier EP** : six titres, enregistré avec Franck Martin à Rennes, sortie début 2027 (titres non listés)
 
 ## Liens / plateformes
 
 | Plateforme | URL |
 |---|---|
+| Site | https://unsqwa.re/ |
 | YouTube | https://www.youtube.com/@unsqware |
 | Instagram | https://www.instagram.com/unsqware |
 | Facebook | https://www.facebook.com/unsqwaremusique |
 | SoundCloud | https://soundcloud.com/unsqware-musique |
 | Spotify | https://open.spotify.com/artist/1gAWrCVQilgg6uzjN1CmMw |
-| Deezer | https://www.deezer.com/fr/artist/291754311 |
 | Linktree | https://linktr.ee/unsqware |
 
 ## Contact
 
-- **Email groupe** : unsqwaremusique@gmail.com
-- Pas d'agence de booking : la collaboration avec Wonderland Music s'arrête, tout passe par l'email du groupe.
+- **Email** : unsqwaremusique@gmail.com
+- **Formats** : set de 30 min (tremplin) · 45 min à 1 h · 2 × 45 min — fiche technique et plan de scène sur demande
+- **Dossier de presse** : `public/UNSQWARE-EPK-2027.pdf` (téléchargeable depuis la section Contact)
+- Les téléphones de Florian et Charles figurent dans l'EPK mais pas sur le site (à ajouter si le groupe le souhaite)
 
-## À compléter par le groupe
+## Photos
 
-- [x] Photos HD (portraits, live) — intégrées depuis le Drive
-- [ ] Dates de concerts à venir
-- [ ] Confirmation du titre « Keep Running » (vidéo `LILiicvfQ08`)
-- [ ] Logo / visuels haute résolution
-- [ ] Rider technique (pour la section EPK)
-- [ ] Lien Spotify direct des singles Evoli / Algebra
+Nouveau shooting de novembre 2026 (mur rayé, graff, grue), shooting MDS et photos studio / live. Les photos du shooting ZAW ont été retirées. Les originaux (JPEG et WebP) sont dans `site-update/assets/photos/`.
 
 ---
 
-## SEO (pré-rendu automatisé, 2026-10-30)
+## SEO
 
-Domaine canonique : **https://unsqwa.re/** — `unsqware.com` et `unsqware.fr` doivent être redirigés en **301** vers lui (réglage chez le registrar, pas dans le code).
+Domaine canonique : **https://unsqwa.re/** — unsqware.com, unsqware.fr, les variantes www et unsqware.vercel.app redirigent vers lui.
 
-Le HTML statique (FR + EN) est **généré à chaque build depuis l'app React elle-même** — aucun contenu dupliqué à maintenir. `pnpm build` enchaîne : `tsc` → build client → build SSR + génération (`scripts/prerender.tsx`, compilé puis exécuté en Node) :
+Le HTML statique (FR + EN) est **généré à chaque build depuis l'app React elle-même** : `pnpm build` enchaîne `tsc` → build client → build SSR + génération (`scripts/prerender.tsx`). React reprend ensuite ce HTML dans le navigateur (`hydrateRoot`).
 
 | Sortie | Contenu |
 |---|---|
-| `dist/index.html` | page FR (https://unsqwa.re/) : contenu pré-rendu, lu par les moteurs / sans JS, remplacé par React au montage |
-| `dist/en/index.html` | page EN (https://unsqwa.re/en/) : contenu + métadonnées traduites (canonical, og:locale…) |
+| `dist/index.html` | page FR (https://unsqwa.re/) |
+| `dist/en/index.html` | page EN (https://unsqwa.re/en/) : contenu + métadonnées traduites |
 | `dist/sitemap.xml` | les deux URL + hreflang + `lastmod` = date du build |
 
 Points de repère :
-- **Textes** : `src/locales/fr.json` et `src/locales/en.json` restent la source unique — modifie-les, le build régénère tout.
-- **Balises head** (canonical, OG, Twitter, JSON-LD) : dans `index.html` ; les textes EN du head sont dans `scripts/prerender.tsx` (constante `EN_HEAD`).
-- **Langue côté navigateur** : détection `localStorage` → `path` (la page /en/ reste EN) → `navigateur` → fallback `fr`.
+- **Balises head** (titre, OG, Twitter, JSON-LD) : dans `index.html` ; les textes EN du head sont dans `scripts/prerender.tsx` (constante `EN_HEAD`).
+- **Concerts** : chaque date de l'agenda Google part aussi en données structurées « MusicEvent » pour Google.
+- **IndexNow** : Bing et les autres moteurs sont prévenus automatiquement après chaque déploiement en production (`.github/workflows/indexnow.yml`).
 - **En dev** (`pnpm dev`), la page est vide avant le montage React — normal, le pré-rendu n'existe qu'au build.
-
-Côté hébergeur (Vercel ou équivalent) : commande de build `pnpm build`, dossier de sortie `dist` — le pré-rendu repart à chaque déploiement automatiquement.
-
-À faire une fois déployé :
-1. **Google Search Console** : déclarer `unsqwa.re`, soumettre `https://unsqwa.re/sitemap.xml`.
-2. **Backlinks** : mettre à jour Linktree et les bio Instagram / YouTube / Facebook / SoundCloud / EasyZic pour pointer vers `https://unsqwa.re/`.

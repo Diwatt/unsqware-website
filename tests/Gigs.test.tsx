@@ -77,20 +77,45 @@ describe("Gigs", () => {
     expect(document.querySelector('script[type="application/ld+json"]')).toBeNull();
   });
 
-  it("puts the concert photos in a decorative background, without a timeline", async () => {
+  it("opens with the MDS group photo, no longer with the ZAW shoot", async () => {
     stubFetch({ items: [] });
     await renderFr(<Gigs />);
 
-    const backdrop = document.querySelector(".live__backdrop");
-    expect(backdrop?.getAttribute("aria-hidden")).toBe("true");
-    const sources = [...(backdrop?.querySelectorAll("img") ?? [])].map((img) => img.getAttribute("src"));
-    expect(sources).toEqual([
-      "/images/scene-vue-haut.webp",
-      "/images/scene-batterie.webp",
-      "/images/scene-guitare.webp",
-    ]);
-    expect(screen.queryByRole("img")).toBeNull();
-    expect(document.querySelector(".timeline")).toBeNull();
+    expect(screen.getByRole("img", { name: /en lumière violette/ }).getAttribute("src")).toBe(
+      "/images/groupe-violet-mds.webp",
+    );
+    expect(document.querySelector('img[src*="scene-"]')).toBeNull();
+  });
+
+  it("serves the full-width banner in full resolution, with a lighter copy for phones", async () => {
+    stubFetch({ items: [] });
+    await renderFr(<Gigs />);
+
+    const banner = screen.getByRole("img", { name: /en lumière violette/ });
+    expect(banner.getAttribute("srcset")).toBe(
+      "/images/groupe-violet-mds-1200.webp 1200w, /images/groupe-violet-mds.webp 2400w",
+    );
+    expect(banner.getAttribute("sizes")).toBe("100vw");
+  });
+
+  it("shows the EPK timeline, from 2022 to the debut EP", async () => {
+    stubFetch({ items: [] });
+    await renderFr(<Gigs />);
+
+    expect(screen.getByRole("heading", { name: "Parcours" })).toBeDefined();
+    const years = [...document.querySelectorAll(".timeline__year")].map((el) => el.textContent);
+    expect(years).toStrictEqual(["2022", "2023", "2024", "2025", "2026", "Début 2027"]);
+    expect(screen.getByText("Création du groupe à Nantes")).toBeDefined();
+  });
+
+  it("lists the 2026 shows with their EPK date format", async () => {
+    stubFetch({ items: [] });
+    await renderFr(<Gigs />);
+
+    expect(screen.getByRole("heading", { name: "Agenda 2026" })).toBeDefined();
+    expect(document.querySelectorAll(".agenda li")).toHaveLength(12);
+    expect(screen.getByText("06/02/26")).toBeDefined();
+    expect(screen.getByText("Prog Night, La Carrière (Nantes)")).toBeDefined();
   });
 
   it("falls back to the announcement when the agenda is unreachable", async () => {

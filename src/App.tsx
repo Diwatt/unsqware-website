@@ -4,6 +4,7 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { Hero } from "./Hero";
 import { About } from "./About";
+import { StudioLive } from "./StudioLive";
 import { Music } from "./Music";
 import { Gigs } from "./Gigs";
 import { Socials } from "./Socials";
@@ -24,6 +25,7 @@ function App() {
       <main>
         <Hero />
         <About />
+        <StudioLive />
         <Music />
         <Gigs />
         <Socials />

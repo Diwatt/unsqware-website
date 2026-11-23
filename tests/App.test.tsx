@@ -11,11 +11,10 @@ describe("App", () => {
     stubFetch({ items: [] });
     await renderFr(<App />);
 
-    for (const id of ["accueil", "groupe", "musique", "scene", "reseaux", "contact"]) {
-      expect(document.getElementById(id)).not.toBeNull();
-    }
+    const ids = [...document.querySelectorAll("main section[id]")].map((section) => section.id);
+    expect(ids).toStrictEqual(["accueil", "groupe", "studio", "musique", "scene", "reseaux", "contact"]);
     expect(screen.getByRole("heading", { name: "Prochaines dates" })).toBeDefined();
-    expect(screen.getByRole("heading", { name: "Écrivez-nous" })).toBeDefined();
+    expect(screen.getByRole("heading", { name: "Faire jouer UNSQWARE" })).toBeDefined();
     expect(document.documentElement.lang).toBe("fr");
   });
 });

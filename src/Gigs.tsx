@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { agenda } from "./config-agenda";
-import { stagePhotos } from "./data/photos";
+import { agenda2026, parcours } from "./data/parcours";
+import { stagePhoto } from "./data/photos";
 import { AgendaLoader } from "./services/AgendaLoader";
 import { CalendarEvent } from "./services/CalendarEvent";
 import { CalendarEventParser } from "./services/CalendarEventParser";
@@ -45,6 +46,7 @@ function useUpcomingGigs(): Gig[] {
 export function Gigs() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language?.startsWith("en") ? "en" : "fr";
+  const isEnglish = lang === "en";
   const formatter = new GigFormatter(lang);
   const upcoming = useUpcomingGigs();
   const eventMarkup = useMemo(() => new GigEventMarkup(lang), [lang]);
@@ -54,11 +56,14 @@ export function Gigs() {
       {upcoming.length > 0 && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: eventMarkup.toJsonLd(upcoming) }} />
       )}
-      <div className="live__backdrop" aria-hidden="true">
-        {stagePhotos.map((photo) => (
-          <img key={photo} src={photo} alt="" loading="lazy" />
-        ))}
-      </div>
+      <img
+        className="live__banner"
+        src={stagePhoto.photo}
+        srcSet={`${stagePhoto.photoSmall} 1200w, ${stagePhoto.photo} ${stagePhoto.width}w`}
+        sizes="100vw"
+        alt={t(stagePhoto.alt)}
+        loading="lazy"
+      />
       <div className="section container">
         <SectionTag label={t("live.tag")} />
         <h2 className="h2 live__title">{t("live.title")}</h2>
@@ -113,6 +118,34 @@ export function Gigs() {
             {t("live.callCta")}
           </a>
         </div>
+
+        <h3 className="h2 live__subtitle">{t("live.historyTitle")}</h3>
+        <ol className="timeline">
+          {parcours.map((step) => (
+            <li key={step.yearFr}>
+              <span className="timeline__year">{isEnglish ? step.yearEn : step.yearFr}</span>
+              <span className="timeline__events">
+                {(isEnglish ? step.en : step.fr).map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ol>
+
+        <h3 className="h2 live__subtitle">{t("live.agendaTitle")}</h3>
+        <ul className="agenda">
+          {agenda2026.map((show) => (
+            <li key={`${show.date}-${show.venue}`}>
+              <time className="agenda__date" dateTime={show.date}>
+                {formatter.numericDay(show.date)}
+              </time>
+              <span>
+                {show.venue} ({show.city})
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

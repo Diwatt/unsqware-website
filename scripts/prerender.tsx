@@ -19,20 +19,21 @@ const PLACEHOLDER = "<!--APP_HTML-->";
 
 // <head> strings of the (FR) template and their EN versions for the /en/ page.
 const FR_HEAD = {
-  title: "UNSQWARE — Quartet jazz hybride · Nantes",
+  title: "UNSQWARE - Jazz Prog",
   metaDescription:
-    "UNSQWARE — quartet instrumental nantais, jazz moderne et progressif. Totem Live Session, dates de concerts, réseaux et contact direct du groupe.",
+    "UNSQWARE, quartet jazz prog de Nantes : jazz moderne, rock et musique progressive. Totem Live Session, premier EP début 2027, dates de concerts et contact.",
   ogDescription:
-    "Quartet instrumental nantais : jazz moderne et progressif. Totem Live Session, prochaines dates et contact direct du groupe.",
-  ogImageAlt: "Les quatre musiciens d'UNSQWARE derrière une baie vitrée",
+    "À la croisée du jazz moderne, du rock et de la musique progressive : le quartet nantais UNSQWARE. Totem Live Session, concerts et premier EP début 2027.",
+  ogImageAlt: "Les quatre musiciens d'UNSQWARE sur un quai de Nantes, devant une grue",
 };
+// The tab title stays the same in both languages: "Jazz Prog" is the band's own tagline.
 const EN_HEAD = {
-  title: "UNSQWARE — Hybrid jazz quartet · Nantes, France",
+  title: "UNSQWARE - Jazz Prog",
   metaDescription:
-    "UNSQWARE — instrumental quartet from Nantes, France, playing modern and progressive jazz. Totem Live Session, upcoming shows and direct contact with the band.",
+    "UNSQWARE, prog jazz quartet from Nantes, France: modern jazz, rock and progressive music. Totem Live Session, debut EP in early 2027, upcoming shows and contact.",
   ogDescription:
-    "Instrumental quartet from Nantes, France: modern, progressive jazz. Totem Live Session, upcoming shows and direct contact with the band.",
-  ogImageAlt: "The four members of UNSQWARE behind a large window",
+    "At the crossroads of modern jazz, rock and progressive music: the Nantes quartet UNSQWARE. Totem Live Session, live shows and a debut EP in early 2027.",
+  ogImageAlt: "The four members of UNSQWARE on a Nantes quay, in front of a crane",
 };
 
 // Replaces `needle` and fails the build if it cannot be found:

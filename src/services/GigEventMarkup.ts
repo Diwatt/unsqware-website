@@ -13,7 +13,7 @@ export class GigEventMarkup {
     en: "Live show by the UNSQWARE quartet — modern progressive jazz, groove meets rock energy.",
   };
   private static readonly EVENT_URL = "https://unsqwa.re/#scene";
-  private static readonly GIG_IMAGE_URL = "https://unsqwa.re/images/groupe-vitre.jpg";
+  private static readonly GIG_IMAGE_URL = "https://unsqwa.re/images/hero-groupe-mur-raye.jpg";
   private static readonly SITE_URL = "https://unsqwa.re/";
 
   constructor(private readonly lang: Lang = "fr") {}

@@ -1,21 +1,14 @@
-// ——— Musique & vidéo ———
-// Un seul bloc compact : le lecteur Totem à gauche, les titres à droite, les plateformes dessous.
+// ——— Musique (page 4 de l'EPK) ———
+// La Totem Live Session, puis deux encadrés : le premier EP à venir et Evoli, avec les plateformes.
 .music {
-  background: var(--accent);
-  color: var(--bg);
-
-  a:hover {
-    color: var(--bg);
-  }
-
-  &__inner {
-    padding-block: 232px 112px;
+  &__title {
+    margin-bottom: 40px;
   }
 
   &__row {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 32px 56px;
   }
 
@@ -29,84 +22,83 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-  }
-
-  &__title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(36px, 3.6vw, 52px);
-    line-height: 0.9;
-    text-transform: uppercase;
+    gap: 16px;
+    color: var(--soft);
   }
 
   &__place {
-    max-width: 28em;
+    color: var(--muted);
   }
 
-  // Pied de section : l'EP à venir, en simple mention.
-  &__ep {
-    display: table;
-    margin-top: 48px;
-    padding: 14px 24px 12px;
-    background: var(--bg);
-    color: var(--accent);
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(26px, 2.6vw, 38px);
-    line-height: 1;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    // Même esprit que les étiquettes : un bloc de biais, pas un rectangle sage.
-    clip-path: polygon(1% 8%, 100% 0%, 98% 100%, 0% 90%);
-    transform: rotate(-1.5deg);
-  }
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 72px;
 
-  // Sur fond accent, la liste des titres reprend l'encre sombre.
-  .tracks {
-    margin-top: 12px;
-
-    li {
-      border-bottom-color: var(--bg);
+    @media (max-width: 820px) {
+      grid-template-columns: 1fr;
     }
   }
 
-  .tracks__n,
-  .tracks__len {
-    color: var(--bg);
+  &__evoli {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 }
 
-// Un espace entre les cases : chaque flèche reste rattachée à sa plateforme.
-.platforms {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  column-gap: 32px;
-  margin-top: 56px;
+// Encadré façon EPK : fond légèrement plus clair, filet marqué, étiquette ocre.
+.card {
+  padding: 28px;
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
 
-  a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 4px;
-    border-top: 1.5px solid var(--bg);
-    border-bottom: 1.5px solid var(--bg);
-    text-decoration: none;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 22px;
-    text-transform: uppercase;
-    transition: transform 0.2s ease;
-
-    &:hover {
-      transform: rotate(-1deg);
-    }
+  &__kicker {
+    display: block;
+    color: var(--accent);
+    letter-spacing: 0.1em;
   }
 
-  // Empilées sur mobile : un seul filet entre deux plateformes.
-  @media (max-width: 720px) {
-    a:not(:first-child) {
-      border-top: 0;
+  &__title {
+    margin: 12px 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: var(--soft);
+  }
+
+  &--ep {
+    border-color: var(--accent);
+  }
+}
+
+// Plateformes en liste « nom → lien », comme dans l'EPK.
+.platforms {
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+
+    .mono-label {
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

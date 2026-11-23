@@ -1,19 +1,20 @@
 // ————————————————————————————————————————————————
 // Tokens de design & styles de base
-// Fond violet nuit, accent lavande pastel
+// Palette de l'EPK 2027 (tirée du shooting de novembre 2026) : gris-bleu nuit, ocre, bleu canard
 // Typo : Big Shoulders Display (titres) · Instrument Sans (texte) · JetBrains Mono (étiquettes)
 // ————————————————————————————————————————————————
 
 :root {
-  --bg: #17142b;
-  --bg-2: #1f1b36;
-  --line: #302a4c;
-  --line-2: #4a4369;
-  --fg: #e9e5f4;
-  --muted: #aba4c8;
-  --soft: #cdc7e2;
-  --accent: #c4b2ee;
-  --header: rgba(23, 20, 43, 0.92);
+  --bg: #15191c; // gris-bleu nuit (fond principal)
+  --bg-2: #1e2428; // cartes, encadrés
+  --line: #2c3338; // filets
+  --line-2: #46505a; // bordures marquées
+  --fg: #e8e8e6; // texte principal
+  --muted: #9ea3a6; // texte secondaire, étiquettes
+  --soft: #c9cdcf; // texte courant sur fond sombre
+  --accent: #d69a4c; // ocre : liens, CTA, étiquettes mono
+  --teal: #5b8fa3; // bleu canard : accent secondaire, écho du logo carré
+  --header: rgba(21, 25, 28, 0.92);
 
   --font-display: "Big Shoulders Display", sans-serif;
   --font-body: "Instrument Sans", system-ui, sans-serif;

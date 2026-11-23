@@ -15,11 +15,19 @@ describe("Hero", () => {
     expect(screen.getByRole("link", { name: /Voir la Totem Live Session/ }).getAttribute("href")).toBe("#musique");
   });
 
-  it("shows the group photo behind the window", async () => {
+  it("uses the EPK hook line, without the founding year", async () => {
     await renderFr(<Hero />);
 
-    const photo = screen.getByRole("img", { name: /derrière une baie vitrée/ });
-    expect(photo.getAttribute("src")).toBe("/images/groupe-vitre.webp");
+    expect(screen.getByText("Jazz hybride — Nantes")).toBeDefined();
+    expect(screen.getByText(/À la croisée du jazz moderne, du rock et de la musique progressive/)).toBeDefined();
+    expect(screen.queryByText(/2021|MYT|Matute/)).toBeNull();
+  });
+
+  it("shows the EPK cover photo of the striped wall", async () => {
+    await renderFr(<Hero />);
+
+    const photo = screen.getByRole("img", { name: /mur peint de rayures/ });
+    expect(photo.getAttribute("src")).toBe("/images/hero-groupe-mur-raye.webp");
     // The hero photo is the largest visible element: it loads first.
     expect(photo.getAttribute("fetchpriority")).toBe("high");
   });
@@ -32,12 +40,9 @@ describe("Hero", () => {
     expect(screen.getByRole("link", { name: "Facebook ↗" }).getAttribute("href")).toBe(LINKS.facebook);
   });
 
-  it("scrolls the new track titles in the decorative marquee", async () => {
+  it("no longer has the scrolling titles banner", async () => {
     await renderFr(<Hero />);
 
-    const marquee = document.querySelector(".marquee");
-    expect(marquee?.getAttribute("aria-hidden")).toBe("true");
-    expect(marquee?.textContent).toContain("Abondance");
-    expect(marquee?.textContent).toContain("The Third is gentle");
+    expect(document.querySelector(".marquee")).toBeNull();
   });
 });

@@ -1,0 +1,23 @@
+// Tokens UNSQWARE — palette de l'EPK 2027 (tirée du shooting de novembre 2026)
+// Remplace le bloc :root de src/styles/_base.scss (le violet / lavande disparaît).
+:root {
+  --bg: #15191c;        // gris-bleu nuit (fond principal)
+  --bg-2: #1e2428;      // cartes, encadrés
+  --line: #2c3338;      // filets
+  --line-2: #46505a;    // bordures marquées
+  --fg: #e8e8e6;        // texte principal
+  --muted: #9ea3a6;     // texte secondaire, étiquettes
+  --soft: #c9cdcf;      // texte courant sur fond sombre
+  --accent: #d69a4c;    // ocre (écharpe / badges du shooting) : liens, CTA, étiquettes mono
+  --teal: #5b8fa3;      // bleu canard (graff) : accent secondaire, écho du logo carré
+  --header: rgba(21, 25, 28, 0.92);
+
+  // Polices : identiques au site actuel (déjà chargées via Google Fonts dans index.html)
+  --font-display: "Big Shoulders Display", sans-serif; // 800, titres en capitales, line-height .88
+  --font-body: "Instrument Sans", system-ui, sans-serif; // 400-600
+  --font-mono: "JetBrains Mono", monospace;  // 400-500, étiquettes capitales, letter-spacing .08em
+}
+// Variante claire (fiche technique, communiqué) si besoin :
+// --paper: #f3f3f1; --ink: #15191c; --ink-2: #46505a; --rule: #d5d9db; --accent-dk: #a8692a;
+// Logo carré (MorphingSquare) : polygone principal stroke var(--accent), écho stroke var(--teal).
+// CTA : fond var(--accent), texte var(--bg), mono capitales, transform: rotate(-1deg) skewX(-2deg).

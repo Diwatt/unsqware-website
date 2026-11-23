@@ -1,9 +1,5 @@
 // ——— Sur scène ———
 .live {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background: var(--bg-2);
   border-block: 1px solid var(--line);
 
   &__title {
@@ -14,29 +10,72 @@
     color: var(--muted);
   }
 
-  // Photos de concert floutées en fond : l'ambiance de la scène sans gêner la lecture des dates.
-  &__backdrop {
-    position: absolute;
-    inset: -48px;
-    z-index: -1;
+  // Photo de groupe en bandeau pleine largeur, comme en haut de la page 5 de l'EPK.
+  &__banner {
+    width: 100%;
+    height: clamp(220px, 32vw, 420px);
+    object-fit: cover;
+    object-position: 50% 35%;
+  }
+
+  &__subtitle {
+    margin: 96px 0 24px;
+  }
+}
+
+// Parcours : année ocre en marge, une ligne par événement.
+.timeline {
+  border-top: 1px solid var(--line);
+
+  li {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    filter: blur(16px) saturate(0.85);
-    opacity: 0.3;
+    grid-template-columns: 120px 1fr;
+    gap: 4px 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    @media (max-width: 900px) {
+    @media (max-width: 560px) {
       grid-template-columns: 1fr;
-
-      img:not(:first-child) {
-        display: none;
-      }
     }
+  }
+
+  &__year {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--accent);
+  }
+
+  &__events {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--soft);
+  }
+}
+
+// Agenda 2026 sur deux colonnes lues de haut en bas, comme dans l'EPK : date ocre puis lieu.
+.agenda {
+  columns: 2;
+  column-gap: 48px;
+
+  li {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--soft);
+    break-inside: avoid;
+  }
+
+  &__date {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--accent);
+  }
+
+  @media (max-width: 720px) {
+    columns: 1;
   }
 }
 

@@ -33,7 +33,7 @@ describe("GigEventMarkup.toJsonLd", () => {
     expect(event.endDate).toBe("2026-12-05T23:30:00.000Z");
     expect(event.eventStatus).toBe("https://schema.org/EventScheduled");
     expect(event.eventAttendanceMode).toBe("https://schema.org/OfflineEventAttendanceMode");
-    expect(event.image).toBe("https://unsqwa.re/images/groupe-vitre.jpg");
+    expect(event.image).toBe("https://unsqwa.re/images/hero-groupe-mur-raye.jpg");
     expect(event.location).toStrictEqual({
       "@type": "Place",
       name: "Chez Maurice",

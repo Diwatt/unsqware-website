@@ -6,19 +6,13 @@ import { Music } from "../src/Music";
 import { LINKS } from "../src/shared";
 
 describe("Music", () => {
-  it("renders its section tag as an inverted warped square on the accent background", async () => {
-    await renderFr(<Music />);
-
-    const tag = screen.getByText("02 — Musique").closest("p");
-    expect(tag?.getAttribute("class")).toBe("tag tag--inverted");
-  });
-
-  it("embeds the Totem Live Session player with the session room as poster", async () => {
+  it("embeds the Totem Live Session with its EPK text", async () => {
     await renderFr(<Music />);
 
     expect(screen.getByRole("heading", { level: 2 }).textContent).toBe("Totem Live Session");
+    expect(screen.getByText(/Dans cette live session publiée en 2025/)).toBeDefined();
     const poster = screen.getByRole("button", { name: "Lire la vidéo : Totem Live Session" });
-    expect(poster.querySelector("img")?.getAttribute("src")).toBe("/images/session-salle.webp");
+    expect(poster.querySelector("img")?.getAttribute("src")).toBe("/images/studio-mds-salle-2.webp");
   });
 
   it("lists the two session tracks with their duration", async () => {
@@ -28,20 +22,22 @@ describe("Music", () => {
     expect(screen.getByText("Find the Meaning")).toBeDefined();
     expect(screen.getByText("05:35")).toBeDefined();
     expect(screen.getByText("05:45")).toBeDefined();
-    expect(screen.getByText(/Captée à La Maison du Son/)).toBeDefined();
   });
 
-  it("mentions the upcoming EP in the section footer", async () => {
+  it("announces the debut EP recorded with Franck Martin", async () => {
     await renderFr(<Music />);
 
-    expect(screen.getByText("Premier EP — début 2027").getAttribute("class")).toBe("music__ep");
+    expect(screen.getByRole("heading", { name: "Premier EP" })).toBeDefined();
+    expect(screen.getByText("À paraître · début 2027")).toBeDefined();
+    expect(screen.getByText(/Ezurlie Magic Studio/)).toBeDefined();
   });
 
-  it("links to the streaming platforms", async () => {
+  it("presents Evoli and where to listen, without SoundCloud", async () => {
     await renderFr(<Music />);
 
-    expect(screen.getByRole("link", { name: "Spotify" }).getAttribute("href")).toBe(LINKS.spotify);
-    expect(screen.getByRole("link", { name: "YouTube" }).getAttribute("href")).toBe(LINKS.youtube);
-    expect(screen.getByRole("link", { name: "SoundCloud" }).getAttribute("href")).toBe(LINKS.soundcloud);
+    expect(screen.getByRole("heading", { name: "Evoli" })).toBeDefined();
+    expect(screen.getByRole("link", { name: "Page artiste" }).getAttribute("href")).toBe(LINKS.spotify);
+    expect(screen.getByRole("link", { name: "@unsqware" }).getAttribute("href")).toBe(LINKS.youtube);
+    expect(screen.queryByText(/SoundCloud/)).toBeNull();
   });
 });

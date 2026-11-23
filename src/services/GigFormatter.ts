@@ -11,6 +11,16 @@ export class GigFormatter {
     return this.format(date, { day: "numeric", month: "short" });
   }
 
+  // "2026-02-06" → "06/02/26", the EPK agenda format, in both languages.
+  // @throws Error when the day is not written as YYYY-MM-DD.
+  public numericDay(isoDay: string): string {
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(isoDay);
+    if (!match) throw new Error(`GigFormatter: "${isoDay}" is not a YYYY-MM-DD day`);
+    const [, year, month, day] = match;
+
+    return `${day}/${month}/${year.slice(2)}`;
+  }
+
   // "20:30" (24h clock)
   public time(date: Date): string {
     return this.format(date, { hour: "2-digit", minute: "2-digit", hour12: false });
