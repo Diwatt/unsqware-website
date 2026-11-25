@@ -74,46 +74,7 @@
   }
 }
 
-// ——— Studio & live ———
-.studio {
-  padding-top: 0;
-
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    margin-top: 32px;
-
-    img {
-      width: 100%;
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
-    }
-
-    @media (max-width: 720px) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  &__text {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 760px;
-    margin-top: 56px;
-    color: var(--soft);
-  }
-
-  // La phrase de conclusion de la bio, mise en valeur comme dans l'EPK.
-  &__closing {
-    margin-top: 8px;
-    font-size: clamp(20px, 2vw, 26px);
-    line-height: 1.4;
-    color: var(--fg);
-  }
-}
-
-// Encadré des influences (page 3 de l'EPK).
+// Encadré des influences (page 3 de l'EPK), sous la photo de groupe.
 .influences {
   margin-top: 56px;
   padding: 24px 28px;

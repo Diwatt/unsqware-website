@@ -20,7 +20,7 @@ export function Hero() {
               {t("hero.ctaContact")}
               <span className="icon icon--arrow-right" aria-hidden="true" />
             </a>
-            <a href="#musique" className="btn btn--ghost">
+            <a href="#sorties" className="btn btn--ghost">
               <PlayIcon />
               {t("hero.ctaTotem")}
             </a>

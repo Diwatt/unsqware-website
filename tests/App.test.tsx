@@ -12,9 +12,19 @@ describe("App", () => {
     await renderFr(<App />);
 
     const ids = [...document.querySelectorAll("main section[id]")].map((section) => section.id);
-    expect(ids).toStrictEqual(["accueil", "groupe", "studio", "musique", "scene", "reseaux", "contact"]);
-    expect(screen.getByRole("heading", { name: "Prochaines dates" })).toBeDefined();
+    expect(ids).toStrictEqual(["accueil", "groupe", "sorties", "agenda", "reseaux", "contact"]);
+    expect(screen.getByRole("heading", { name: "Agenda 2026" })).toBeDefined();
     expect(screen.getByRole("heading", { name: "Faire jouer UNSQWARE" })).toBeDefined();
     expect(document.documentElement.lang).toBe("fr");
+  });
+
+  it("tags every section without a number, like the navigation", async () => {
+    stubIntersectionObserver();
+    stubMatchMedia();
+    stubFetch({ items: [] });
+    await renderFr(<App />);
+
+    const tags = [...document.querySelectorAll(".tag__face")].map((tag) => tag.textContent);
+    expect(tags).toStrictEqual(["Le groupe", "Sorties", "Agenda", "Réseaux", "Contact"]);
   });
 });

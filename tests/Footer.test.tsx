@@ -15,10 +15,10 @@ describe("Footer", () => {
       ["Instagram", LINKS.instagram],
       ["Facebook", LINKS.facebook],
       ["YouTube", LINKS.youtube],
-      ["SoundCloud", LINKS.soundcloud],
     ] as const;
     for (const [name, href] of links) {
       expect(screen.getByRole("link", { name }).getAttribute("href")).toBe(href);
     }
+    expect(screen.queryByRole("link", { name: "SoundCloud" })).toBeNull();
   });
 });

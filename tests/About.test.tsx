@@ -27,6 +27,13 @@ describe("About", () => {
     expect(screen.getByText("De gauche à droite")).toBeDefined();
   });
 
+  it("lists the influences right after the group photo", async () => {
+    await renderFr(<About />);
+
+    const box = document.querySelector(".band-photo + .influences");
+    expect(box?.textContent).toContain("Aaron Parks / The Cinematic Orchestra / Avishai Cohen");
+  });
+
   it("shows each musician's role in English on the English page", async () => {
     await renderFr(<About />);
     await i18n.changeLanguage("en");

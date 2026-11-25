@@ -2,21 +2,22 @@
 
 > Site **one-page scroll** : navigation par ancres + scrollspy, bilingue FR / EN.
 > Depuis novembre 2026, le site est **la version web de l'EPK 2027** : mêmes couleurs, mêmes photos, même contenu, même ton.
-> Dernière mise à jour : 2026-11-23.
+> Dernière mise à jour : 2026-11-25.
 
 ## Structure de la page
 
-| # | Section (ancre) | Contenu (page de l'EPK) |
-|---|---|---|
-| — | **Accueil** (`#accueil`) | photo du mur rayé (couverture EPK) · « Jazz hybride — Nantes » · accroche · badge « Premier EP — début 2027 » · CTA « Faire jouer UNSQWARE » + « Voir la Totem Live Session » · liens réseaux |
-| 01 | **Le groupe** (`#groupe`) | « Un carré qui se déforme » · bio longue (3 premiers paragraphes) · photo de groupe légendée (de gauche à droite : Fabien, Victor, Charles, Florian) — EPK p. 2 |
-| 02 | **Studio & live** (`#studio`) | grille de 6 photos studio et live · suite de la bio · phrase de conclusion · encadré des influences — EPK p. 3 |
-| 03 | **Musique** (`#musique`) | lecteur **Totem Live Session** + texte + 2 titres · encadré « Premier EP » · encadré **Evoli** + Spotify / YouTube (pas de SoundCloud ici) — EPK p. 4 |
-| 04 | **Sur scène** (`#scene`) | photo de groupe MDS · dates à venir (agenda Google) · appel aux programmateurs · **Parcours** · **Agenda 2026** — EPK p. 5 |
-| 05 | **Réseaux** (`#reseaux`) | Instagram, YouTube, Facebook, SoundCloud |
-| 06 | **Contact** (`#contact`) | photo devant la fresque bleue · « Faire jouer UNSQWARE » · email (copiable), site, réseaux · formats de set · téléchargement de l'EPK — EPK p. 6 |
+Les étiquettes de section n'ont pas de numéro : elles reprennent les libellés du menu.
 
-Le titre de l'onglet est **« UNSQWARE - Jazz Prog »** (FR et EN).
+| Section (ancre) | Contenu (page de l'EPK) |
+|---|---|
+| **Accueil** (`#accueil`) | photo du mur rayé (couverture EPK) · « Jazz prog — Nantes » · accroche · badge « Premier EP — début 2027 » · CTA « Faire jouer UNSQWARE » + « Voir la Totem Live Session » · liens réseaux |
+| **Le groupe** (`#groupe`) | « Un carré qui se déforme » · bio (3 premiers paragraphes) · photo de groupe légendée (de gauche à droite : Fabien, Victor, Charles, Florian) · encadré des influences — EPK p. 2-3 |
+| **Sorties** (`#sorties`) | lecteur **Totem Live Session** + texte + 2 titres · encadré « Premier EP » · encadré **Evoli** + Spotify / YouTube — EPK p. 4 |
+| **Agenda** (`#agenda`) | photo de groupe MDS · dates à venir (agenda Google, titre « Prochaines dates » seulement s'il y en a) · **Agenda 2026** — EPK p. 5 |
+| **Réseaux** (`#reseaux`) | Instagram, YouTube, Facebook |
+| **Contact** (`#contact`) | photo devant la fresque bleue · « Faire jouer UNSQWARE » · email (copiable) · formats de set · presse · téléchargement de l'EPK — EPK p. 6 |
+
+Le titre de l'onglet est **« UNSQWARE - Jazz Prog »** (FR et EN). Le favicon est le logo noir sur fond blanc.
 
 ## Où modifier quoi (sans compétences techniques)
 
@@ -24,7 +25,7 @@ Le titre de l'onglet est **« UNSQWARE - Jazz Prog »** (FR et EN).
 |---|---|
 | Tous les textes du site (FR / EN) | `src/locales/fr.json`, `src/locales/en.json` |
 | Musiciens (ordre de la photo) et influences | `src/data/groupe.ts` |
-| Parcours et agenda 2026 | `src/data/parcours.ts` |
+| Agenda 2026 | `src/data/agenda.ts` |
 | Choix des photos | `src/data/photos.ts` (fichiers dans `public/images/`) |
 | Dates de concerts à venir | agenda Google (titre commençant par `[GIG]`) |
 | Couleurs | `src/styles/_base.scss` (bloc `:root`) |
@@ -45,7 +46,7 @@ Le titre de l'onglet est **« UNSQWARE - Jazz Prog »** (FR et EN).
 
 ## Bio
 
-La bio longue (8 paragraphes, source : Google Doc du groupe, novembre 2026) est intégrée telle quelle dans le site, répartie entre « Le groupe » et « Studio & live ». La version anglaise a été écrite à partir de la bio courte EN. Sources dans `site-update/content/` (`bio-longue-fr.md`, `bios-courtes.md`).
+La bio longue fait 8 paragraphes (source : Google Doc du groupe, novembre 2026). Seuls les 3 premiers sont sur le site, dans « Le groupe ». La section « Studio & live », qui portait la suite, a été retirée le 2026-11-25. La version anglaise a été écrite à partir de la bio courte EN. Sources dans `site-update/content/` (`bio-longue-fr.md`, `bios-courtes.md`).
 
 Points clés : formé à Nantes en 2022 · session Batiskaf en 2024 (titre **Evoli**) · Totem Live Session en 2025 à La Maison du Son · en 2026, accompagnement par deux structures nantaises, Prun'Radio, Prog Night #1 à La Carrière, une quinzaine de concerts · premier EP de six titres enregistré avec Franck Martin à Rennes (Ezurlie Magic Studio, producteur de Namas), sortie début 2027.
 
@@ -62,7 +63,7 @@ Points clés : formé à Nantes en 2022 · session Batiskaf en 2024 (titre **Evo
 
 Aaron Parks, The Cinematic Orchestra, Avishai Cohen, Julien Lourau, Gogo Penguin, Snarky Puppy, Nate Smith, Ryo Miyachi, Foehn Trio
 
-## Parcours
+## Parcours (EPK uniquement, retiré du site)
 
 | Année | Événement |
 |---|---|
@@ -73,7 +74,7 @@ Aaron Parks, The Cinematic Orchestra, Avishai Cohen, Julien Lourau, Gogo Penguin
 | 2026 | Une quinzaine de dates dans la métropole nantaise et les environs · Enregistrement de l'EP avec Franck Martin |
 | Début 2027 | Premier EP |
 
-L'agenda 2026 complet (12 dates) est dans `src/data/parcours.ts`.
+L'agenda 2026 complet (12 dates) est dans `src/data/agenda.ts`.
 
 ## Musique
 
@@ -89,7 +90,7 @@ L'agenda 2026 complet (12 dates) est dans `src/data/parcours.ts`.
 | YouTube | https://www.youtube.com/@unsqware |
 | Instagram | https://www.instagram.com/unsqware |
 | Facebook | https://www.facebook.com/unsqwaremusique |
-| SoundCloud | https://soundcloud.com/unsqware-musique |
+| SoundCloud (plus affiché sur le site) | https://soundcloud.com/unsqware-musique |
 | Spotify | https://open.spotify.com/artist/1gAWrCVQilgg6uzjN1CmMw |
 | Linktree | https://linktr.ee/unsqware |
 
@@ -102,7 +103,7 @@ L'agenda 2026 complet (12 dates) est dans `src/data/parcours.ts`.
 
 ## Photos
 
-Nouveau shooting de novembre 2026 (mur rayé, graff, grue), shooting MDS et photos studio / live. Les photos du shooting ZAW ont été retirées. Les originaux (JPEG et WebP) sont dans `site-update/assets/photos/`.
+Nouveau shooting de novembre 2026 (mur rayé, graff, grue) et shooting MDS. La grille de photos studio / live est partie avec la section « Studio & live ». Les photos du shooting ZAW ont été retirées. Les originaux (JPEG et WebP) sont dans `site-update/assets/photos/`.
 
 ---
 

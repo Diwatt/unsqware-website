@@ -3,19 +3,13 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { contactPhoto } from "./data/photos";
 import { CopyFeedbackController } from "./services/CopyFeedbackController";
-import { EMAIL, LINKS, SectionTag, mailto } from "./shared";
+import { EMAIL, SectionTag, mailto } from "./shared";
 
-// Page 6 of the EPK: the booking call, the contact rows, the set formats and the press kit download.
+// Page 6 of the EPK: the booking call, the email address, the set formats and the press kit download.
 export function Contact() {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const feedback = useMemo(() => new CopyFeedbackController(setCopied), []);
-  const rows = [
-    { label: t("contact.site"), href: "https://unsqwa.re/", value: "unsqwa.re" },
-    { label: "Instagram", href: LINKS.instagram, value: "@unsqware" },
-    { label: "Facebook", href: LINKS.facebook, value: "unsqwaremusique" },
-    { label: "YouTube", href: LINKS.youtube, value: "@unsqware" },
-  ];
 
   useEffect(() => () => feedback.dispose(), [feedback]);
 
@@ -52,14 +46,6 @@ export function Contact() {
                 </button>
               </span>
             </li>
-            {rows.map((row) => (
-              <li key={row.label}>
-                <span className="mono-label">{row.label}</span>
-                <a href={row.href} target="_blank" rel="noreferrer">
-                  {row.value}
-                </a>
-              </li>
-            ))}
           </ul>
 
           <div className="card contact__formats">
@@ -69,10 +55,6 @@ export function Contact() {
         </div>
 
         <div className="contact__links">
-          <a href={mailto(t("live.mailSubject"))}>
-            <span className="mono-label">{t("contact.promoters")}</span>
-            <span className="contact__link-title">{t("contact.suggest")}</span>
-          </a>
           <a href={mailto(t("contact.pressSubject"))}>
             <span className="mono-label">{t("contact.press")}</span>
             <span className="contact__link-title">{t("contact.interview")}</span>

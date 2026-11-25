@@ -5,9 +5,9 @@
 
 ## Objectif
 
-Le groupe trouve l'EPK 2027 plus réussi que le site. **Faire du site la version web de l'EPK** : mêmes couleurs, mêmes photos, même contenu, même ton. Les maquettes de référence sont les 6 pages de `assets/epk/page-1.png` à `page-6.png` (et le PDF `assets/epk/UNSQWARE-EPK-2027.pdf`).
+Le groupe trouve l'EPK 2027 plus réussi que le site. **Faire du site la version web de l'EPK** : mêmes couleurs, mêmes photos, même contenu, même ton. Les maquettes de référence sont les 7 pages de `assets/epk/page-1.png` à `page-7.png` (et le PDF `assets/epk/UNSQWARE-EPK-2027.pdf`).
 
-On garde ce qui fonctionne déjà : one-page à ancres, bilingue FR/EN (react-i18next), agenda Google pour les dates à venir, pré-rendu SEO (`scripts/prerender.tsx`), sitemap. **Le domaine reste `https://unsqwa.re/`** (ne pas passer sur unsqware.com : c'était une erreur dans les retours).
+On garde ce qui fonctionne déjà : one-page à ancres, bilingue FR/EN (react-i18next), agenda Google pour les dates à venir, pré-rendu SEO (`scripts/prerender.tsx`), sitemap. **Changement de domaine : l'adresse principale devient `https://unsqware.com/`** (validé par le groupe le 25/11/2026). `unsqwa.re` reste un raccourci qui redirige en 301 vers unsqware.com. Mettre à jour : canonical, hreflang, `og:url`, JSON-LD, `sitemap.xml`, `robots.txt`, `scripts/prerender.tsx`, `.indexnow`, `CONTENT.md` (section SEO). Côté registrar / hébergeur : brancher unsqware.com sur le site, rediriger unsqwa.re (et unsqware.fr) vers lui, redéclarer le domaine dans Google Search Console. Le QR code de l'EPK pointe déjà vers unsqware.com : il ne marchera qu'une fois ce domaine branché.
 
 Repères dans le code : `CONTENT.md` (contenu de référence), `src/locales/fr.json` / `en.json` (textes), `src/data/groupe.ts` (musiciens, influences), `src/data/photos.ts`, `src/data/marquee.ts`, `src/styles/_base.scss` (tokens), `index.html` (head, OG, JSON-LD), `scripts/prerender.tsx` (constante `EN_HEAD`).
 
@@ -20,7 +20,7 @@ Repères dans le code : `CONTENT.md` (contenu de référence), `src/locales/fr.j
    - Attention : en 16 px le logo est illisible et, noir, il disparaît sur un onglet en thème sombre. Proposer au groupe soit `logo-unsqware-white.png` via `<link rel="icon" media="(prefers-color-scheme: dark)">`, soit une icône simplifiée (carré seul). Les icônes 180/192/512 sont déjà sur fond clair (#e8e8e6) ; `variante-sombre-512x512.png` existe en blanc sur fond nuit.
 5. **Titre de l'onglet** : `UNSQWARE - Jazz Prog` (FR et EN : `<title>` dans `index.html` et dans `EN_HEAD`). Adapter `og:title` / `twitter:title` en cohérence.
 6. **Hero** :
-   - Enlever « depuis 2021 » : `hero.kicker` devient « Jazz hybride — Nantes » (EN : « Hybrid jazz — Nantes »).
+   - Enlever « depuis 2021 » : `hero.kicker` devient « Jazz prog — Nantes » (EN : « Prog jazz — Nantes »). Partout, l'étiquette de genre passe de « Jazz hybride » à « Jazz prog ».
    - Nouvelle accroche (`hero.lede`) : voir `content/contenu-epk.json` → `accroche_fr`. Traduire pour l'EN.
    - Supprimer `hero.sub` (qui cite MYT et Louis Matute) ou le remplacer par les nouvelles influences.
    - Photo principale : `assets/photos/hero-groupe-mur-raye.(webp|jpg)` (portrait 2:3, visages vers 40 % de la hauteur ; même photo que la couverture de l'EPK).
@@ -36,9 +36,9 @@ Repères dans le code : `CONTENT.md` (contenu de référence), `src/locales/fr.j
    - Chaque photo existe en `.webp` (à utiliser) et `.jpg` (repli / og:image). Mettre à jour les `alt` dans les locales.
    - **Portraits individuels** : le nouveau shooting n'a que des photos de groupe. Sous `groupe-graff-34`, les musiciens sont de gauche à droite : **Fabien, Victor, Charles, Florian** (comme dans l'EPK). Demander au groupe s'il garde les anciens portraits (`florian.jpg`, etc.) ou s'il les remplace par cette photo légendée.
    - `og:image` : régénérer `og-image.jpg` (1200×630) à partir de `groupe-grue-32`.
-10. **Section Sur scène** : ajouter, en plus de l'agenda Google (dates à venir), le **Parcours** et l'**Agenda 2026** de l'EPK (page 5). Données dans `content/contenu-epk.json` (`parcours`, `agenda_2026`) → créer `src/data/parcours.ts` éditable sans compétences techniques, comme `groupe.ts`.
-11. **Musique** : texte de la Totem Live Session (`totem_fr`) et encart « Premier EP » (`ep_fr` : enregistrement avec Franck Martin, Ezurlie Magic Studio, Rennes). Ne pas lister les titres de l'EP. Retirer SoundCloud de la section musique (comme dans l'EPK) ; demander au groupe s'il le garde dans « Réseaux ».
-12. **Contact** : ne plus écrire que le groupe répond lui-même sans agence. Ajouter le téléphone de Florian et Charles si le groupe le souhaite (voir `contacts`). Le lien « Dossier de presse [à venir] » devient un téléchargement de l'EPK : copier `assets/epk/UNSQWARE-EPK-2027.pdf` dans `public/` et supprimer l'ancienne `UNSQWARE-plaquette-2026.pdf`.
+10. **Parcours et agenda** (comme l'EPK) : le **Parcours** se place à la fin de la partie « Le groupe » (EPK page 3). La section « Sur scène » devient **« Agenda »**, séparée en **« À venir »** (agenda Google) et **« Passé »** (dates 2026 de l'EPK page 6). Données dans `content/contenu-epk.json` (`parcours`, `agenda_2026_passe`, `agenda_2026_a_venir`) → créer `src/data/parcours.ts` éditable sans compétences techniques, comme `groupe.ts`.
+11. **Section « Musique » renommée « Sorties »** (comme l'EPK page 5) : texte de la Totem Live Session (`totem_fr`) et encart « Premier EP » (`ep_fr` : enregistrement avec Franck Martin, Ezurlie Magic Studio, Rennes). Ne pas lister les titres de l'EP. Retirer SoundCloud de cette section (comme dans l'EPK) ; demander au groupe s'il le garde dans « Réseaux ». Dans l'EPK, la bio ne se termine plus par la phrase « Une musique qui joue avec les cadres… » : ne pas la reprendre sur le site.
+12. **Contact** : ne plus écrire que le groupe répond lui-même sans agence. Comme dans l'EPK, pas de lien YouTube dans le bloc contact (il reste dans « Réseaux »). Ajouter le téléphone de Florian et Charles si le groupe le souhaite (voir `contacts`). Le lien « Dossier de presse [à venir] » devient un téléchargement de l'EPK : copier `assets/epk/UNSQWARE-EPK-2027.pdf` dans `public/` et supprimer l'ancienne `UNSQWARE-plaquette-2026.pdf`.
 13. **CONTENT.md** : le mettre à jour pour refléter tout ce qui précède (il sert de référence au groupe).
 
 ## Points à confirmer avec le groupe au début du fil
@@ -50,7 +50,7 @@ Repères dans le code : `CONTENT.md` (contenu de référence), `src/locales/fr.j
 ## Vérifications avant de livrer
 
 - `pnpm build` passe (tsc + build client + pré-rendu FR/EN), `pnpm test` si présent.
-- `dist/index.html` et `dist/en/index.html` : titre « UNSQWARE - Jazz Prog », nouvelles meta, aucune trace de MYT / Matute / 2021 / violet.
+- `dist/index.html` et `dist/en/index.html` : titre « UNSQWARE - Jazz Prog », canonical sur unsqware.com, nouvelles meta, aucune trace de MYT / Matute / 2021 / violet / unsqwa.re (hors redirection).
 - Captures Playwright desktop et mobile (deviceScaleFactor 2) de chaque section, comparées aux pages de l'EPK.
 - Poids des images raisonnable (`loading="lazy"` hors hero, `width`/`height` pour éviter les sauts de mise en page).
 - Ne pas committer ni pousser sans l'accord de Florian.

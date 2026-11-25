@@ -52,7 +52,20 @@
       "Premier EP"
     ]
   ],
-  "agenda_2026": [
+  "contacts": {
+    "email": "unsqwaremusique@gmail.com",
+    "Florian Roy": "+33 6 03 50 97 99",
+    "Charles Demay": "+33 6 62 04 41 96"
+  },
+  "domaine": "https://unsqware.com/ (principal) ; unsqwa.re redirige",
+  "agenda_2026_a_venir": [
+    [
+      "2026-12-05",
+      "Chez Maurice",
+      "Nantes"
+    ]
+  ],
+  "agenda_2026_passe": [
     [
       "2026-02-06",
       "Wattignies",
@@ -107,17 +120,6 @@
       "2026-11-12",
       "Brewklyn",
       "Rennes"
-    ],
-    [
-      "2026-12-05",
-      "Chez Maurice",
-      "Nantes"
     ]
-  ],
-  "contacts": {
-    "email": "unsqwaremusique@gmail.com",
-    "Florian Roy": "+33 6 03 50 97 99",
-    "Charles Demay": "+33 6 62 04 41 96"
-  },
-  "domaine": "https://unsqwa.re/ (inchangé)"
+  ]
 }

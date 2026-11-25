@@ -12,8 +12,8 @@ describe("Navbar", () => {
 
     const expected = [
       ["Le groupe", "#groupe"],
-      ["Musique", "#musique"],
-      ["Sur scène", "#scene"],
+      ["Sorties", "#sorties"],
+      ["Agenda", "#agenda"],
       ["Réseaux", "#reseaux"],
       ["Nous contacter", "#contact"],
     ] as const;

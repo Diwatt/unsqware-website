@@ -15,9 +15,6 @@ export function Footer() {
           <a href={LINKS.youtube} target="_blank" rel="noreferrer">
             YouTube
           </a>
-          <a href={LINKS.soundcloud} target="_blank" rel="noreferrer">
-            SoundCloud
-          </a>
         </span>
       </div>
     </footer>

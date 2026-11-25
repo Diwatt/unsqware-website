@@ -6,6 +6,13 @@ import { Music } from "../src/Music";
 import { LINKS } from "../src/shared";
 
 describe("Music", () => {
+  it("is the releases section, tagged without a number", async () => {
+    await renderFr(<Music />);
+
+    expect(document.querySelector("section")?.id).toBe("sorties");
+    expect(document.querySelector(".tag__face")?.textContent).toBe("Sorties");
+  });
+
   it("embeds the Totem Live Session with its EPK text", async () => {
     await renderFr(<Music />);
 

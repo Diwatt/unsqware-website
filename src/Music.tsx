@@ -17,7 +17,7 @@ export function Music() {
   ];
 
   return (
-    <section id="musique" className="section container music">
+    <section id="sorties" className="section container music">
       <SectionTag label={t("music.tag")} />
       <h2 className="h2 music__title">{t("music.title")}</h2>
 

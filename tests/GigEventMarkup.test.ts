@@ -41,7 +41,7 @@ describe("GigEventMarkup.toJsonLd", () => {
     });
     expect(event.performer).toStrictEqual({ "@type": "MusicGroup", name: "UNSQWARE", url: "https://unsqwa.re/" });
     expect(event.organizer).toStrictEqual({ "@type": "Organization", name: "UNSQWARE", url: "https://unsqwa.re/" });
-    expect(event.url).toBe("https://unsqwa.re/#scene");
+    expect(event.url).toBe("https://unsqwa.re/#agenda");
   });
 
   it("uses the date alone for an all-day gig, on start and end alike", () => {
@@ -80,7 +80,7 @@ describe("GigEventMarkup.toJsonLd", () => {
     ]);
 
     expect(withTickets.offers).toStrictEqual({ "@type": "Offer", url: "https://example.com/billets" });
-    expect(withoutTickets.offers).toStrictEqual({ "@type": "Offer", url: "https://unsqwa.re/#scene" });
+    expect(withoutTickets.offers).toStrictEqual({ "@type": "Offer", url: "https://unsqwa.re/#agenda" });
   });
 
   it("escapes < so the JSON cannot close its script tag", () => {

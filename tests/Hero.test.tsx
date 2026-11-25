@@ -12,13 +12,14 @@ describe("Hero", () => {
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("UNSQWARE");
     expect(screen.getByText("Premier EP — début 2027")).toBeDefined();
     expect(screen.getByRole("link", { name: /Faire jouer UNSQWARE/ }).getAttribute("href")).toBe("#contact");
-    expect(screen.getByRole("link", { name: /Voir la Totem Live Session/ }).getAttribute("href")).toBe("#musique");
+    expect(screen.getByRole("link", { name: /Voir la Totem Live Session/ }).getAttribute("href")).toBe("#sorties");
   });
 
   it("uses the EPK hook line, without the founding year", async () => {
     await renderFr(<Hero />);
 
-    expect(screen.getByText("Jazz hybride — Nantes")).toBeDefined();
+    expect(screen.getByText("Jazz prog — Nantes")).toBeDefined();
+    expect(screen.queryByText(/hybride/)).toBeNull();
     expect(screen.getByText(/À la croisée du jazz moderne, du rock et de la musique progressive/)).toBeDefined();
     expect(screen.queryByText(/2021|MYT|Matute/)).toBeNull();
   });

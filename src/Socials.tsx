@@ -7,7 +7,6 @@ export function Socials() {
     { key: "instagram", name: "Instagram", href: LINKS.instagram, desc: t("socials.instagram") },
     { key: "youtube", name: "YouTube", href: LINKS.youtube, desc: t("socials.youtube") },
     { key: "facebook", name: "Facebook", href: LINKS.facebook, desc: t("socials.facebook") },
-    { key: "soundcloud", name: "SoundCloud", href: LINKS.soundcloud, desc: t("socials.soundcloud") },
   ];
 
   return (
@@ -17,7 +16,6 @@ export function Socials() {
           <SectionTag label={t("socials.tag")} />
           <h2 className="h2">{t("socials.title")}</h2>
         </div>
-        <p className="socials__text">{t("socials.text")}</p>
       </div>
 
       <div className="socials">

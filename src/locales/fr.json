@@ -1,8 +1,8 @@
 {
   "nav": {
     "band": "Le groupe",
-    "music": "Musique",
-    "live": "Sur scène",
+    "music": "Sorties",
+    "live": "Agenda",
     "socials": "Réseaux",
     "contact": "Nous contacter",
     "main": "Navigation principale",
@@ -11,7 +11,7 @@
     "closeMenu": "Fermer le menu"
   },
   "hero": {
-    "kicker": "Jazz hybride — Nantes",
+    "kicker": "Jazz prog — Nantes",
     "ep": "Premier EP — début 2027",
     "lede": "À la croisée du jazz moderne, du rock et de la musique progressive, UNSQWARE façonne un univers instrumental singulier mêlant textures électriques, grooves organiques et envolées improvisées.",
     "ctaContact": "Faire jouer UNSQWARE",
@@ -20,35 +20,21 @@
     "photoAlt": "Les quatre musiciens d'UNSQWARE devant un mur peint de rayures noires et blanches"
   },
   "band": {
-    "tag": "01 — Le groupe",
+    "tag": "Le groupe",
     "title": "Un carré qui se déforme",
     "intro": "À la croisée du jazz moderne, du rock et des musiques progressives, UNSQWARE façonne un univers instrumental singulier, où les textures électriques côtoient les grooves organiques et les envolées improvisées. Formé à Nantes en 2022, ce quartet explore les contrastes, joue avec les tensions et les dynamiques, et construit une musique aussi immersive qu'imprévisible.",
     "p1": "Porté par une solide expérience musicale et une même envie de repousser les frontières, le groupe développe un son à la fois puissant, subtil et cinématographique. Dans la lignée d'Aaron Parks, Snarky Puppy ou The Cinematic Orchestra, UNSQWARE navigue entre compositions ciselées, rythmiques incisives et échappées libres. Chaque morceau ouvre un nouvel espace d'exploration, où l'écriture et l'improvisation s'entremêlent pour laisser place à l'inattendu.",
     "p2": "À l'origine du projet, la rencontre de Florian Roy (basse, contrebasse) et Charles Demay (batterie), réunis autour d'une envie commune : créer une musique originale, nourrie par un jazz contemporain ouvert et sans frontières. L'arrivée de Fabien Maurin (guitare), formé au CIM à Paris, vient enrichir le paysage sonore du groupe, en apportant une nouvelle dimension mélodique et des possibilités d'arrangements élargies. L'intégration de Victor Pavel (piano, claviers) vient finalement compléter le quartet et donner toute son ampleur à cette identité musicale.",
     "photoAlt": "Les quatre musiciens d'UNSQWARE devant un mur de graffitis : Fabien Maurin, Victor Pavel, Charles Demay et Florian Roy",
-    "leftToRight": "De gauche à droite"
-  },
-  "studio": {
-    "tag": "02 — Studio & live",
-    "p1": "Sur scène, UNSQWARE fait de cette matière sonore un terrain de jeu vivant, alternant passages contemplatifs, montées en tension et décharges d'énergie. Le groupe multiplie les expériences scéniques dans la métropole nantaise et commence à se faire remarquer au-delà de son territoire. En 2024, il est notamment programmé sur le OFF du Printemps de Bourges et intègre la short-list de la scène Talents Jazz des Rendez-vous de l'Erdre. La même année, une première session d'enregistrement au studio Batiskaf, à Nantes, donne naissance au titre Evoli, disponible sur l'ensemble des plateformes.",
-    "p2": "En 2025, le quartet franchit une nouvelle étape et affirme davantage sa dimension rock et progressive. Deux nouvelles compositions sont enregistrées à La Maison du Son, à Port-Saint-Père, pour donner naissance à la Totem Live Session, publiée sur YouTube en septembre. Au-delà de la captation musicale, le groupe développe un véritable parti pris visuel autour de son nom : un carré qui se déforme, se transforme et échappe à sa propre géométrie. Une métaphore de sa musique, qui aime sortir du cadre et brouiller les lignes.",
-    "p3": "À partir de 2026, UNSQWARE s'entoure de deux structures nantaises pour affiner son identité artistique et accélérer le développement de sa diffusion. Cette nouvelle dynamique se traduit notamment par une programmation sur Prun'Radio et une participation à la Prog Night #1, organisée à La Carrière, à Nantes. Le groupe poursuit ainsi son ancrage sur le territoire avec une quinzaine de concerts dans la métropole nantaise et ses environs.",
-    "p4": "Aujourd'hui, UNSQWARE prépare la sortie de son premier EP : six titres qui condensent plusieurs années de recherche, d'expérimentation et de construction collective. Le groupe a l'opportunité de réaliser l'enregistrement avec Franck Martin à Rennes (Ezurlie Magic Studio, producteur de Namas). Sa finalisation est prévue pour début 2027. En parallèle, le quartet continue de faire évoluer son répertoire au contact du public, avec une ambition claire : porter sa musique sur les scènes de référence et les festivals de jazz en France.",
-    "closing": "Une musique qui joue avec les cadres, bouscule les équilibres et fait de l'imprévu son terrain d'expression.",
+    "leftToRight": "De gauche à droite",
     "influences": "Influences"
   },
   "photos": {
-    "liveStage": "UNSQWARE en concert, sous les lumières de la scène",
-    "batiskafBass": "La basse en studio au Batiskaf, devant une bibliothèque",
-    "mdsRoom": "La salle de La Maison du Son pendant la Totem Live Session",
-    "batiskafGuitar": "La guitare en studio au Batiskaf",
-    "liveGuitar": "Le guitariste d'UNSQWARE sur scène, en lumière bleue",
-    "batiskafDrums": "La batterie en studio au Batiskaf",
     "violetMds": "Les quatre musiciens d'UNSQWARE en lumière violette, à La Maison du Son",
     "graffBanner": "Les quatre musiciens d'UNSQWARE devant une fresque bleue"
   },
   "music": {
-    "tag": "03 — Musique",
+    "tag": "Sorties",
     "title": "Totem Live Session",
     "totemText": "Dans cette live session publiée en 2025, l'esthétique du groupe se révèle en affirmant davantage sa dimension rock et progressive. Le projet développe un véritable parti pris visuel autour de son nom : un carré qui se déforme, se transforme et échappe à sa propre géométrie. Une métaphore de sa musique, qui aime sortir du cadre et brouiller les lignes.",
     "totemPlace": "Captée à La Maison du Son, Port-Saint-Père — septembre 2025",
@@ -61,38 +47,26 @@
     "artistPage": "Page artiste"
   },
   "live": {
-    "tag": "04 — Sur scène",
+    "tag": "Agenda",
     "title": "Prochaines dates",
-    "announce": "Les nouvelles dates sont annoncées d'abord sur",
-    "and": "et",
-    "callTitle": "Votre salle, votre festival ?",
-    "callText": "Le quartet cherche de nouvelles scènes pour 2027 et la sortie de l'EP. Écrivez-nous directement.",
-    "callCta": "Proposer une date",
-    "mailSubject": "Concert UNSQWARE",
-    "historyTitle": "Parcours",
     "agendaTitle": "Agenda 2026"
   },
   "socials": {
-    "tag": "05 — Réseaux",
+    "tag": "Réseaux",
     "title": "Suivez le quartet",
-    "text": "Extraits, répétitions, coulisses et dates : c'est sur nos réseaux que tout se passe en premier.",
     "instagram": "@unsqware · extraits, coulisses, dates",
     "youtube": "@unsqware · live sessions, studio",
-    "facebook": "unsqwaremusique · annonces concerts",
-    "soundcloud": "unsqware-musique · lives, démos"
+    "facebook": "unsqwaremusique · annonces concerts"
   },
   "contact": {
-    "tag": "06 — Contact",
+    "tag": "Contact",
     "title": "Faire jouer UNSQWARE",
     "text": "Concert, festival, presse : écrivez-nous.",
     "copy": "Copier l'adresse",
     "copied": "Adresse copiée ✓",
     "email": "Email",
-    "site": "Site",
     "formatsTitle": "Formats",
     "formatsText": "Set de 30 min (tremplin) · 45 min à 1 h · 2 × 45 min. Fiche technique et plan de scène sur demande.",
-    "promoters": "Programmateurs",
-    "suggest": "Proposer une date →",
     "press": "Presse & médias",
     "interview": "Demander une interview →",
     "kit": "Dossier de presse · EPK 2027",

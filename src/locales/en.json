@@ -1,8 +1,8 @@
 {
   "nav": {
     "band": "The band",
-    "music": "Music",
-    "live": "Live",
+    "music": "Releases",
+    "live": "Shows",
     "socials": "Socials",
     "contact": "Contact us",
     "main": "Main navigation",
@@ -11,7 +11,7 @@
     "closeMenu": "Close menu"
   },
   "hero": {
-    "kicker": "Hybrid jazz — Nantes",
+    "kicker": "Jazz prog — Nantes",
     "ep": "Debut EP — early 2027",
     "lede": "At the crossroads of modern jazz, rock and progressive music, UNSQWARE shapes a distinctive instrumental world blending electric textures, organic grooves and soaring improvisations.",
     "ctaContact": "Book UNSQWARE",
@@ -20,35 +20,21 @@
     "photoAlt": "The four members of UNSQWARE in front of a wall painted with black and white stripes"
   },
   "band": {
-    "tag": "01 — The band",
+    "tag": "The band",
     "title": "A square that bends",
     "intro": "At the crossroads of modern jazz, rock and progressive music, UNSQWARE shapes a distinctive instrumental world where electric textures meet organic grooves and soaring improvisations. Formed in Nantes in 2022, the quartet explores contrasts, plays with tension and dynamics, and builds music that is as immersive as it is unpredictable.",
     "p1": "Driven by solid musical experience and a shared urge to push boundaries, the band has developed a sound that is powerful, subtle and cinematic all at once. In the vein of Aaron Parks, Snarky Puppy and The Cinematic Orchestra, UNSQWARE moves between finely crafted compositions, incisive rhythms and free-flowing passages. Each piece opens a new space for exploration, where writing and improvisation intertwine to make room for the unexpected.",
     "p2": "The project began when Florian Roy (bass, double bass) and Charles Demay (drums) came together around a shared wish: to create original music rooted in an open, borderless contemporary jazz. Fabien Maurin (guitar), trained at CIM in Paris, then broadened the band's sound with a new melodic dimension and wider arranging possibilities. Victor Pavel (piano, keys) finally completed the quartet, giving this musical identity its full scope.",
     "photoAlt": "The four members of UNSQWARE in front of a graffiti wall: Fabien Maurin, Victor Pavel, Charles Demay and Florian Roy",
-    "leftToRight": "From left to right"
-  },
-  "studio": {
-    "tag": "02 — Studio & live",
-    "p1": "On stage, UNSQWARE turns this sonic material into a living playground, alternating contemplative passages, rising tension and bursts of energy. The band plays regularly around Nantes and is starting to get noticed beyond its home turf. In 2024, it was booked for the OFF programme of the Printemps de Bourges and shortlisted for the Talents Jazz stage of the Rendez-vous de l'Erdre. That same year, a first recording session at Studio Batiskaf in Nantes produced the track Evoli, available on all platforms.",
-    "p2": "In 2025, the quartet took a new step and leaned further into its rock and progressive side. Two new compositions were recorded at La Maison du Son in Port-Saint-Père for the Totem Live Session, released on YouTube in September. Beyond the recording itself, the band developed a strong visual concept around its name: a square that bends, transforms and escapes its own geometry. A metaphor for its music, which likes to step outside the frame and blur the lines.",
-    "p3": "Since 2026, UNSQWARE has been working with two Nantes-based organisations to refine its artistic identity and grow its audience. This new momentum has brought airplay on Prun'Radio and a slot at Prog Night #1, held at La Carrière in Nantes, along with some fifteen concerts in and around Nantes.",
-    "p4": "Today, UNSQWARE is preparing its debut EP: six tracks that distil several years of research, experimentation and collective work. The band had the opportunity to record it with Franck Martin in Rennes (Ezurlie Magic Studio, producer of Namas), with release planned for early 2027. Meanwhile, the quartet keeps shaping its repertoire in front of audiences, with a clear ambition: to bring its music to France's leading venues and jazz festivals.",
-    "closing": "Music that plays with frames, upsets balances and makes the unexpected its playground.",
+    "leftToRight": "From left to right",
     "influences": "Influences"
   },
   "photos": {
-    "liveStage": "UNSQWARE playing live under the stage lights",
-    "batiskafBass": "The bass in the studio at Batiskaf, in front of a bookcase",
-    "mdsRoom": "The room at La Maison du Son during the Totem Live Session",
-    "batiskafGuitar": "The guitar in the studio at Batiskaf",
-    "liveGuitar": "UNSQWARE's guitarist on stage in blue light",
-    "batiskafDrums": "The drums in the studio at Batiskaf",
     "violetMds": "The four members of UNSQWARE in purple light at La Maison du Son",
     "graffBanner": "The four members of UNSQWARE in front of a blue mural"
   },
   "music": {
-    "tag": "03 — Music",
+    "tag": "Releases",
     "title": "Totem Live Session",
     "totemText": "In this live session released in 2025, the band's aesthetic comes into focus as it leans further into its rock and progressive side. The project builds a strong visual concept around its name: a square that bends, transforms and escapes its own geometry. A metaphor for its music, which likes to step outside the frame and blur the lines.",
     "totemPlace": "Recorded at La Maison du Son, Port-Saint-Père — September 2025",
@@ -61,38 +47,26 @@
     "artistPage": "Artist page"
   },
   "live": {
-    "tag": "04 — Live",
+    "tag": "Shows",
     "title": "Upcoming shows",
-    "announce": "New dates are announced first on",
-    "and": "and",
-    "callTitle": "Your venue, your festival?",
-    "callText": "The quartet is looking for new stages for 2027 and the EP release. Write to us directly.",
-    "callCta": "Suggest a date",
-    "mailSubject": "UNSQWARE show",
-    "historyTitle": "Timeline",
     "agendaTitle": "2026 shows"
   },
   "socials": {
-    "tag": "05 — Socials",
+    "tag": "Socials",
     "title": "Follow the quartet",
-    "text": "Clips, rehearsals, backstage and dates: it all happens on our socials first.",
     "instagram": "@unsqware · clips, backstage, dates",
     "youtube": "@unsqware · live sessions, studio",
-    "facebook": "unsqwaremusique · show announcements",
-    "soundcloud": "unsqware-musique · live recordings, demos"
+    "facebook": "unsqwaremusique · show announcements"
   },
   "contact": {
-    "tag": "06 — Contact",
+    "tag": "Contact",
     "title": "Book UNSQWARE",
     "text": "Gigs, festivals, press: write to us.",
     "copy": "Copy address",
     "copied": "Address copied ✓",
     "email": "Email",
-    "site": "Website",
     "formatsTitle": "Formats",
     "formatsText": "30-min set (showcase) · 45 min to 1 h · 2 × 45 min. Tech rider and stage plot on request.",
-    "promoters": "Promoters",
-    "suggest": "Suggest a date →",
     "press": "Press & media",
     "interview": "Request an interview →",
     "kit": "Press kit · EPK 2027",

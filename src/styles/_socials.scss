@@ -1,9 +1,4 @@
 // ——— Réseaux ———
-.socials__text {
-  max-width: 26em;
-  color: var(--soft);
-}
-
 .socials {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

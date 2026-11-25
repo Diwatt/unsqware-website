@@ -37,6 +37,7 @@ describe("Gigs", () => {
     await renderFr(<Gigs />);
 
     expect(await screen.findByText("Le Brewklyn")).toBeDefined();
+    expect(screen.getByRole("heading", { name: "Prochaines dates" })).toBeDefined();
     expect(screen.getByText("Chez Maurice")).toBeDefined();
     expect(screen.getByText("12 nov.")).toBeDefined();
     expect(screen.getByText("5 déc.")).toBeDefined();
@@ -98,14 +99,14 @@ describe("Gigs", () => {
     expect(banner.getAttribute("sizes")).toBe("100vw");
   });
 
-  it("shows the EPK timeline, from 2022 to the debut EP", async () => {
+  it("is the agenda section, without the timeline nor the call for dates", async () => {
     stubFetch({ items: [] });
     await renderFr(<Gigs />);
 
-    expect(screen.getByRole("heading", { name: "Parcours" })).toBeDefined();
-    const years = [...document.querySelectorAll(".timeline__year")].map((el) => el.textContent);
-    expect(years).toStrictEqual(["2022", "2023", "2024", "2025", "2026", "Début 2027"]);
-    expect(screen.getByText("Création du groupe à Nantes")).toBeDefined();
+    expect(document.querySelector("section")?.id).toBe("agenda");
+    expect(document.querySelector(".tag__face")?.textContent).toBe("Agenda");
+    expect(screen.queryByRole("heading", { name: "Parcours" })).toBeNull();
+    expect(screen.queryByText(/Proposer une date/)).toBeNull();
   });
 
   it("lists the 2026 shows with their EPK date format", async () => {
@@ -118,16 +119,16 @@ describe("Gigs", () => {
     expect(screen.getByText("Prog Night, La Carrière (Nantes)")).toBeDefined();
   });
 
-  it("falls back to the announcement when the agenda is unreachable", async () => {
+  it("keeps only the 2026 shows when the agenda is unreachable", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockRejectedValue(new Error("Google Calendar HTTP 403")),
     );
     await renderFr(<Gigs />);
 
-    expect(
-      await screen.findByText(/Les nouvelles dates sont annoncées d'abord sur/),
-    ).toBeDefined();
+    expect(await screen.findByRole("heading", { name: "Agenda 2026" })).toBeDefined();
+    expect(screen.queryByRole("heading", { name: "Prochaines dates" })).toBeNull();
     expect(document.querySelector(".dates")).toBeNull();
+    expect(screen.queryByText(/annoncées d'abord sur/)).toBeNull();
   });
 });

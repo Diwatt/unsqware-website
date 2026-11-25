@@ -21,6 +21,9 @@
   --font-mono: "JetBrains Mono", monospace;
 
   --gutter: clamp(16px, 4vw, 56px);
+
+  // Page déjà sombre : les navigateurs à mode sombre forcé ne doivent pas en recalculer les couleurs.
+  color-scheme: dark;
 }
 
 html {

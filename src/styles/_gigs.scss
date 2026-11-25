@@ -1,13 +1,9 @@
-// ——— Sur scène ———
+// ——— Agenda ———
 .live {
   border-block: 1px solid var(--line);
 
   &__title {
     margin-bottom: 48px;
-  }
-
-  &__announce {
-    color: var(--muted);
   }
 
   // Photo de groupe en bandeau pleine largeur, comme en haut de la page 5 de l'EPK.
@@ -21,35 +17,10 @@
   &__subtitle {
     margin: 96px 0 24px;
   }
-}
 
-// Parcours : année ocre en marge, une ligne par événement.
-.timeline {
-  border-top: 1px solid var(--line);
-
-  li {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 4px 24px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--line);
-
-    @media (max-width: 560px) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  &__year {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    color: var(--accent);
-  }
-
-  &__events {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    color: var(--soft);
+  // Sans date à venir, l'agenda 2026 suit directement l'étiquette de section.
+  .tag + &__subtitle {
+    margin-top: 0;
   }
 }
 
@@ -124,34 +95,5 @@
     font-size: 14px;
     color: var(--muted);
     text-transform: uppercase;
-  }
-}
-
-.callout {
-  margin-top: 56px;
-  border: 1.5px solid var(--accent);
-  padding: clamp(24px, 3vw, 40px);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px 40px;
-
-  > div {
-    flex: 1 1 420px;
-    min-width: 0;
-  }
-
-  &__title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(28px, 3vw, 42px);
-    line-height: 0.95;
-    text-transform: uppercase;
-  }
-
-  &__text {
-    margin-top: 10px;
-    color: var(--soft);
   }
 }

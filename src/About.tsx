@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { SectionTag } from "./shared";
-import { members } from "./data/groupe";
+import { influences, members } from "./data/groupe";
 import { bandPhoto } from "./data/photos";
 
 export function About() {
@@ -43,6 +43,11 @@ export function About() {
           <span className="mono-label band-photo__order">{t("band.leftToRight")}</span>
         </figcaption>
       </figure>
+
+      <div className="influences">
+        <span className="mono-label">{t("band.influences")}</span>
+        <p>{influences.join(" / ")}</p>
+      </div>
     </section>
   );
 }

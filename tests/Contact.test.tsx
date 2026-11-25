@@ -4,14 +4,14 @@ import { fireEvent, screen } from "@testing-library/react";
 
 import { renderFr } from "./helpers";
 import { Contact } from "../src/Contact";
-import { EMAIL, LINKS } from "../src/shared";
+import { EMAIL } from "../src/shared";
 
 // The real library needs a working clipboard/execCommand; the component
 // contract under test is the call and the feedback gating.
 vi.mock("copy-to-clipboard", () => ({ default: vi.fn(() => true) }));
 
 describe("Contact", () => {
-  it("renders the booking call, the clickable email address and the request links", async () => {
+  it("renders the booking call, the clickable email address and the press link", async () => {
     await renderFr(<Contact />);
 
     expect(screen.getByRole("heading", { name: "Faire jouer UNSQWARE" })).toBeDefined();
@@ -19,8 +19,9 @@ describe("Contact", () => {
     const email = screen.getByRole("link", { name: EMAIL });
     expect(email.getAttribute("href")).toBe(`mailto:${EMAIL}`);
     expect(
-      screen.getByRole("link", { name: /Programmateurs/ }).getAttribute("href"),
-    ).toBe(`mailto:${EMAIL}?subject=${encodeURIComponent("Concert UNSQWARE")}`);
+      screen.getByRole("link", { name: /Presse & médias/ }).getAttribute("href"),
+    ).toBe(`mailto:${EMAIL}?subject=${encodeURIComponent("Presse UNSQWARE")}`);
+    expect(screen.queryByText(/Proposer une date/)).toBeNull();
   });
 
   it("offers the EPK 2027 for download", async () => {
@@ -31,11 +32,12 @@ describe("Contact", () => {
     expect(kit.hasAttribute("download")).toBe(true);
   });
 
-  it("lists the site and social rows, and the set formats", async () => {
+  it("keeps the email as the only contact row, next to the set formats", async () => {
     await renderFr(<Contact />);
 
-    expect(screen.getByRole("link", { name: "unsqwa.re" }).getAttribute("href")).toBe("https://unsqwa.re/");
-    expect(screen.getByRole("link", { name: "unsqwaremusique" }).getAttribute("href")).toBe(LINKS.facebook);
+    expect(document.querySelectorAll(".contact__rows li")).toHaveLength(1);
+    expect(screen.queryByRole("link", { name: "unsqwa.re" })).toBeNull();
+    expect(screen.queryByRole("link", { name: "unsqwaremusique" })).toBeNull();
     expect(screen.getByText(/Set de 30 min \(tremplin\)/)).toBeDefined();
   });
 

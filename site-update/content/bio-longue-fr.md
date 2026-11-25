@@ -14,4 +14,4 @@ En 2025, le quartet franchit une nouvelle étape et affirme davantage sa dimensi
 
 Aujourd'hui, UNSQWARE prépare la sortie de son premier EP : six titres qui condensent plusieurs années de recherche, d'expérimentation et de construction collective. Le groupe a l’opportunité de réaliser l’enregistrement avec Franck Martin à Rennes (Ezurlie Magic Studio, producteur de Namas). Sa finalisation est prévue pour début 2027. En parallèle, le quartet continue de faire évoluer son répertoire au contact du public, avec une ambition claire : porter sa musique sur les scènes de référence et les festivals de jazz en France.
 
-Une musique qui joue avec les cadres, bouscule les équilibres et fait de l'imprévu son terrain d'expression.
+> Phrase de conclusion retirée de l'EPK à la demande du groupe : « Une musique qui joue avec les cadres, bouscule les équilibres et fait de l'imprévu son terrain d'expression. »

@@ -6,8 +6,8 @@ import { LanguagePreference } from "./services/LanguagePreference";
 
 const SECTION_IDS = [
 	"groupe",
-	"musique",
-	"scene",
+	"sorties",
+	"agenda",
 	"reseaux",
 	"contact",
 ];
@@ -76,8 +76,8 @@ export function Navbar() {
 	const links = useMemo(
 		() => [
 			{ id: "groupe", label: t("nav.band") },
-			{ id: "musique", label: t("nav.music") },
-			{ id: "scene", label: t("nav.live") },
+			{ id: "sorties", label: t("nav.music") },
+			{ id: "agenda", label: t("nav.live") },
 			{ id: "reseaux", label: t("nav.socials") },
 		],
 		[t],

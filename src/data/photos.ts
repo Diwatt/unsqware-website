@@ -20,21 +20,10 @@ export const bandPhoto = {
   height: 1333,
 } as const;
 
-// ── "Studio & live": the six photos of the grid ───────────────────
-//  The three Batiskaf photos are small (1080 px): keep them in the grid.
-export const studioPhotos = [
-  { photo: "/images/live-scene-2024.webp", alt: "photos.liveStage" },
-  { photo: "/images/studio-batiskaf-basse.webp", alt: "photos.batiskafBass" },
-  { photo: "/images/studio-mds-salle.webp", alt: "photos.mdsRoom" },
-  { photo: "/images/studio-batiskaf-guitare.webp", alt: "photos.batiskafGuitar" },
-  { photo: "/images/live-guitare-bleue.webp", alt: "photos.liveGuitar" },
-  { photo: "/images/studio-batiskaf-batterie.webp", alt: "photos.batiskafDrums" },
-] as const;
-
-// ── "Musique": the poster shown before the Totem video plays ──────
+// ── "Sorties": the poster shown before the Totem video plays ──────
 export const totemPoster = "/images/studio-mds-salle-2.webp";
 
-// ── "Sur scène": the full-width photo at the top of the section ───
+// ── "Agenda": the full-width photo at the top of the section ──────
 //  Full-width photos need the full resolution (2000 px or more) to stay sharp.
 export const stagePhoto = {
   photo: "/images/groupe-violet-mds.webp",
