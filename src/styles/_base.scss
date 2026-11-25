@@ -15,6 +15,10 @@
   --accent: #d69a4c; // ocre : liens, CTA, étiquettes mono
   --teal: #5b8fa3; // bleu canard : accent secondaire, écho du logo carré
   --header: rgba(21, 25, 28, 0.92);
+  // Aplat ocre peint par une tuile SVG de 10 px non étirée : le mode sombre forcé de Samsung Internet
+  // assombrit les couleurs CSS en rouge brique mais laisse presque intactes les petites images.
+  --accent-fill: var(--accent)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Crect width='10' height='10' fill='%23d69a4c'/%3E%3C/svg%3E");
 
   --font-display: "Big Shoulders Display", sans-serif;
   --font-body: "Instrument Sans", system-ui, sans-serif;

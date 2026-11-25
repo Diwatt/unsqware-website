@@ -42,7 +42,7 @@
 
   &__cta {
     padding: 12px 18px;
-    background: var(--accent);
+    background: var(--accent-fill);
     color: var(--bg);
     font-weight: 500;
     text-decoration: none;
@@ -139,7 +139,7 @@
     letter-spacing: inherit;
 
     &[aria-current="page"] {
-      background: var(--accent);
+      background: var(--accent-fill);
       color: var(--bg);
     }
   }
