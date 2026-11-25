@@ -13,6 +13,7 @@ export const LINKS = {
   youtube: "https://www.youtube.com/@unsqware",
   facebook: "https://www.facebook.com/unsqwaremusique",
   spotify: "https://open.spotify.com/artist/1gAWrCVQilgg6uzjN1CmMw",
+  deezer: "https://www.deezer.com/fr/artist/291754311",
 };
 
 export const mailto = (subject?: string) =>

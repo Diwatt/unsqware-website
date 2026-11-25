@@ -7,15 +7,17 @@
 ## Structure de la page
 
 Les étiquettes de section n'ont pas de numéro : elles reprennent les libellés du menu.
+Quand les retours du groupe sur le site et l'EPK divergent, les retours sur le site priment : pas de Parcours, pas de
+« Studio & live », un seul contact (l'email).
 
 | Section (ancre) | Contenu (page de l'EPK) |
 |---|---|
 | **Accueil** (`#accueil`) | photo du mur rayé (couverture EPK) · « Jazz prog — Nantes » · accroche · badge « Premier EP — début 2027 » · CTA « Faire jouer UNSQWARE » + « Voir la Totem Live Session » · liens réseaux |
 | **Le groupe** (`#groupe`) | « Un carré qui se déforme » · bio (3 premiers paragraphes) · photo de groupe légendée (de gauche à droite : Fabien, Victor, Charles, Florian) · encadré des influences — EPK p. 2-3 |
-| **Sorties** (`#sorties`) | lecteur **Totem Live Session** + texte + 2 titres · encadré « Premier EP » · encadré **Evoli** + Spotify / YouTube — EPK p. 4 |
-| **Agenda** (`#agenda`) | photo de groupe MDS · dates à venir (agenda Google, titre « Prochaines dates » seulement s'il y en a) · **Agenda 2026** — EPK p. 5 |
+| **Sorties** (`#sorties`) | lecteur **Totem Live Session** + texte + 2 titres · encadré « Premier EP » · encadré **Evoli** + Spotify / Deezer / YouTube — EPK p. 5 |
+| **Agenda** (`#agenda`) | photo de groupe MDS · **À venir** (agenda Google, affiché seulement s'il y a des dates) · **Passé — 2026** — EPK p. 6 |
 | **Réseaux** (`#reseaux`) | Instagram, YouTube, Facebook |
-| **Contact** (`#contact`) | photo devant la fresque bleue · « Faire jouer UNSQWARE » · email (copiable) · formats de set · presse · téléchargement de l'EPK — EPK p. 6 |
+| **Contact** (`#contact`) | photo devant la fresque bleue · « Faire jouer UNSQWARE » · email (copiable) · formats de set · presse · téléchargement de l'EPK — EPK p. 7 |
 
 Le titre de l'onglet est **« UNSQWARE - Jazz Prog »** (FR et EN). Le favicon est le logo noir sur fond blanc.
 
@@ -25,7 +27,7 @@ Le titre de l'onglet est **« UNSQWARE - Jazz Prog »** (FR et EN). Le favicon e
 |---|---|
 | Tous les textes du site (FR / EN) | `src/locales/fr.json`, `src/locales/en.json` |
 | Musiciens (ordre de la photo) et influences | `src/data/groupe.ts` |
-| Agenda 2026 | `src/data/agenda.ts` |
+| Dates passées 2026 (y ajouter un concert une fois joué) | `src/data/agenda.ts` |
 | Choix des photos | `src/data/photos.ts` (fichiers dans `public/images/`) |
 | Dates de concerts à venir | agenda Google (titre commençant par `[GIG]`) |
 | Couleurs | `src/styles/_base.scss` (bloc `:root`) |
@@ -33,7 +35,7 @@ Le titre de l'onglet est **« UNSQWARE - Jazz Prog »** (FR et EN). Le favicon e
 ## Identité
 
 - **Nom** : UNSQWARE
-- **Genre** : jazz prog / jazz hybride — jazz moderne, rock et musique progressive, instrumental
+- **Genre** : jazz prog (EN : prog jazz) — jazz moderne, rock et musique progressive, instrumental
 - **Ville** : Nantes, France
 - **Formé** : à Nantes en **2022**
 - **Signature visuelle** : un carré qui se déforme (Totem Live Session, logo « unsqware JAZZ. PROG. »)
@@ -74,11 +76,11 @@ Aaron Parks, The Cinematic Orchestra, Avishai Cohen, Julien Lourau, Gogo Penguin
 | 2026 | Une quinzaine de dates dans la métropole nantaise et les environs · Enregistrement de l'EP avec Franck Martin |
 | Début 2027 | Premier EP |
 
-L'agenda 2026 complet (12 dates) est dans `src/data/agenda.ts`.
+Les 11 dates passées de 2026 sont dans `src/data/agenda.ts` ; la date à venir (Chez Maurice, 05/12/26) vient de l'agenda Google.
 
-## Musique
+## Sorties
 
-- **Totem Live Session** (2025, La Maison du Son, Port-Saint-Père) : Abandon me (05:35), Find the Meaning (05:45) — YouTube `I4tQ71Z90Hw`
+- **Totem Live Session** (2025, La Maison du Son, Port-Saint-Père) : Abandon me (05:51), Find the Meaning (11:26) — YouTube `I4tQ71Z90Hw`
 - **Evoli** (studio Batiskaf, 2024) : disponible sur toutes les plateformes
 - **Premier EP** : six titres, enregistré avec Franck Martin à Rennes, sortie début 2027 (titres non listés)
 
@@ -86,12 +88,13 @@ L'agenda 2026 complet (12 dates) est dans `src/data/agenda.ts`.
 
 | Plateforme | URL |
 |---|---|
-| Site | https://unsqwa.re/ |
+| Site | https://unsqware.com/ (raccourci : unsqwa.re) |
 | YouTube | https://www.youtube.com/@unsqware |
 | Instagram | https://www.instagram.com/unsqware |
 | Facebook | https://www.facebook.com/unsqwaremusique |
 | SoundCloud (plus affiché sur le site) | https://soundcloud.com/unsqware-musique |
 | Spotify | https://open.spotify.com/artist/1gAWrCVQilgg6uzjN1CmMw |
+| Deezer | https://www.deezer.com/fr/artist/291754311 |
 | Linktree | https://linktr.ee/unsqware |
 
 ## Contact
@@ -99,7 +102,7 @@ L'agenda 2026 complet (12 dates) est dans `src/data/agenda.ts`.
 - **Email** : unsqwaremusique@gmail.com
 - **Formats** : set de 30 min (tremplin) · 45 min à 1 h · 2 × 45 min — fiche technique et plan de scène sur demande
 - **Dossier de presse** : `public/UNSQWARE-EPK-2027.pdf` (téléchargeable depuis la section Contact)
-- Les téléphones de Florian et Charles figurent dans l'EPK mais pas sur le site (à ajouter si le groupe le souhaite)
+- Les téléphones de Florian et Charles, le site et les réseaux figurent dans le contact de l'EPK, mais le site ne garde que l'email (retour du groupe)
 
 ## Photos
 
@@ -109,14 +112,14 @@ Nouveau shooting de novembre 2026 (mur rayé, graff, grue) et shooting MDS. La g
 
 ## SEO
 
-Domaine canonique : **https://unsqwa.re/** — unsqware.com, unsqware.fr, les variantes www et unsqware.vercel.app redirigent vers lui.
+Domaine canonique : **https://unsqware.com/** (depuis le 2026-11-25) — unsqwa.re, unsqware.fr, les variantes www et unsqware.vercel.app redirigent vers lui. Le QR code de l'EPK pointe vers unsqware.com. Penser à déclarer unsqware.com dans Google Search Console et Bing Webmaster Tools.
 
 Le HTML statique (FR + EN) est **généré à chaque build depuis l'app React elle-même** : `pnpm build` enchaîne `tsc` → build client → build SSR + génération (`scripts/prerender.tsx`). React reprend ensuite ce HTML dans le navigateur (`hydrateRoot`).
 
 | Sortie | Contenu |
 |---|---|
-| `dist/index.html` | page FR (https://unsqwa.re/) |
-| `dist/en/index.html` | page EN (https://unsqwa.re/en/) : contenu + métadonnées traduites |
+| `dist/index.html` | page FR (https://unsqware.com/) |
+| `dist/en/index.html` | page EN (https://unsqware.com/en/) : contenu + métadonnées traduites |
 | `dist/sitemap.xml` | les deux URL + hreflang + `lastmod` = date du build |
 
 Points de repère :

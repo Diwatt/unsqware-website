@@ -4,8 +4,8 @@ import { totemPoster } from "./data/photos";
 import { VideoEmbed } from "./VideoEmbed";
 
 const tracks = [
-  { n: "01", title: "Abandon me", length: "05:35" },
-  { n: "02", title: "Find the Meaning", length: "05:45" },
+  { n: "01", title: "Abandon me", length: "05:51" },
+  { n: "02", title: "Find the Meaning", length: "11:26" },
 ];
 
 // Page 4 of the EPK: the Totem Live Session, then the upcoming EP and Evoli with where to listen.
@@ -13,6 +13,7 @@ export function Music() {
   const { t } = useTranslation();
   const platforms = [
     { href: LINKS.spotify, label: "Spotify", value: t("music.artistPage") },
+    { href: LINKS.deezer, label: "Deezer", value: t("music.artistPage") },
     { href: LINKS.youtube, label: "YouTube", value: "@unsqware" },
   ];
 

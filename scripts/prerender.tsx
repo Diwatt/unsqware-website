@@ -3,8 +3,8 @@
 //   1. `vite build --ssr scripts/prerender.tsx --outDir .prerender` compiles this file
 //   2. `node .prerender/prerender.js` runs it in Node (node: imports externalized by Vite)
 // Outputs:
-//   - dist/index.html    → FR page (https://unsqwa.re/)
-//   - dist/en/index.html → EN page (https://unsqwa.re/en/)
+//   - dist/index.html    → FR page (https://unsqware.com/)
+//   - dist/en/index.html → EN page (https://unsqware.com/en/)
 //   - dist/sitemap.xml   → both URLs + hreflang + lastmod = build date
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -14,7 +14,7 @@ import i18n from "../src/i18n";
 
 type Lang = "fr" | "en";
 
-const DOMAIN = "https://unsqwa.re";
+const DOMAIN = "https://unsqware.com";
 const PLACEHOLDER = "<!--APP_HTML-->";
 
 // <head> strings of the (FR) template and their EN versions for the /en/ page.
@@ -74,13 +74,13 @@ async function main(): Promise<void> {
   enPage = replaceStrict(enPage, '<html lang="fr">', '<html lang="en">', "lang");
   enPage = replaceStrict(
     enPage,
-    '<link rel="canonical" href="https://unsqwa.re/" />',
+    '<link rel="canonical" href="https://unsqware.com/" />',
     `<link rel="canonical" href="${DOMAIN}/en/" />`,
     "canonical"
   );
   enPage = replaceStrict(
     enPage,
-    '<meta property="og:url" content="https://unsqwa.re/" />',
+    '<meta property="og:url" content="https://unsqware.com/" />',
     `<meta property="og:url" content="${DOMAIN}/en/" />`,
     "og:url"
   );

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { screen } from "@testing-library/react";
 
+import i18n from "../src/i18n";
 import { renderFr } from "./helpers";
 import { Hero } from "../src/Hero";
 import { LINKS } from "../src/shared";
@@ -22,6 +23,13 @@ describe("Hero", () => {
     expect(screen.queryByText(/hybride/)).toBeNull();
     expect(screen.getByText(/À la croisée du jazz moderne, du rock et de la musique progressive/)).toBeDefined();
     expect(screen.queryByText(/2021|MYT|Matute/)).toBeNull();
+  });
+
+  it("labels the genre as prog jazz on the English page", async () => {
+    await renderFr(<Hero />);
+    await i18n.changeLanguage("en");
+
+    expect(await screen.findByText("Prog jazz — Nantes")).toBeDefined();
   });
 
   it("shows the EPK cover photo of the striped wall", async () => {

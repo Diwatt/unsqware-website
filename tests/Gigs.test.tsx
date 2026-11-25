@@ -37,7 +37,7 @@ describe("Gigs", () => {
     await renderFr(<Gigs />);
 
     expect(await screen.findByText("Le Brewklyn")).toBeDefined();
-    expect(screen.getByRole("heading", { name: "Prochaines dates" })).toBeDefined();
+    expect(screen.getByRole("heading", { name: "À venir" })).toBeDefined();
     expect(screen.getByText("Chez Maurice")).toBeDefined();
     expect(screen.getByText("12 nov.")).toBeDefined();
     expect(screen.getByText("5 déc.")).toBeDefined();
@@ -109,25 +109,26 @@ describe("Gigs", () => {
     expect(screen.queryByText(/Proposer une date/)).toBeNull();
   });
 
-  it("lists the 2026 shows with their EPK date format", async () => {
+  it("lists the past 2026 shows with their EPK date format", async () => {
     stubFetch({ items: [] });
     await renderFr(<Gigs />);
 
-    expect(screen.getByRole("heading", { name: "Agenda 2026" })).toBeDefined();
-    expect(document.querySelectorAll(".agenda li")).toHaveLength(12);
+    expect(screen.getByRole("heading", { name: "Passé — 2026" })).toBeDefined();
+    expect(document.querySelectorAll(".agenda li")).toHaveLength(11);
+    expect(screen.queryByText(/Chez Maurice/)).toBeNull();
     expect(screen.getByText("06/02/26")).toBeDefined();
     expect(screen.getByText("Prog Night, La Carrière (Nantes)")).toBeDefined();
   });
 
-  it("keeps only the 2026 shows when the agenda is unreachable", async () => {
+  it("keeps only the past shows when the agenda is unreachable", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockRejectedValue(new Error("Google Calendar HTTP 403")),
     );
     await renderFr(<Gigs />);
 
-    expect(await screen.findByRole("heading", { name: "Agenda 2026" })).toBeDefined();
-    expect(screen.queryByRole("heading", { name: "Prochaines dates" })).toBeNull();
+    expect(await screen.findByRole("heading", { name: "Passé — 2026" })).toBeDefined();
+    expect(screen.queryByRole("heading", { name: "À venir" })).toBeNull();
     expect(document.querySelector(".dates")).toBeNull();
     expect(screen.queryByText(/annoncées d'abord sur/)).toBeNull();
   });

@@ -13,7 +13,7 @@ describe("App", () => {
 
     const ids = [...document.querySelectorAll("main section[id]")].map((section) => section.id);
     expect(ids).toStrictEqual(["accueil", "groupe", "sorties", "agenda", "reseaux", "contact"]);
-    expect(screen.getByRole("heading", { name: "Agenda 2026" })).toBeDefined();
+    expect(screen.getByRole("heading", { name: "Passé — 2026" })).toBeDefined();
     expect(screen.getByRole("heading", { name: "Faire jouer UNSQWARE" })).toBeDefined();
     expect(document.documentElement.lang).toBe("fr");
   });

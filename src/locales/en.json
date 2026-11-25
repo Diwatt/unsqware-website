@@ -11,7 +11,7 @@
     "closeMenu": "Close menu"
   },
   "hero": {
-    "kicker": "Jazz prog — Nantes",
+    "kicker": "Prog jazz — Nantes",
     "ep": "Debut EP — early 2027",
     "lede": "At the crossroads of modern jazz, rock and progressive music, UNSQWARE shapes a distinctive instrumental world blending electric textures, organic grooves and soaring improvisations.",
     "ctaContact": "Book UNSQWARE",
@@ -48,8 +48,8 @@
   },
   "live": {
     "tag": "Shows",
-    "title": "Upcoming shows",
-    "agendaTitle": "2026 shows"
+    "title": "Upcoming",
+    "agendaTitle": "Past — 2026"
   },
   "socials": {
     "tag": "Socials",

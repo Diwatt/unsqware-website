@@ -8,10 +8,10 @@ type Fetcher = (url: string, init: RequestInit) => Promise<Response>;
  */
 export class IndexNowSubmitter {
   public static readonly ENDPOINT = "https://api.indexnow.org/indexnow";
-  public static readonly HOST = "unsqwa.re";
+  public static readonly HOST = "unsqware.com";
   // Public by design: the same value is served at /<KEY>.txt to prove ownership.
   public static readonly KEY = "d92643ec3cf30c2574b25f8093c07edc";
-  public static readonly PAGES = ["https://unsqwa.re/", "https://unsqwa.re/en/"];
+  public static readonly PAGES = ["https://unsqware.com/", "https://unsqware.com/en/"];
 
   constructor(private readonly fetcher: Fetcher = fetch) {}
 

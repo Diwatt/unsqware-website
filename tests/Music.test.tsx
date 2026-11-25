@@ -27,8 +27,8 @@ describe("Music", () => {
 
     expect(screen.getByText("Abandon me")).toBeDefined();
     expect(screen.getByText("Find the Meaning")).toBeDefined();
-    expect(screen.getByText("05:35")).toBeDefined();
-    expect(screen.getByText("05:45")).toBeDefined();
+    expect(screen.getByText("05:51")).toBeDefined();
+    expect(screen.getByText("11:26")).toBeDefined();
   });
 
   it("announces the debut EP recorded with Franck Martin", async () => {
@@ -43,7 +43,8 @@ describe("Music", () => {
     await renderFr(<Music />);
 
     expect(screen.getByRole("heading", { name: "Evoli" })).toBeDefined();
-    expect(screen.getByRole("link", { name: "Page artiste" }).getAttribute("href")).toBe(LINKS.spotify);
+    const artistPages = screen.getAllByRole("link", { name: "Page artiste" }).map((a) => a.getAttribute("href"));
+    expect(artistPages).toStrictEqual([LINKS.spotify, LINKS.deezer]);
     expect(screen.getByRole("link", { name: "@unsqware" }).getAttribute("href")).toBe(LINKS.youtube);
     expect(screen.queryByText(/SoundCloud/)).toBeNull();
   });

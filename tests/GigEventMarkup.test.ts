@@ -33,15 +33,15 @@ describe("GigEventMarkup.toJsonLd", () => {
     expect(event.endDate).toBe("2026-12-05T23:30:00.000Z");
     expect(event.eventStatus).toBe("https://schema.org/EventScheduled");
     expect(event.eventAttendanceMode).toBe("https://schema.org/OfflineEventAttendanceMode");
-    expect(event.image).toBe("https://unsqwa.re/images/hero-groupe-mur-raye.jpg");
+    expect(event.image).toBe("https://unsqware.com/images/hero-groupe-mur-raye.jpg");
     expect(event.location).toStrictEqual({
       "@type": "Place",
       name: "Chez Maurice",
       address: { "@type": "PostalAddress", addressLocality: "Nantes" },
     });
-    expect(event.performer).toStrictEqual({ "@type": "MusicGroup", name: "UNSQWARE", url: "https://unsqwa.re/" });
-    expect(event.organizer).toStrictEqual({ "@type": "Organization", name: "UNSQWARE", url: "https://unsqwa.re/" });
-    expect(event.url).toBe("https://unsqwa.re/#agenda");
+    expect(event.performer).toStrictEqual({ "@type": "MusicGroup", name: "UNSQWARE", url: "https://unsqware.com/" });
+    expect(event.organizer).toStrictEqual({ "@type": "Organization", name: "UNSQWARE", url: "https://unsqware.com/" });
+    expect(event.url).toBe("https://unsqware.com/#agenda");
   });
 
   it("uses the date alone for an all-day gig, on start and end alike", () => {
@@ -80,7 +80,7 @@ describe("GigEventMarkup.toJsonLd", () => {
     ]);
 
     expect(withTickets.offers).toStrictEqual({ "@type": "Offer", url: "https://example.com/billets" });
-    expect(withoutTickets.offers).toStrictEqual({ "@type": "Offer", url: "https://unsqwa.re/#agenda" });
+    expect(withoutTickets.offers).toStrictEqual({ "@type": "Offer", url: "https://unsqware.com/#agenda" });
   });
 
   it("escapes < so the JSON cannot close its script tag", () => {

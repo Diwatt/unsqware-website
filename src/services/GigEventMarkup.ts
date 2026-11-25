@@ -12,9 +12,9 @@ export class GigEventMarkup {
     fr: "Concert du quartet UNSQWARE — jazz moderne et progressif, la rondeur du jazz et l'énergie du rock.",
     en: "Live show by the UNSQWARE quartet — modern progressive jazz, groove meets rock energy.",
   };
-  private static readonly EVENT_URL = "https://unsqwa.re/#agenda";
-  private static readonly GIG_IMAGE_URL = "https://unsqwa.re/images/hero-groupe-mur-raye.jpg";
-  private static readonly SITE_URL = "https://unsqwa.re/";
+  private static readonly EVENT_URL = "https://unsqware.com/#agenda";
+  private static readonly GIG_IMAGE_URL = "https://unsqware.com/images/hero-groupe-mur-raye.jpg";
+  private static readonly SITE_URL = "https://unsqware.com/";
 
   constructor(private readonly lang: Lang = "fr") {}
 
