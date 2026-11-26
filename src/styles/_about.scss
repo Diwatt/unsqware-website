@@ -1,5 +1,8 @@
 // ——— Le groupe ———
 .about {
+  // Les influences closent la section : marge basse réduite pour rapprocher « Sorties ».
+  padding-bottom: 32px;
+
   &__head {
     display: flex;
     flex-wrap: wrap;

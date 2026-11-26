@@ -8,7 +8,7 @@ export function About() {
   const isEnglish = i18n.resolvedLanguage === "en";
 
   return (
-    <section id="groupe" className="section container">
+    <section id="groupe" className="section container about">
       <div className="about__head">
         <div className="about__title">
           <SectionTag label={t("band.tag")} />

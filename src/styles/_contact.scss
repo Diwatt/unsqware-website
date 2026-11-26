@@ -1,11 +1,12 @@
 // ——— Contact (page 6 de l'EPK) ———
 .contact {
   // Photo de groupe en bandeau pleine largeur, au-dessus de l'appel à faire jouer le groupe.
+  // Cadrage haut : les têtes restent entières.
   &__banner {
     width: 100%;
     height: clamp(240px, 36vw, 480px);
     object-fit: cover;
-    object-position: 50% 28%;
+    object-position: 50% 12%;
   }
 
   &__text {

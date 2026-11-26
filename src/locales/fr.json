@@ -30,8 +30,10 @@
     "influences": "Influences"
   },
   "photos": {
-    "violetMds": "Les quatre musiciens d'UNSQWARE en lumière violette, à La Maison du Son",
-    "graffBanner": "Les quatre musiciens d'UNSQWARE devant une fresque bleue"
+    "graffBanner": "Les quatre musiciens d'UNSQWARE devant une fresque bleue",
+    "playBass": "Le bassiste d'UNSQWARE en studio, casque sur les oreilles",
+    "playGuitar": "Le guitariste d'UNSQWARE sur scène, dans une fumée bleue",
+    "playStage": "UNSQWARE en concert : batterie, guitare et basse sous les projecteurs"
   },
   "music": {
     "tag": "Sorties",
@@ -49,7 +51,9 @@
   "live": {
     "tag": "Agenda",
     "title": "À venir",
-    "agendaTitle": "Passé — 2026"
+    "empty": "Les prochaines dates arrivent bientôt.",
+    "pastLabel": "Passé",
+    "agendaTitle": "2026"
   },
   "socials": {
     "tag": "Réseaux",
@@ -59,7 +63,7 @@
     "facebook": "unsqwaremusique · annonces concerts"
   },
   "contact": {
-    "tag": "Contact",
+    "tag": "Nous contacter",
     "title": "Faire jouer UNSQWARE",
     "text": "Concert, festival, presse : écrivez-nous.",
     "copy": "Copier l'adresse",

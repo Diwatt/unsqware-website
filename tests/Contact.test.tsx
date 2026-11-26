@@ -69,4 +69,9 @@ describe("Contact", () => {
     await screen.findByText("Copier l'adresse");
     expect(screen.queryByText("Adresse copiée ✓")).toBeNull();
   });
+  it("is tagged like the navigation link", async () => {
+    await renderFr(<Contact />);
+
+    expect(document.querySelector(".tag__face")?.textContent).toBe("Nous contacter");
+  });
 });

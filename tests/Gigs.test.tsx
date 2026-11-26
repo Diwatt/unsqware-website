@@ -78,25 +78,35 @@ describe("Gigs", () => {
     expect(document.querySelector('script[type="application/ld+json"]')).toBeNull();
   });
 
-  it("opens with the MDS group photo, no longer with the ZAW shoot", async () => {
+  it("opens with three playing photos instead of the MDS banner", async () => {
     stubFetch({ items: [] });
     await renderFr(<Gigs />);
 
-    expect(screen.getByRole("img", { name: /en lumière violette/ }).getAttribute("src")).toBe(
-      "/images/groupe-violet-mds.webp",
-    );
-    expect(document.querySelector('img[src*="scene-"]')).toBeNull();
+    const photos = [...document.querySelectorAll(".live__photos img")];
+    expect(photos.map((img) => img.getAttribute("src"))).toStrictEqual([
+      "/images/jeu-basse-studio.webp",
+      "/images/jeu-guitare-scene.webp",
+      "/images/jeu-trio-scene.webp",
+    ]);
+    expect(screen.getByRole("img", { name: /casque sur les oreilles/ })).toBeDefined();
+    expect(document.querySelector('img[src*="violet"]')).toBeNull();
   });
 
-  it("serves the full-width banner in full resolution, with a lighter copy for phones", async () => {
+  it("keeps the upcoming heading with a placeholder when no gig is announced", async () => {
     stubFetch({ items: [] });
     await renderFr(<Gigs />);
 
-    const banner = screen.getByRole("img", { name: /en lumière violette/ });
-    expect(banner.getAttribute("srcset")).toBe(
-      "/images/groupe-violet-mds-1200.webp 1200w, /images/groupe-violet-mds.webp 2400w",
-    );
-    expect(banner.getAttribute("sizes")).toBe("100vw");
+    expect(screen.getByRole("heading", { name: "À venir" })).toBeDefined();
+    expect(screen.getByText("Les prochaines dates arrivent bientôt.")).toBeDefined();
+    expect(document.querySelector(".dates")).toBeNull();
+  });
+
+  it("hides the placeholder once gigs are announced", async () => {
+    stubFetch({ items: agendaItems });
+    await renderFr(<Gigs />);
+
+    expect(await screen.findByText("Le Brewklyn")).toBeDefined();
+    expect(screen.queryByText("Les prochaines dates arrivent bientôt.")).toBeNull();
   });
 
   it("is the agenda section, without the timeline nor the call for dates", async () => {
@@ -113,22 +123,23 @@ describe("Gigs", () => {
     stubFetch({ items: [] });
     await renderFr(<Gigs />);
 
-    expect(screen.getByRole("heading", { name: "Passé — 2026" })).toBeDefined();
+    expect(screen.getByRole("heading", { name: "2026" })).toBeDefined();
+    expect(document.querySelector(".live__block--past .live__label")?.textContent).toBe("Passé");
     expect(document.querySelectorAll(".agenda li")).toHaveLength(11);
     expect(screen.queryByText(/Chez Maurice/)).toBeNull();
     expect(screen.getByText("06/02/26")).toBeDefined();
     expect(screen.getByText("Prog Night, La Carrière (Nantes)")).toBeDefined();
   });
 
-  it("keeps only the past shows when the agenda is unreachable", async () => {
+  it("keeps the past shows and the empty upcoming block when the agenda is unreachable", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockRejectedValue(new Error("Google Calendar HTTP 403")),
     );
     await renderFr(<Gigs />);
 
-    expect(await screen.findByRole("heading", { name: "Passé — 2026" })).toBeDefined();
-    expect(screen.queryByRole("heading", { name: "À venir" })).toBeNull();
+    expect(await screen.findByRole("heading", { name: "2026" })).toBeDefined();
+    expect(screen.getByText("Les prochaines dates arrivent bientôt.")).toBeDefined();
     expect(document.querySelector(".dates")).toBeNull();
     expect(screen.queryByText(/annoncées d'abord sur/)).toBeNull();
   });

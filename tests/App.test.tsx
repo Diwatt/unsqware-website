@@ -13,7 +13,7 @@ describe("App", () => {
 
     const ids = [...document.querySelectorAll("main section[id]")].map((section) => section.id);
     expect(ids).toStrictEqual(["accueil", "groupe", "sorties", "agenda", "reseaux", "contact"]);
-    expect(screen.getByRole("heading", { name: "Passé — 2026" })).toBeDefined();
+    expect(screen.getByRole("heading", { name: "2026" })).toBeDefined();
     expect(screen.getByRole("heading", { name: "Faire jouer UNSQWARE" })).toBeDefined();
     expect(document.documentElement.lang).toBe("fr");
   });
@@ -25,6 +25,6 @@ describe("App", () => {
     await renderFr(<App />);
 
     const tags = [...document.querySelectorAll(".tag__face")].map((tag) => tag.textContent);
-    expect(tags).toStrictEqual(["Le groupe", "Sorties", "Agenda", "Réseaux", "Contact"]);
+    expect(tags).toStrictEqual(["Le groupe", "Sorties", "Agenda", "Réseaux", "Nous contacter"]);
   });
 });

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { agenda } from "./config-agenda";
 import { agenda2026 } from "./data/agenda";
-import { stagePhoto } from "./data/photos";
+import { playPhotos } from "./data/photos";
 import { AgendaLoader } from "./services/AgendaLoader";
 import { CalendarEvent } from "./services/CalendarEvent";
 import { CalendarEventParser } from "./services/CalendarEventParser";
@@ -54,19 +54,17 @@ export function Gigs() {
       {upcoming.length > 0 && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: eventMarkup.toJsonLd(upcoming) }} />
       )}
-      <img
-        className="live__banner"
-        src={stagePhoto.photo}
-        srcSet={`${stagePhoto.photoSmall} 1200w, ${stagePhoto.photo} ${stagePhoto.width}w`}
-        sizes="100vw"
-        alt={t(stagePhoto.alt)}
-        loading="lazy"
-      />
+      <div className="live__photos">
+        {playPhotos.map((p) => (
+          <img key={p.photo} src={p.photo} alt={t(p.alt)} style={{ objectPosition: p.focus }} loading="lazy" />
+        ))}
+      </div>
       <div className="section container">
         <SectionTag label={t("live.tag")} />
-        {upcoming.length > 0 && (
-          <>
-            <h2 className="h2 live__title">{t("live.title")}</h2>
+        <div className="live__block">
+          <h2 className="h2 live__title">{t("live.title")}</h2>
+          {upcoming.length === 0 && <p className="live__empty">{t("live.empty")}</p>}
+          {upcoming.length > 0 && (
             <ul className="dates">
               {upcoming.map((g) => {
                 const time = g.allDay ? undefined : formatter.time(g.start);
@@ -93,22 +91,25 @@ export function Gigs() {
                 );
               })}
             </ul>
-          </>
-        )}
+          )}
+        </div>
 
-        <h3 className="h2 live__subtitle">{t("live.agendaTitle")}</h3>
-        <ul className="agenda">
-          {agenda2026.map((show) => (
-            <li key={`${show.date}-${show.venue}`}>
-              <time className="agenda__date" dateTime={show.date}>
-                {formatter.numericDay(show.date)}
-              </time>
-              <span>
-                {show.venue} ({show.city})
-              </span>
-            </li>
-          ))}
-        </ul>
+        <div className="live__block live__block--past">
+          <span className="mono-label live__label">{t("live.pastLabel")}</span>
+          <h3 className="h2 live__subtitle">{t("live.agendaTitle")}</h3>
+          <ul className="agenda">
+            {agenda2026.map((show) => (
+              <li key={`${show.date}-${show.venue}`}>
+                <time className="agenda__date" dateTime={show.date}>
+                  {formatter.numericDay(show.date)}
+                </time>
+                <span>
+                  {show.venue} ({show.city})
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

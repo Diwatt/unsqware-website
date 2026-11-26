@@ -2,7 +2,7 @@
 
 > Site **one-page scroll** : navigation par ancres + scrollspy, bilingue FR / EN.
 > Depuis novembre 2026, le site est **la version web de l'EPK 2027** : mêmes couleurs, mêmes photos, même contenu, même ton.
-> Dernière mise à jour : 2026-11-25.
+> Dernière mise à jour : 2026-11-26.
 
 ## Structure de la page
 
@@ -15,11 +15,11 @@ Quand les retours du groupe sur le site et l'EPK divergent, les retours sur le s
 | **Accueil** (`#accueil`) | photo du mur rayé (couverture EPK) · « Jazz prog — Nantes » · accroche · badge « Premier EP — début 2027 » · CTA « Faire jouer UNSQWARE » + « Voir la Totem Live Session » · liens réseaux |
 | **Le groupe** (`#groupe`) | « Un carré qui se déforme » · bio (3 premiers paragraphes) · photo de groupe légendée (de gauche à droite : Fabien, Victor, Charles, Florian) · encadré des influences — EPK p. 2-3 |
 | **Sorties** (`#sorties`) | lecteur **Totem Live Session** + texte + 2 titres · encadré « Premier EP » · encadré **Evoli** + Spotify / Deezer / YouTube — EPK p. 5 |
-| **Agenda** (`#agenda`) | photo de groupe MDS · **À venir** (agenda Google, affiché seulement s'il y a des dates) · **Passé — 2026** — EPK p. 6 |
+| **Agenda** (`#agenda`) | 3 photos de jeu (basse en studio, guitare sur scène, trio en concert) · **À venir** (agenda Google ; sans date, une phrase d'attente) · **Passé — 2026** (titre « 2026 ») — EPK p. 6 |
 | **Réseaux** (`#reseaux`) | Instagram, YouTube, Facebook |
-| **Contact** (`#contact`) | photo devant la fresque bleue · « Faire jouer UNSQWARE » · email (copiable) · formats de set · presse · téléchargement de l'EPK — EPK p. 7 |
+| **Nous contacter** (`#contact`) | photo devant la fresque bleue · « Faire jouer UNSQWARE » · email (copiable) · formats de set · presse · téléchargement de l'EPK — EPK p. 7 |
 
-Le titre de l'onglet est **« UNSQWARE - Jazz Prog »** (FR et EN). Le favicon est le logo noir sur fond blanc.
+Le titre de l'onglet est **« UNSQWARE - Jazz Prog »** (FR et EN). Le favicon est le logo complet « unsqware JAZZ. PROG. », noir sur fond blanc.
 
 ## Où modifier quoi (sans compétences techniques)
 
@@ -106,7 +106,7 @@ Les 11 dates passées de 2026 sont dans `src/data/agenda.ts` ; la date à venir 
 
 ## Photos
 
-Nouveau shooting de novembre 2026 (mur rayé, graff, grue) et shooting MDS. La grille de photos studio / live est partie avec la section « Studio & live ». Les photos du shooting ZAW ont été retirées. Les originaux (JPEG et WebP) sont dans `site-update/assets/photos/`.
+Nouveau shooting de novembre 2026 (mur rayé, graff, grue) et shooting MDS (le bandeau MDS de l'Agenda a été remplacé le 2026-11-26 par 3 photos de jeu : `public/images/jeu-*.webp`). La grille de photos studio / live est partie avec la section « Studio & live ». Les photos du shooting ZAW ont été retirées. Les originaux (JPEG et WebP) sont dans `site-update/assets/photos/`.
 
 ---
 

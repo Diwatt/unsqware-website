@@ -30,8 +30,10 @@
     "influences": "Influences"
   },
   "photos": {
-    "violetMds": "The four members of UNSQWARE in purple light at La Maison du Son",
-    "graffBanner": "The four members of UNSQWARE in front of a blue mural"
+    "graffBanner": "The four members of UNSQWARE in front of a blue mural",
+    "playBass": "UNSQWARE's bass player in the studio, wearing headphones",
+    "playGuitar": "UNSQWARE's guitarist on stage in blue smoke",
+    "playStage": "UNSQWARE live: drums, guitar and bass under the stage lights"
   },
   "music": {
     "tag": "Releases",
@@ -49,7 +51,9 @@
   "live": {
     "tag": "Shows",
     "title": "Upcoming",
-    "agendaTitle": "Past — 2026"
+    "empty": "New dates coming soon.",
+    "pastLabel": "Past",
+    "agendaTitle": "2026"
   },
   "socials": {
     "tag": "Socials",
@@ -59,7 +63,7 @@
     "facebook": "unsqwaremusique · show announcements"
   },
   "contact": {
-    "tag": "Contact",
+    "tag": "Contact us",
     "title": "Book UNSQWARE",
     "text": "Gigs, festivals, press: write to us.",
     "copy": "Copy address",

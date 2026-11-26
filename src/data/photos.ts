@@ -23,16 +23,17 @@ export const bandPhoto = {
 // ── "Sorties": the poster shown before the Totem video plays ──────
 export const totemPoster = "/images/studio-mds-salle-2.webp";
 
-// ── "Agenda": the full-width photo at the top of the section ──────
-//  Full-width photos need the full resolution (2000 px or more) to stay sharp.
-export const stagePhoto = {
-  photo: "/images/groupe-violet-mds.webp",
-  photoSmall: "/images/groupe-violet-mds-1200.webp",
-  width: 2400,
-  alt: "photos.violetMds",
-} as const;
+// ── "Agenda": three playing photos side by side, above the section ─
+//  focus : the part of the photo that must stay visible when it is cropped
+//          ("50% 30%" = centered horizontally, near the top).
+export const playPhotos = [
+  { photo: "/images/jeu-basse-studio.webp", alt: "photos.playBass", focus: "30% 30%" },
+  { photo: "/images/jeu-guitare-scene.webp", alt: "photos.playGuitar", focus: "55% 35%" },
+  { photo: "/images/jeu-trio-scene.webp", alt: "photos.playStage", focus: "50% 35%" },
+] as const;
 
 // ── "Contact": the full-width photo at the top of the section ─────
+//  Full-width photos need the full resolution (2000 px or more) to stay sharp.
 export const contactPhoto = {
   photo: "/images/groupe-graff-37.webp",
   photoSmall: "/images/groupe-graff-37-1200.webp",
