@@ -35,8 +35,8 @@ describe("Gigs (demo mode)", () => {
 
     await renderFr(<Gigs />);
 
-    expect(await screen.findByText("Le Brewklyn")).toBeDefined();
-    expect(screen.getByText("Chez Maurice")).toBeDefined();
+    expect(await screen.findByText("Le Brewklyn (Rennes)")).toBeDefined();
+    expect(screen.getByText("Chez Maurice (Nantes)")).toBeDefined();
     expect(fetchSpy).not.toHaveBeenCalled();
   });
 });

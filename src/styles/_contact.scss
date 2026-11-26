@@ -4,9 +4,10 @@
   // Cadrage haut : les têtes restent entières.
   &__banner {
     width: 100%;
-    height: clamp(240px, 36vw, 480px);
+    // La hauteur suit la largeur (32vw) : sur grand écran, le cadrage garde les visages entiers.
+    height: clamp(240px, 32vw, 820px);
     object-fit: cover;
-    object-position: 50% 12%;
+    object-position: 50% 10%;
   }
 
   &__text {

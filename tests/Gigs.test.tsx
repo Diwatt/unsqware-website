@@ -36,13 +36,10 @@ describe("Gigs", () => {
     stubFetch({ items: agendaItems });
     await renderFr(<Gigs />);
 
-    expect(await screen.findByText("Le Brewklyn")).toBeDefined();
-    expect(screen.getByRole("heading", { name: "À venir" })).toBeDefined();
-    expect(screen.getByText("Chez Maurice")).toBeDefined();
-    expect(screen.getByText("12 nov.")).toBeDefined();
-    expect(screen.getByText("5 déc.")).toBeDefined();
-    expect(screen.getByText("Rennes")).toBeDefined();
-    expect(screen.getByText("Nantes")).toBeDefined();
+    expect(await screen.findByText("Le Brewklyn (Rennes)")).toBeDefined();
+    expect(screen.getByText("Chez Maurice (Nantes)")).toBeDefined();
+    const dates = [...document.querySelectorAll(".agenda--upcoming .agenda__date")].map((d) => d.textContent);
+    expect(dates).toStrictEqual(["12/11/26", "05/12/26"]);
     // The untagged event is not rendered
     expect(screen.queryByText("Répète")).toBeNull();
   });
@@ -54,14 +51,14 @@ describe("Gigs", () => {
     // Brewklyn has a time, Chez Maurice is all-day with a description
     expect(await screen.findByText("18:00")).toBeDefined();
     expect(screen.getByText("avec le collectif")).toBeDefined();
-    const tickets = await screen.findByRole("link", { name: "Tickets" });
+    const tickets = await screen.findByRole("link", { name: "Tickets ↗" });
     expect(tickets.getAttribute("href")).toBe("https://example.com/billets");
   });
 
   it("publishes the gigs as MusicEvent structured data", async () => {
     stubFetch({ items: agendaItems });
     await renderFr(<Gigs />);
-    await screen.findByText("Le Brewklyn");
+    await screen.findByText("Le Brewklyn (Rennes)");
 
     const script = document.querySelector('script[type="application/ld+json"]');
     const events = JSON.parse(script?.textContent ?? "[]");
@@ -96,16 +93,36 @@ describe("Gigs", () => {
     stubFetch({ items: [] });
     await renderFr(<Gigs />);
 
-    expect(screen.getByRole("heading", { name: "À venir" })).toBeDefined();
+    expect(document.querySelector(".live__block .live__label")?.textContent).toBe("À venir");
     expect(screen.getByText("Les prochaines dates arrivent bientôt.")).toBeDefined();
-    expect(document.querySelector(".dates")).toBeNull();
+    expect(document.querySelector(".agenda--upcoming")).toBeNull();
+  });
+
+  it("shapes the upcoming block like the past one: label, year heading, compact list", async () => {
+    stubFetch({ items: agendaItems });
+    await renderFr(<Gigs />);
+    await screen.findByText("Le Brewklyn (Rennes)");
+
+    const labels = [...document.querySelectorAll(".live__label")].map((label) => label.textContent);
+    expect(labels).toStrictEqual(["À venir", "Passé"]);
+    expect(screen.getAllByRole("heading", { name: "2026" })).toHaveLength(2);
+    expect(document.querySelectorAll(".agenda--upcoming li")).toHaveLength(2);
+  });
+
+  it("spans the year heading when upcoming gigs cross into the next year", async () => {
+    stubFetch({
+      items: [...agendaItems, { id: "evt-2027", summary: "[GIG] Le Ferrailleur", start: { date: "2027-01-15" } }],
+    });
+    await renderFr(<Gigs />);
+
+    expect(await screen.findByRole("heading", { name: "2026 – 2027" })).toBeDefined();
   });
 
   it("hides the placeholder once gigs are announced", async () => {
     stubFetch({ items: agendaItems });
     await renderFr(<Gigs />);
 
-    expect(await screen.findByText("Le Brewklyn")).toBeDefined();
+    expect(await screen.findByText("Le Brewklyn (Rennes)")).toBeDefined();
     expect(screen.queryByText("Les prochaines dates arrivent bientôt.")).toBeNull();
   });
 
@@ -140,7 +157,7 @@ describe("Gigs", () => {
 
     expect(await screen.findByRole("heading", { name: "2026" })).toBeDefined();
     expect(screen.getByText("Les prochaines dates arrivent bientôt.")).toBeDefined();
-    expect(document.querySelector(".dates")).toBeNull();
+    expect(document.querySelector(".agenda--upcoming")).toBeNull();
     expect(screen.queryByText(/annoncées d'abord sur/)).toBeNull();
   });
 });

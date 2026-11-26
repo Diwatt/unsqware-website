@@ -2,15 +2,10 @@ import { describe, expect, it } from "vitest";
 
 import { GigFormatter } from "../src/services/GigFormatter";
 
-describe("GigFormatter.date", () => {
-  it("formats French day + short month, without a non-breaking space", () => {
-    const formatter = new GigFormatter("fr");
-    expect(formatter.date(new Date(2026, 11, 5))).toBe("5 déc.");
-    expect(formatter.date(new Date(2026, 10, 21))).toBe("21 nov.");
-  });
-
-  it("formats English", () => {
-    expect(new GigFormatter("en").date(new Date(2026, 11, 5))).toBe("Dec 5");
+describe("GigFormatter.numericDate", () => {
+  it("writes the local day of a date as DD/MM/YY in both languages", () => {
+    expect(new GigFormatter("fr").numericDate(new Date(2026, 11, 5, 20, 30))).toBe("05/12/26");
+    expect(new GigFormatter("en").numericDate(new Date(2027, 0, 9))).toBe("09/01/27");
   });
 });
 

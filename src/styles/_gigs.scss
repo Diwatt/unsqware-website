@@ -32,6 +32,11 @@
     margin-bottom: 40px;
   }
 
+  // L'étiquette de section chevauche ce qui la suit : on décale le libellé « À venir » pour qu'il reste lisible.
+  .tag + &__block {
+    padding-top: 32px;
+  }
+
   // Deux blocs bien distincts : les dates à venir, puis les dates passées.
   &__block--past {
     margin-top: 88px;
@@ -77,55 +82,31 @@
     color: var(--accent);
   }
 
-  @media (max-width: 720px) {
-    columns: 1;
-  }
-}
-
-.dates {
-  margin-bottom: 24px;
-  border-top: 1px solid var(--line-2);
-
-  li {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px 40px;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--line-2);
+  // Heure et détails de l'event Google, sous le lieu.
+  &__meta {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
   }
 
-  &__date {
-    flex: 0 0 160px;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 32px;
-    line-height: 1;
+  &__tickets {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--accent);
   }
 
-  &__venue {
-    flex: 1 1 260px;
-    font-size: 22px;
-    font-weight: 600;
+  // Les dates à venir gardent la couleur du texte principal, le passé reste adouci.
+  &--upcoming li {
+    color: var(--fg);
   }
 
-  // Ligne secondaire sous le lieu : heure et détails de l'event Google
-  // (ex. « 20:30 · avec le collectif »).
-  &__meta {
-    display: block;
-    margin-top: 6px;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--muted);
-  }
-
-  &__city {
-    flex: 0 1 200px;
-    font-family: var(--font-mono);
-    font-size: 14px;
-    color: var(--muted);
-    text-transform: uppercase;
+  @media (max-width: 720px) {
+    columns: 1;
   }
 }

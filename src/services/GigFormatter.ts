@@ -6,11 +6,6 @@ import type { Lang } from "../i18n";
 export class GigFormatter {
   constructor(private readonly lang: Lang) {}
 
-  // "5 déc." / "Dec 5"
-  public date(date: Date): string {
-    return this.format(date, { day: "numeric", month: "short" });
-  }
-
   // "2026-02-06" → "06/02/26", the EPK agenda format, in both languages.
   // @throws Error when the day is not written as YYYY-MM-DD.
   public numericDay(isoDay: string): string {
@@ -19,6 +14,14 @@ export class GigFormatter {
     const [, year, month, day] = match;
 
     return `${day}/${month}/${year.slice(2)}`;
+  }
+
+  // Local day of a date in the EPK agenda format: "05/12/26", in both languages.
+  public numericDate(date: Date): string {
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+
+    return `${day}/${month}/${String(date.getFullYear()).slice(2)}`;
   }
 
   // "20:30" (24h clock)

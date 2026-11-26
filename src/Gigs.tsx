@@ -48,6 +48,8 @@ export function Gigs() {
   const formatter = new GigFormatter(lang);
   const upcoming = useUpcomingGigs();
   const eventMarkup = useMemo(() => new GigEventMarkup(lang), [lang]);
+  // Same heading as the past block: the year(s) the upcoming gigs fall in.
+  const upcomingYears = [...new Set(upcoming.map((g) => g.start.getFullYear()))].join(" – ");
 
   return (
     <section id="agenda" className="live">
@@ -62,35 +64,40 @@ export function Gigs() {
       <div className="section container">
         <SectionTag label={t("live.tag")} />
         <div className="live__block">
-          <h2 className="h2 live__title">{t("live.title")}</h2>
+          <span className="mono-label live__label">{t("live.title")}</span>
           {upcoming.length === 0 && <p className="live__empty">{t("live.empty")}</p>}
           {upcoming.length > 0 && (
-            <ul className="dates">
-              {upcoming.map((g) => {
-                const time = g.allDay ? undefined : formatter.time(g.start);
-                // The geocoded venue (location field) only shows if the title doesn't already say it.
-                const venueLabel =
-                  g.name && g.venue && !CalendarEvent.isSamePlace(g.name, g.venue) ? g.venue : undefined;
-                const meta = [time, venueLabel, g.details].filter(Boolean).join(" · ");
-                return (
-                  <li key={g.id}>
-                    <time className="dates__date" dateTime={g.start.toISOString()}>
-                      {formatter.date(g.start)}
-                    </time>
-                    <span className="dates__venue">
-                      {g.name ?? g.venue}
-                      {meta && <span className="dates__meta">{meta}</span>}
-                    </span>
-                    {g.city && <span className="dates__city">{g.city}</span>}
-                    {g.ticketsUrl && (
-                      <a href={g.ticketsUrl} className="btn btn--ghost btn--small" target="_blank" rel="noreferrer">
-                        Tickets
-                      </a>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+            <>
+              <h2 className="h2 live__subtitle">{upcomingYears}</h2>
+              <ul className="agenda agenda--upcoming">
+                {upcoming.map((g) => {
+                  const time = g.allDay ? undefined : formatter.time(g.start);
+                  // The geocoded venue (location field) only shows if the title doesn't already say it.
+                  const venueLabel =
+                    g.name && g.venue && !CalendarEvent.isSamePlace(g.name, g.venue) ? g.venue : undefined;
+                  const meta = [time, venueLabel, g.details].filter(Boolean).join(" · ");
+                  return (
+                    <li key={g.id}>
+                      <time className="agenda__date" dateTime={g.start.toISOString()}>
+                        {formatter.numericDate(g.start)}
+                      </time>
+                      <span>
+                        <span>
+                          {g.name ?? g.venue}
+                          {g.city && ` (${g.city})`}
+                        </span>
+                        {meta && <span className="agenda__meta">{meta}</span>}
+                        {g.ticketsUrl && (
+                          <a href={g.ticketsUrl} className="agenda__tickets" target="_blank" rel="noreferrer">
+                            Tickets ↗
+                          </a>
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
           )}
         </div>
 
